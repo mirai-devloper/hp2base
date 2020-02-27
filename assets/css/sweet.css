@@ -388,9 +388,11 @@ a {
 .drawer-gnavi > li.current-menu-item {
   color: #f1c4b1;
   background-color: #222; }
-  .drawer-gnavi > li.current-menu-item a {
+  .drawer-gnavi > li.current-menu-item > a {
     color: #f1c4b1; }
-    .drawer-gnavi > li.current-menu-item a:before {
+    .drawer-gnavi > li.current-menu-item > a > .ja {
+      color: #f1c4b1; }
+    .drawer-gnavi > li.current-menu-item > a > .en {
       color: #fff; }
   .drawer-gnavi > li.current-menu-item:before {
     content: "";
@@ -405,15 +407,19 @@ a {
 .drawer-gnavi > li > a {
   color: #222;
   border-bottom: 1px solid #f1c4b1; }
-  .drawer-gnavi > li > a.hover {
-    color: #f1c4b1;
-    background-color: #222; }
-    .drawer-gnavi > li > a.hover:before {
-      color: #fff; }
-  .drawer-gnavi > li > a:before {
+  .drawer-gnavi > li > a > .ja {
+    color: #222; }
+  .drawer-gnavi > li > a > .en {
     font-family: "Playball", cursive;
     font-size: 24px;
     color: #222; }
+  .drawer-gnavi > li > a.hover {
+    color: #f1c4b1;
+    background-color: #222; }
+    .drawer-gnavi > li > a.hover > .ja {
+      color: #f1c4b1; }
+    .drawer-gnavi > li > a.hover > .en {
+      color: #fff; }
 
 .drawer-subnavi > li {
   border-bottom: 1px solid #efbda8; }
@@ -440,17 +446,19 @@ a {
     background-size: 100%; }
   .gnavi > li > a {
     color: #f1c4b1; }
-    .gnavi > li > a:hover {
-      background-color: transparent; }
-    .gnavi > li > a:after {
-      height: 34%;
-      border-left: 1px solid #ccc; }
-    .gnavi > li > a:before {
+    .gnavi > li > a > .ja {
+      color: #f1c4b1; }
+    .gnavi > li > a > .en {
       margin-bottom: 8px;
       line-height: 1;
       font-family: "Playball", cursive;
       font-size: 20px;
       color: #fff; }
+    .gnavi > li > a:hover {
+      background-color: transparent; }
+    .gnavi > li > a:after {
+      height: 34%;
+      border-left: 1px solid #ccc; }
 
 .pogoSlider-dir-btn {
   border-color: #fff; }

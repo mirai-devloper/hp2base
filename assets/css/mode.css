@@ -452,14 +452,18 @@ a {
 .drawer-gnavi > li > a {
   color: #5a5c66;
   border-bottom: 1px solid #ccc; }
+  .drawer-gnavi > li > a > .ja {
+    color: #5a5c66; }
+  .drawer-gnavi > li > a > .en {
+    font-family: "Josefin Slab", serif;
+    color: #222; }
   .drawer-gnavi > li > a.hover {
     color: #e6e6e6;
     background-color: #222; }
-    .drawer-gnavi > li > a.hover:before {
+    .drawer-gnavi > li > a.hover > .ja {
       color: #e6e6e6; }
-  .drawer-gnavi > li > a:before {
-    font-family: "Josefin Slab", serif;
-    color: #222; }
+    .drawer-gnavi > li > a.hover > .en {
+      color: #e6e6e6; }
 
 .drawer-subnavi > li {
   border-bottom: 1px solid #ccc; }
@@ -489,13 +493,15 @@ a {
 
 .gnavi > li > a {
   color: #5a5c66; }
+  .gnavi > li > a > .ja {
+    color: #5a5c66; }
+  .gnavi > li > a > .en {
+    font-family: "Josefin Slab", serif;
+    color: #222; }
   .gnavi > li > a:hover {
     background-color: transparent; }
   .gnavi > li > a:after {
     border-left: 1px solid #ddd; }
-  .gnavi > li > a:before {
-    font-family: "Josefin Slab", serif;
-    color: #222; }
 
 .pogoSlider-dir-btn {
   border-color: #222; }

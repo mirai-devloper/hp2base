@@ -471,9 +471,11 @@ a {
 .drawer-gnavi > li.current-menu-item {
   color: #f1eae6;
   background-color: #886957; }
-  .drawer-gnavi > li.current-menu-item a {
+  .drawer-gnavi > li.current-menu-item > a {
     color: #f1eae6; }
-    .drawer-gnavi > li.current-menu-item a:before {
+    .drawer-gnavi > li.current-menu-item > a > .ja {
+      color: #f1eae6; }
+    .drawer-gnavi > li.current-menu-item > a > .en {
       color: #f1eae6; }
   .drawer-gnavi > li.current-menu-item:before {
     content: "";
@@ -488,14 +490,18 @@ a {
 .drawer-gnavi > li > a {
   color: #644f44;
   border-bottom: 1px solid #ccc; }
+  .drawer-gnavi > li > a > .ja {
+    color: #644f44; }
+  .drawer-gnavi > li > a > .en {
+    font-family: "Lora", serif;
+    color: #766156; }
   .drawer-gnavi > li > a.hover {
     color: #e6e6e6;
     background-color: #222; }
-    .drawer-gnavi > li > a.hover:before {
+    .drawer-gnavi > li > a.hover > .ja {
       color: #e6e6e6; }
-  .drawer-gnavi > li > a:before {
-    font-family: "Lora", serif;
-    color: #766156; }
+    .drawer-gnavi > li > a.hover > .en {
+      color: #e6e6e6; }
 
 .drawer-subnavi > li {
   border-bottom: 1px solid #886957; }
@@ -527,13 +533,15 @@ a {
 
 .gnavi > li > a {
   color: #644f44; }
+  .gnavi > li > a > .ja {
+    color: #644f44; }
+  .gnavi > li > a > .en {
+    font-family: "Lora", serif;
+    color: #766156; }
   .gnavi > li > a:hover {
     background-color: transparent; }
   .gnavi > li > a:after {
     border-left: 1px solid #b29f83; }
-  .gnavi > li > a:before {
-    font-family: "Lora", serif;
-    color: #766156; }
 
 .pogoSlider-dir-btn {
   border-color: #dfd4cb; }

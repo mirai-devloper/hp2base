@@ -309,9 +309,11 @@ a {
 .drawer-gnavi > li.current-menu-item {
   color: #fff;
   background-color: #b7d3cb; }
-  .drawer-gnavi > li.current-menu-item a {
+  .drawer-gnavi > li.current-menu-item > a {
     color: #fff; }
-    .drawer-gnavi > li.current-menu-item a:before {
+    .drawer-gnavi > li.current-menu-item > a > .ja {
+      color: #fff; }
+    .drawer-gnavi > li.current-menu-item > a > .en {
       color: #fff; }
   .drawer-gnavi > li.current-menu-item:before {
     content: "";
@@ -326,15 +328,19 @@ a {
 .drawer-gnavi > li > a {
   color: #7abfa6;
   border-bottom: 1px solid #ccc; }
-  .drawer-gnavi > li > a.hover {
-    color: #e6e6e6;
-    background-color: #222; }
-    .drawer-gnavi > li > a.hover:before {
-      color: #e6e6e6; }
-  .drawer-gnavi > li > a:before {
+  .drawer-gnavi > li > a > .ja {
+    color: #7abfa6; }
+  .drawer-gnavi > li > a > .en {
     font-family: "Josefin Slab", serif;
     font-size: 24px;
     color: #121212; }
+  .drawer-gnavi > li > a.hover {
+    color: #e6e6e6;
+    background-color: #222; }
+    .drawer-gnavi > li > a.hover > .ja {
+      color: #e6e6e6; }
+    .drawer-gnavi > li > a.hover > .en {
+      color: #e6e6e6; }
 
 .drawer-subnavi > li {
   border-bottom: 1px solid #bdd7d0; }
@@ -373,14 +379,16 @@ a {
 
 .gnavi > li > a {
   color: #7abfa6; }
+  .gnavi > li > a > .ja {
+    color: #7abfa6; }
+  .gnavi > li > a > .en {
+    font-family: 'Josefin Slab', serif;
+    font-size: 20px;
+    color: #121212; }
   .gnavi > li > a:hover {
     background-color: transparent; }
   .gnavi > li > a:after {
     border-left: 1px solid transparent; }
-  .gnavi > li > a:before {
-    font-family: 'Josefin Slab', serif;
-    font-size: 20px;
-    color: #121212; }
 
 .pogoSlider-dir-btn {
   border-color: #635a48; }
