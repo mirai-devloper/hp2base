@@ -1,0 +1,439 @@
+{
+    "key": "group_55951502b4a68",
+    "title": "スタッフ詳細項目",
+    "fields": [
+        {
+            "key": "field_55954589c1592",
+            "label": "基本設定",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_559516d0eb90d",
+            "label": "役職",
+            "name": "manage",
+            "type": "taxonomy",
+            "instructions": "登録する方の「役職」をチェックしてください。（複数可）　ここで役職を新たに追加も可能です。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": "staffManage"
+            },
+            "taxonomy": "manage",
+            "field_type": "checkbox",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_559519a5ee765",
+            "label": "美容歴",
+            "name": "beauty_history",
+            "type": "number",
+            "instructions": "登録する方の「美容歴」を入力ください。非表示にしたい場合は、未入力にしてください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": "beauty_history"
+            },
+            "default_value": "",
+            "placeholder": 10,
+            "prepend": "美容歴",
+            "append": "年",
+            "min": 0,
+            "max": 50,
+            "step": 1,
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55951a77ee767",
+            "label": "趣味",
+            "name": "hobby",
+            "type": "text",
+            "instructions": "登録される方の「趣味」をご自由に入力ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 70,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55951a08ee766",
+            "label": "得意なイメージ",
+            "name": "good_image",
+            "type": "text",
+            "instructions": "登録される方の「得意なイメージ」をご自由に入力ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "ナチュラル",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55951a9aee768",
+            "label": "得意な技術",
+            "name": "good_technology",
+            "type": "textarea",
+            "instructions": "登録される方の「得意な技術」をご自由に入力ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": 120,
+            "rows": 4,
+            "new_lines": "br",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55953e7cd78d0",
+            "label": "ブログリンク",
+            "name": "blog_url_for",
+            "type": "radio",
+            "instructions": "登録される方のブログリンクを設定することができます。<br>\r\nURLを入力するか、カテゴリーから選択するかで下の項目が切り替わります。<br>\r\nカテゴリーを選択した場合は、ブログのカテゴリーが選択できるようになります。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 30,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "URLを入力する": "URLを入力する",
+                "カテゴリーから選択する": "カテゴリーから選択する"
+            },
+            "other_choice": 0,
+            "save_other_choice": 0,
+            "default_value": "",
+            "layout": "vertical",
+            "allow_null": 0,
+            "return_format": "value"
+        },
+        {
+            "key": "field_55953e48d78cf",
+            "label": "URLの入力",
+            "name": "blog_url_text",
+            "type": "url",
+            "instructions": "登録される方のブログのURLを入力ください。非表示にする場合は、未入力にしてください。",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55953e7cd78d0",
+                        "operator": "!=",
+                        "value": "カテゴリーから選択する"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_55951b7cee769",
+            "label": "カテゴリーから選択",
+            "name": "blog_url_select",
+            "type": "taxonomy",
+            "instructions": "当システムのブログに登録されているカテゴリーからリンクを設定します。",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55953e7cd78d0",
+                        "operator": "==",
+                        "value": "カテゴリーから選択する"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "category",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_55951be7ee76a",
+            "label": "コメント",
+            "name": "appeal",
+            "type": "textarea",
+            "instructions": "登録される方のアピールなどのコメントをご自由に入力ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 5,
+            "new_lines": "wpautop",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_559529dfada18",
+            "label": "ネット予約URL",
+            "name": "reserve_staff",
+            "type": "url",
+            "instructions": "（※任意）登録される方のWEB予約URLを設定できます。ご利用になられている予約システムからURLを発行してください。　ヘアカタログの投稿で使用方法を決めることができます。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_57426c7bf56d5",
+            "label": "予約ボタンの非表示",
+            "name": "reserve_btn_hidden",
+            "type": "true_false",
+            "instructions": "予約ボタンを非表示にしたい場合には、チェックをしてください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "予約ボタンを非表示にする",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5595459fc1593",
+            "label": "ソーシャル設定",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_55daf39a216ab",
+            "label": "補足",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "各ソーシャルのURLを設定できます。\r\nお持ちでない場合は未入力のままで問題ありません。\r\n\r\n※各項目は任意で入力ください。",
+            "esc_html": 0,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_5595460fc1596",
+            "label": "Facebook",
+            "name": "staff_facebook",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_559545c0c1594",
+            "label": "Instagram",
+            "name": "staff_instagram",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_559545fbc1595",
+            "label": "twitter",
+            "name": "staff_twitter",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_55c5e4c700342",
+            "label": "LINE",
+            "name": "staff_line",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_55954651c1598",
+            "label": "YouTube",
+            "name": "staff_youtube",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_5595461fc1597",
+            "label": "Google+",
+            "name": "staff_google_plus",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_55954663c1599",
+            "label": "Pinterest",
+            "name": "staff_pinterest",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "staff"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "field",
+    "hide_on_screen": [
+        "permalink",
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "categories",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1560941042
+}

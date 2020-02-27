@@ -1,0 +1,81 @@
+{
+    "key": "group_55e3e21b665ec",
+    "title": "Google",
+    "fields": [
+        {
+            "key": "field_55e3e21f02607",
+            "label": "Search Console",
+            "name": "hp_search_console",
+            "type": "text",
+            "instructions": "Search Consoleで発行される「HTMLタグ」を追加して所有者の確認ができます。表示されたMETAタグをここに貼り付けて下さい。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "<meta name=\"google-site-verification\" content=\"発行された英数字の羅列が入っています\" \/>",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55e3e56802608",
+            "label": "Google Analytics",
+            "name": "hp_google_analytics",
+            "type": "text",
+            "instructions": "Google Analyticsから発行されたトラッキングIDをここに貼り付けます。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "options-google-code"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "left",
+    "instruction_placement": "field",
+    "hide_on_screen": [
+        "permalink",
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1560940758
+}

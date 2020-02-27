@@ -1,0 +1,685 @@
+{
+    "key": "group_55797df517952",
+    "title": "サロン情報を設定",
+    "fields": [
+        {
+            "key": "field_55798aad54438",
+            "label": "店舗",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_559cb0c142710",
+            "label": "ロゴ画像",
+            "name": "hp_salon_logo",
+            "type": "image",
+            "instructions": "お店のロゴ画像をアップします。サイズは自動で調整されます。<br>\r\n推奨の画像サイズは「横幅は大きくても 400px」「高さ：100px以上」です。<br>\r\n対応ファイルの種類「png、gif」のみで、背景は透過設定を推奨しています。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "logo",
+            "library": "uploadedTo",
+            "min_width": "",
+            "min_height": 100,
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "png,gif"
+        },
+        {
+            "key": "field_55798671325ef",
+            "label": "サロン名",
+            "name": "hp_salon_name",
+            "type": "text",
+            "instructions": "お店の名称を英字でご記入ください。英字ではなくカナ名しかない場合は、こちらにカナ名を入力頂き、下にある「サロン名（フリガナ）」は未入力状態にしてください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "例）HairsPress",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55c0295f79bfc",
+            "label": "サロン名（フリガナ）",
+            "name": "hp_salon_name_kana",
+            "type": "text",
+            "instructions": "お店の名称のフリガナを記入ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "例）ヘアーズプレス",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_557ba43fa4e92",
+            "label": "コンセプト",
+            "name": "hp_salon_concept",
+            "type": "wysiwyg",
+            "instructions": "お店のコンセプトを入力ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_55979b63c6e18",
+            "label": "ネット予約を選択",
+            "name": "hp_webreserve_system",
+            "type": "select",
+            "instructions": "ご利用になられるWEB予約システムを選択ください。お持ちでない方は「なし」を選択。項目に該当していない場合は「その他」を選択ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 25,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "none": "なし",
+                "reservia": "リザービア",
+                "other": "その他"
+            },
+            "default_value": {
+                "none": "none"
+            },
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55979cecc6e19",
+            "label": "ネット予約なし",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55979b63c6e18",
+                        "operator": "==",
+                        "value": "none"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 75,
+                "class": "",
+                "id": ""
+            },
+            "message": "ネット予約のリンクを使用しない。お使いのWEB予約のURLをお持ちでしたら、上にある「ネット予約を選択」から選択ください。",
+            "esc_html": 0,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_55979d54c6e1a",
+            "label": "店舗番号",
+            "name": "hp_salon_reservia",
+            "type": "number",
+            "instructions": "リザービアの管理画面から発行された「店舗番号」を入力ください。",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55979b63c6e18",
+                        "operator": "==",
+                        "value": "reservia"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 75,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": 123,
+            "prepend": "店舗番号",
+            "append": "",
+            "min": 1,
+            "max": 10000,
+            "step": 1,
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_557a77b96e1d8",
+            "label": "ネット予約URL",
+            "name": "hp_salon_reserved",
+            "type": "url",
+            "instructions": "お使いのネット予約システムから発行されたURLを入力ください。",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55979b63c6e18",
+                        "operator": "==",
+                        "value": "other"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 75,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_55798c9176535",
+            "label": "店舗連絡先",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_55798f783d7ba",
+            "label": "電話番号",
+            "name": "hp_salon_telephone",
+            "type": "text",
+            "instructions": "お店の電話番号を入力ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "082-000-0000",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55798fca3d7bb",
+            "label": "フリーダイアル",
+            "name": "hp_salon_freedial",
+            "type": "text",
+            "instructions": "お店にフリーダイアルがある場合は入力ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "0120-000-000",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_592246fc2c5e9",
+            "label": "フリーダイアル（地域指定）",
+            "name": "hp_salon_freedial_region",
+            "type": "true_false",
+            "instructions": "フリーダイアルに地域指定をされているかたは、こちらをチェックしてください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "地域指定型または全国型",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "地域指定型",
+            "ui_off_text": "全国型"
+        },
+        {
+            "key": "field_55c0bc5339614",
+            "label": "お店までのアクセス",
+            "name": "hairs_route_text",
+            "type": "textarea",
+            "instructions": "お店までのアクセス経路を簡単に記入ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55798cd076536",
+            "label": "郵便番号",
+            "name": "hp_salon_postalcode",
+            "type": "text",
+            "instructions": "お店の郵便番号を記入ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 40,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "730-0803",
+            "prepend": "〒",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_57319cc6599c8",
+            "label": "住所",
+            "name": "hp_salon_address",
+            "type": "text",
+            "instructions": "住所を入力してください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55c07d1a4e4ed",
+            "label": "ズーム率",
+            "name": "hp_salon_google_map_zoom",
+            "type": "number",
+            "instructions": "GoogleMapの表示時のズーム率の設定です。数字が小さいほど縮小し、大きいほど拡大されます。10〜20の間で設定できます。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 20,
+                "class": "",
+                "id": ""
+            },
+            "default_value": 16,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 10,
+            "max": 20,
+            "step": 1,
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_559508bf2d884",
+            "label": "Google Map",
+            "name": "hp_salon_google_map",
+            "type": "google_map",
+            "instructions": "住所で検索して、マーカーの位置を調整ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "center_lat": "34.3971924",
+            "center_lng": "132.4429794",
+            "zoom": 15,
+            "height": 360
+        },
+        {
+            "key": "field_55c03b4eaed5e",
+            "label": "店舗の外観写真",
+            "name": "hp_salon_shop_photo",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "salon-info",
+            "library": "uploadedTo",
+            "min_width": 480,
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg,JPG,jpeg,JPEG,png,PNG"
+        },
+        {
+            "key": "field_55c03cc35f0c8",
+            "label": "店舗の地図画像",
+            "name": "hairs_mapimg_url",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "salon-info-map",
+            "library": "uploadedTo",
+            "min_width": 480,
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg,JPG,jpeg,JPEG,png,PNG"
+        },
+        {
+            "key": "field_557990676e1d5",
+            "label": "営業時間・定休日",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_557990906e1d6",
+            "label": "定休日",
+            "name": "hp_salon_holiday",
+            "type": "text",
+            "instructions": "お店の定休日を入力します。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "月曜日、第3日曜日",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55bc53971ae65",
+            "label": "営業時間（簡易）",
+            "name": "hairs_opens_text",
+            "type": "text",
+            "instructions": "簡易的な営業時間を設定します。フッターなどに表示されるパーツとなります。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "平日 9:00〜20:00　土日祝 10:00〜19:00など",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55c049300b3f6",
+            "label": "営業時間（詳細）",
+            "name": "hairs_access_opens",
+            "type": "textarea",
+            "instructions": "お店の営業時間を詳しく入力ください。最終受付時間などもこちらに含める形で書くことができます。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "【平日】\r\n\r\n\r\n【日・祝】",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "br",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_557ba4b221ea2",
+            "label": "ソーシャル設定",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_557ba6dc21ea5",
+            "label": "Facebook",
+            "name": "hp_salon_social_facebook",
+            "type": "url",
+            "instructions": "FacebookページのURLを入力ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_557ba4c521ea3",
+            "label": "Instagram",
+            "name": "hp_salon_social_instagram",
+            "type": "url",
+            "instructions": "インスタグラムのURLを入力ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_557ba54821ea4",
+            "label": "twitter",
+            "name": "hp_salon_social_twitter",
+            "type": "url",
+            "instructions": "ツイッターのURLを入力ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_55b602634c163",
+            "label": "LINE",
+            "name": "hp_salon_social_line",
+            "type": "url",
+            "instructions": "LINE@のURLを入力ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_557ba84e0000c",
+            "label": "YouTube",
+            "name": "hp_salon_social_youtube",
+            "type": "url",
+            "instructions": "YouTubeのURLを入力ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_557ba7720000b",
+            "label": "Google+",
+            "name": "hp_salon_social_googleplus",
+            "type": "url",
+            "instructions": "Google+のURLを入力ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_55b60f777e457",
+            "label": "Pinterest",
+            "name": "hp_salon_social_pinterest",
+            "type": "url",
+            "instructions": "PinterestのURLを入力ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-salon-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "field",
+    "hide_on_screen": [
+        "permalink",
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1560940836
+}

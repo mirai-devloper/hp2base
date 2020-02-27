@@ -1,0 +1,46 @@
+{
+    "key": "group_559a7dce8739c",
+    "title": "担当者",
+    "fields": [
+        {
+            "key": "field_559a4240a4fe4",
+            "label": "ヘアカタログと紐付け",
+            "name": "staff_haircatalog_link",
+            "type": "taxonomy",
+            "instructions": "ヘアカタログのページにリンクを表示するのに使用します。\r\nスタッフと担当者の項目は必ず同じものにチェックしてください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "com_category",
+            "field_type": "radio",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "staff"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1560940983
+}

@@ -1,0 +1,141 @@
+{
+    "key": "group_55e84c9dc9aa3",
+    "title": "管理者設定",
+    "fields": [
+        {
+            "key": "field_559a896cbd1ee",
+            "label": "ヘアカタログの使用方法",
+            "name": "hp_reservia_catalog_check",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "hairspress": "HairsPressを使用する",
+                "reservia": "Reserviaを使用する"
+            },
+            "default_value": {
+                "hairspress": "hairspress"
+            },
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0,
+            "return_format": "value"
+        },
+        {
+            "key": "field_559793deb3f80",
+            "label": "チャンネル投稿",
+            "name": "hp_theme_channel_swich",
+            "type": "true_false",
+            "instructions": "チャンネルの投稿ページを表示する。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "message": "表示する場合はチェックをしてください。",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_55e84e07726aa",
+            "label": "契約開始日",
+            "name": "hp_service_start",
+            "type": "date_picker",
+            "instructions": "契約開始日を設定します。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "Y年m月d日",
+            "return_format": "Y-m-d",
+            "first_day": 0
+        },
+        {
+            "key": "field_55fc138012155",
+            "label": "リザービア番号を表示する",
+            "name": "hp_reservia_number_check",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "リザービア番号を表示する",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_557a78f06e1db",
+            "label": "メールアドレス",
+            "name": "hp_salon_email",
+            "type": "email",
+            "instructions": "お申込み時にご記入頂いたメールアドレスを入力ください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "sample@example.com",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "options-hairspress-setting"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "field",
+    "hide_on_screen": [
+        "permalink",
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1560941000
+}

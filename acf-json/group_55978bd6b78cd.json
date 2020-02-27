@@ -1,0 +1,76 @@
+{
+    "key": "group_55978bd6b78cd",
+    "title": "チャンネル",
+    "fields": [
+        {
+            "key": "field_5597910eaf1a6",
+            "label": "YouTube",
+            "name": "hp_youtube_id",
+            "type": "text",
+            "instructions": "YouTubeの動画URLを入力ください。YouTube以外のURLが入力された場合は表示されません。",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https:\/\/www.youtube.com\/watch?v=ABCDEFG",
+            "prepend": "URL",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55c9a0ed47e7b",
+            "label": "入力いただけるURLは以下の通りです。",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "①　https:\/\/www.youtube.com\/watch?v=caHuis6aWAA\r\n②　https:\/\/youtu.be\/caHuis6aWAA",
+            "esc_html": 0,
+            "new_lines": "wpautop"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "channel"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "permalink",
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1560940906
+}

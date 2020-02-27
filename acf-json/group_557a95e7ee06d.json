@@ -1,0 +1,130 @@
+{
+    "key": "group_557a95e7ee06d",
+    "title": "スライダーの動作設定",
+    "fields": [
+        {
+            "key": "field_557a961377620",
+            "label": "アニメーション",
+            "name": "hp_slider_mode",
+            "type": "select",
+            "instructions": "スライダーの動きを設定します。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "slide": "スライド",
+                "fade": "フェード",
+                "verticalSlide": "ブラーフェード",
+                "slideLeft": "左へスライド",
+                "slideRight": "右へスライド",
+                "slideRevealLeft": "Slide Reveal Left",
+                "slideRevealRight": "Slide Reveal Right",
+                "slideOverLeft": "Slide Over Left",
+                "slideOverRight": "Slide Over Right",
+                "expandReveal": "Expand Reveal",
+                "shrinkReveal": "Shrink Reveal",
+                "verticalSplitReveal": "Vertical Split Reveal",
+                "horizontalSplitReveal": "Horizontal Split Reveal",
+                "zipReveal": "Zip Reveal",
+                "barReveal": "Bars Reveal",
+                "fold": "見開き",
+                "foldLeft": "左へ見開き",
+                "foldRight": "右へ見開き"
+            },
+            "default_value": {
+                "fade": "fade"
+            },
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0,
+            "return_format": "value"
+        },
+        {
+            "key": "field_557a97672daf1",
+            "label": "速度",
+            "name": "hp_slider_speed",
+            "type": "number",
+            "instructions": "アニメーションの速度を設定します。\r\n「1000」で「1秒」となります。",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3500,
+            "placeholder": 1700,
+            "prepend": "",
+            "append": "",
+            "min": 500,
+            "max": 10000,
+            "step": 100,
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_557a98133d676",
+            "label": "停止時間",
+            "name": "hp_slider_pause",
+            "type": "number",
+            "instructions": "切り替わり時に一時停止する時間の長さです。\r\n「1000」で「1秒」となります。",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 8000,
+            "placeholder": 5000,
+            "prepend": "",
+            "append": "",
+            "min": 500,
+            "max": 20000,
+            "step": 100,
+            "readonly": 0,
+            "disabled": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-slider-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "permalink",
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1560940873
+}

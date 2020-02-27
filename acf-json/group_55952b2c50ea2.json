@@ -1,0 +1,366 @@
+{
+    "key": "group_55952b2c50ea2",
+    "title": "ヘアカタログ",
+    "fields": [
+        {
+            "key": "field_5595347bedffa",
+            "label": "基本情報",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5597af4054915",
+            "label": "担当者",
+            "name": "cstaff",
+            "type": "taxonomy",
+            "instructions": "ヘアスタイルの担当者を選択してください。ここに担当者が含まれていない場合は、この項目の右側にプラスボタンがありますので、そちらから追加していただけます。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": "hpStaff"
+            },
+            "taxonomy": "com_category",
+            "field_type": "radio",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_55952b5ad17d4",
+            "label": "ヘアスタイルへのコメント",
+            "name": "cappeal",
+            "type": "textarea",
+            "instructions": "ヘアスタイルに対してのアピールポイントやコメントなどを、自由にお書き下さい。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 6,
+            "new_lines": "br",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55db2d92691d8",
+            "label": "レングス",
+            "name": "hp_catalog_length",
+            "type": "taxonomy",
+            "instructions": "髪の長さを該当するものにチェックしてください。複数選択も可能です。不必要な場合は、全てのチェックを外すことで「設定なし」となります。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": "hpLength"
+            },
+            "taxonomy": "catalog_length",
+            "field_type": "checkbox",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_55952df7d17d6",
+            "label": "カラー",
+            "name": "ccolor",
+            "type": "text",
+            "instructions": "ヘアスタイルのカラーをご自由にお書き下さい。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "例）ブラウン・ベージュ系　など",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55952e22d17d7",
+            "label": "パーマ",
+            "name": "cparm",
+            "type": "text",
+            "instructions": "どのようなパーマをかけたかなどの情報をお書き下さい。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55952e46d17d8",
+            "label": "イメージ",
+            "name": "cimage",
+            "type": "text",
+            "instructions": "どのようなイメージでヘアスタイルをしたかなどを、ご自由にお書き下さい。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55e667b10c680",
+            "label": "イメージタグ",
+            "name": "hp_catalog_image_tag",
+            "type": "taxonomy",
+            "instructions": "ヘアスタイルのイメージをここに追加できます。この項目は、ヘアカタログの検索で使用しています。<br>\r\nこの項目の右側に（＋）マークが現れるので、そこからタグが追加できます。追加後はこの項目内にチェックができるリストで表示されます。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": "catalogImageTag"
+            },
+            "taxonomy": "catalog_tag",
+            "field_type": "checkbox",
+            "allow_null": 1,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_55952e6ad17d9",
+            "label": "メニュー内容",
+            "name": "cnaiyou",
+            "type": "text",
+            "instructions": "どのようなメニュー内容でスタイリングしたかを、ご自由にお書き下さい。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "例）カット＋カラー＋パーマ　など",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55952e9cd17da",
+            "label": "所要時間",
+            "name": "ctime",
+            "type": "text",
+            "instructions": "所要時間をお書き下さい。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "例）2時間　など",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55952fd8d17db",
+            "label": "料金",
+            "name": "hp_catalog_money",
+            "type": "number",
+            "instructions": "半角数字のみ入力ください。カンマは不用です。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "例）12000",
+            "prepend": "￥",
+            "append": "",
+            "min": 0,
+            "max": "",
+            "step": 1,
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55953005d17dc",
+            "label": "( 〜 )を付ける",
+            "name": "ckara",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "message": "( 〜 )を付ける",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_55baf83c4cd79",
+            "label": "以前の料金項目",
+            "name": "cmoney",
+            "type": "text",
+            "instructions": "システムが新しくなり、この項目に入力されている内容が使用できないため、この項目より上にある「所要時間」と「料金」の項目に新しく入力をお願い致します。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55953490edffb",
+            "label": "写真設定",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5595391fd03e0",
+            "label": "補足",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "ヘアスタイルの写真を<span style=\"color: #e00;\">3枚<\/span>まで登録ができます。登録を行っていただくと、詳細ページにて各スタイルの表示をおこなえるようになります。<br>\r\n使用できる写真は縦写真のみで、なるべく頭が中心より少し上ぐらいが丁度綺麗に収まります。<br>\r\n横写真を登録した場合に、被写体の位置によっては違う位置で表示されてしまいます。",
+            "esc_html": 0,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_5597c24cd00c4",
+            "label": "スタイル写真",
+            "name": "catalog_photo_style",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": 3,
+            "preview_size": "catalog-thumb",
+            "library": "all",
+            "min_width": 320,
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpeg,jpg,png",
+            "return_format": "array",
+            "insert": "append"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "catalog"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "field",
+    "hide_on_screen": [
+        "permalink",
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "slug",
+        "format",
+        "page_attributes",
+        "categories",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1560940941
+}

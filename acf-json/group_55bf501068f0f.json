@@ -1,0 +1,248 @@
+{
+    "key": "group_55bf501068f0f",
+    "title": "メニュー",
+    "fields": [
+        {
+            "key": "field_5d0a0f8e556e1",
+            "label": "サロンメニュー",
+            "name": "hp_menu",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5c63deff9e880",
+                    "label": "メニュー",
+                    "name": "",
+                    "type": "tab",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placement": "left",
+                    "endpoint": 0
+                },
+                {
+                    "key": "field_55bf6636b7da0",
+                    "label": "メニュー",
+                    "name": "list",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 1,
+                    "max": 0,
+                    "layout": "block",
+                    "button_label": "メニュー項目を追加",
+                    "sub_fields": [
+                        {
+                            "key": "field_55bf66c6b7da1",
+                            "label": "メニュー名",
+                            "name": "menu_name",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "75",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "例）カット（SB込み）",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_55bf6882b7da3",
+                            "label": "施術時間",
+                            "name": "menu_time",
+                            "type": "number",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "分単位で入力ください。",
+                            "prepend": "",
+                            "append": "分",
+                            "min": 0,
+                            "max": "",
+                            "step": 1
+                        },
+                        {
+                            "key": "field_55bf67f9b7da2",
+                            "label": "説明",
+                            "name": "menu_etc_text",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "maxlength": "",
+                            "rows": 3,
+                            "new_lines": "br"
+                        },
+                        {
+                            "key": "field_55bf6904b7da4",
+                            "label": "金額",
+                            "name": "menu_price",
+                            "type": "number",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "数字を入力ください",
+                            "prepend": "¥",
+                            "append": "",
+                            "min": 0,
+                            "max": "",
+                            "step": 1
+                        },
+                        {
+                            "key": "field_55bf6991b7da5",
+                            "label": "〜",
+                            "name": "menu_kara",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "10",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_55e70996944da",
+                            "label": "最大金額",
+                            "name": "menu_price_end",
+                            "type": "number",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "数字を入力ください",
+                            "prepend": "¥",
+                            "append": "",
+                            "min": 0,
+                            "max": "",
+                            "step": 1
+                        }
+                    ]
+                },
+                {
+                    "key": "field_5c63dee89e87f",
+                    "label": "備考欄",
+                    "name": "",
+                    "type": "tab",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placement": "left",
+                    "endpoint": 0
+                },
+                {
+                    "key": "field_55bf6a0cb7da6",
+                    "label": "備考欄",
+                    "name": "other_text",
+                    "type": "textarea",
+                    "instructions": "表示位置は、当該メニューの下に表示されます。",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": "br"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "menu"
+            }
+        ]
+    ],
+    "menu_order": 2,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": [
+        "permalink",
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1560942082
+}
