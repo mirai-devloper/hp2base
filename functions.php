@@ -5,7 +5,7 @@ $hp2baseUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	__FILE__,
 	'hp2base'
 );
-$hp2baseUpdateChecker->setAuthentication('381ab76489c990bb19e1c4b770e933be3a90faa0');
+$hp2baseUpdateChecker->setAuthentication('673137674c9ddc6d0ddc0b89a934aac099c27814');
 $hp2baseUpdateChecker->getVcsApi()->enableReleaseAssets();
 
 // ブログのコンテンツ幅の最大値（エディタエリアに影響）
