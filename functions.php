@@ -3,7 +3,7 @@ require 'plugin-update-checker/plugin-update-checker.php';
 $hp2baseUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://github.com/nullpon16tera/hp2base',
 	__FILE__,
-	'hp2base',
+	'hp2base'
 );
 $hp2baseUpdateChecker->setAuthentication('381ab76489c990bb19e1c4b770e933be3a90faa0');
 $hp2baseUpdateChecker->getVcsApi()->enableReleaseAssets();
