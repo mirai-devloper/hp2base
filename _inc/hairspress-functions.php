@@ -140,7 +140,7 @@ function hp_nav_menu($args = array() ) {
 				'<li %1$s><a %2$s>%3$s</a></li>',
 				implode_assoc('=', ' ', $li_attr),
 				$attr,
-				$title
+				apply_filters('hp_nav_menu_title', $title, $item)
 			);
 		}
 		if (empty($li))
@@ -308,7 +308,7 @@ function mio_get_archives_list( $post_type = '', $show_count = 1) {
 	array_pop($arr);
 
 	$array_archives = array();
-	
+
 	foreach( $arr as $key => $val ) {
 		$year = substr( trim( strip_tags( $val ) ), 0, 4);
 		$abc = array();

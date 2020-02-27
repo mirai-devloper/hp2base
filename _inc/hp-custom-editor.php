@@ -3,7 +3,7 @@
 // add_editor_style('editor-style.css');
 
 
-add_filter('tiny_mce_before_init', 'hp_mce_editor_style', 5, 3);
+add_filter('tiny_mce_before_init', 'hp_mce_editor_style');
 function hp_mce_editor_style($init) {
   $init['body_class'] = 'editor-area';
   $init['extended_valid_elements'] = "iframe[id|class|title|style|align|frameborder|height|longdesc|marginheight|marginwidth|name|scrolling|src|width]";

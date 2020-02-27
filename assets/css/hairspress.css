@@ -4417,6 +4417,8 @@ img.aligncenter {
       border-bottom: 1px dotted #fff; }
       .footer-navi-wrap .foot-navi > li a:hover:before {
         text-decoration: none; }
+    .footer-navi-wrap .foot-navi > li a .en {
+      display: none; }
   @media (max-width: 767px) {
     .footer-navi-wrap.c-wrap {
       padding-top: 0; }
@@ -4762,18 +4764,28 @@ img.aligncenter {
       margin-right: 0; }
 
 .gnavi {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
   table-layout: fixed;
   text-align: center; }
   .gnavi > li {
-    position: relative; }
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1; }
     .gnavi > li a {
       color: #222;
       text-decoration: none; }
     .gnavi > li:last-child > a:after {
       border-right: 1px solid #ddd; }
     .gnavi > li > a {
-      display: block;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
       padding: 12px 0 10px;
       font-size: 12px;
       color: #aaa; }
@@ -4791,14 +4803,19 @@ img.aligncenter {
         margin: auto;
         box-sizing: border-box;
         border-left: 1px solid #ddd; }
-      .gnavi > li > a:before {
-        content: attr(title);
-        display: block;
-        margin-top: 2px;
-        letter-spacing: 1px;
+      .gnavi > li > a > .ja {
+        font-size: 12px;
+        color: #aaa; }
+        .gnavi > li > a > .ja.not-en {
+          line-height: 1.2;
+          font-size: 18px;
+          color: #222; }
+      .gnavi > li > a > .en {
+        line-height: 1.2;
         font-family: "Josefin Slab", serif;
         font-size: 20px;
-        color: #222; }
+        color: #222;
+        letter-spacing: 1px; }
 
 .slider__wrapper {
   position: relative;

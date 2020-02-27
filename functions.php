@@ -63,12 +63,15 @@ Mio_helper::load('functions/demo-mode.php');
 
 require(TEMPLATEPATH.'/_inc/ogp.php');
 
-if (WP_ENV !== 'development') {
-	add_filter('acf/settings/save_json', function($path) {
-		$path = get_theme_file_path('acf-json');
-		return $path;
-	});
-}
+// 設定権限がないユーザーにはACFを非表示にする
+add_filter('acf/settings/show_admin', function($show) {
+	return current_user_can('manage_options');
+});
+
+add_filter('acf/settings/save_json', function($path) {
+	$path = get_theme_file_path('acf-json');
+	return $path;
+});
 
 add_filter('acf/settings/load_json', function($paths) {
 	unset($paths[0]);
@@ -114,14 +117,12 @@ WHERE meta_key LIKE '%menu_%'
 // 	$count++;
 // 	hp_replace_field();
 // }
-
-function my_acf_google_map_api($api) {
+add_filter('acf/fields/google_map/api', function($api) {
 	// $api['key'] = 'AIzaSyC2PVeXoLpOd7_52W1NuOsPMSE_UqUpT6A';
 	$api['key'] = 'AIzaSyASFdc_0QU2yCvIjXgW8zCj8i2nIG6yk_U';
 
 	return $api;
-}
-add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
+});
 
 
 function hp_h($length) {
@@ -632,3 +633,31 @@ function search_result_url_change() {
 }
 // add_action('template_redirect', 'search_result_url_change');
 add_filter('search_rewrite_rules', '__return_empty_array');
+
+// add_filter('wp_nav_menu_objects', function($items, $args) {
+// 	var_dump($items);
+// 	foreach ($items as &$item) {
+// 		$en = get_field('navi_en', $item);
+// 		if ($en) {
+// 			$item->title .= $en;
+// 		}
+// 	}
+
+// 	return $items;
+// }, 10, 2);
+
+add_filter('hp_nav_menu_title', function($title, $item) {
+	$navi_en = get_field('navi_en', $item);
+	$ja = sprintf(
+		'<span class="ja %2$s">%1$s</span>',
+		$title,
+		empty($navi_en) ? 'not-en' : ''
+	);
+	if ($navi_en) {
+		$ja .= '<span class="en">'.$navi_en.'</span>';
+	}
+
+	$title = $ja;
+
+	return $title;
+}, 10, 2);
