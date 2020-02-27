@@ -50,8 +50,8 @@ class HP_Acf
 			and ctype_digit($reservia)
 		)
 		{
-			// return 'https://cs.appnt.me/shops/'.$reservia.'/reserve';
-			return esc_url('https://reservia.jp/shop/reserve/'.$reservia);
+			return 'https://cs.appnt.me/shops/'.$reservia.'/reserve';
+			// return esc_url('https://reservia.jp/shop/reserve/'.$reservia);
 		}
 		else if (
 			$system == 'other'
