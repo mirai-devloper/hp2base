@@ -1,15 +1,15 @@
 <?php
-function implode_assoc($inline, $outline, $array)
-{
-	$output = array();
+// function implode_assoc($inline, $outline, $array)
+// {
+// 	$output = array();
 
-	foreach ($array as $key => $val)
-	{
-		$output[] = $key.$inline.'"'.$val.'"';
-	}
+// 	foreach ($array as $key => $val)
+// 	{
+// 		$output[] = $key.$inline.'"'.$val.'"';
+// 	}
 
-	return implode($outline, $output);
-}
+// 	return implode($outline, $output);
+// }
 /*
 カスタムメニューのカスタム投稿タイプのカレント表示に対応させる
 （固定ページと投稿タイプのスラッグを同じ設定にし固定ページからメニューを設定している場合）

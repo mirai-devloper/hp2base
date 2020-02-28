@@ -1,4 +1,17 @@
 <?php
+define('HP_DOCROOT', __DIR__.DIRECTORY_SEPARATOR);
+
+define('HP_BASEDIR', '/');
+define('HP_PATH', realpath(__DIR__.'/hairspress/').DIRECTORY_SEPARATOR);
+define('HP_COREPATH', realpath(__DIR__.'/hairspress/core/').DIRECTORY_SEPARATOR);
+define('HP_APPPATH', realpath(__DIR__.'/hairspress/app/').DIRECTORY_SEPARATOR);
+define('HP_VIEWPATH', realpath(__DIR__.'/hairspress/views/').DIRECTORY_SEPARATOR);
+
+require HP_PATH.'autoloader.php';
+class_alias('Hairspress\\Core\\Autoloader', 'Autoloader');
+
+require_once(HP_DOCROOT.'hairspress/bootstrap.php');
+
 require 'plugin-update-checker/plugin-update-checker.php';
 $hp2baseUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://github.com/nullpon16tera/hp2base',
@@ -8,9 +21,33 @@ $hp2baseUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 $hp2baseUpdateChecker->setAuthentication('1407214a37299d2a0947f9c37dc8abce56a563c4');
 $hp2baseUpdateChecker->getVcsApi()->enableReleaseAssets();
 
+// 設定権限がないユーザーにはACFを非表示にする
+add_filter('acf/settings/show_admin', function($show) {
+	return current_user_can('manage_options');
+});
+
+add_filter('acf/settings/save_json', function($path) {
+	$path = get_theme_file_path('acf-json');
+	return $path;
+});
+
+add_filter('acf/settings/load_json', function($paths) {
+	unset($paths[0]);
+	$paths[] = get_theme_file_path('acf-json');
+
+	return $paths;
+});
+
+add_filter('acf/fields/google_map/api', function($api) {
+	// $api['key'] = 'AIzaSyC2PVeXoLpOd7_52W1NuOsPMSE_UqUpT6A';
+	$api['key'] = 'AIzaSyASFdc_0QU2yCvIjXgW8zCj8i2nIG6yk_U';
+
+	return $api;
+});
+
 // ブログのコンテンツ幅の最大値（エディタエリアに影響）
-if ( ! isset( $content_width ) )
-	$content_width = 840;
+// if ( ! isset( $content_width ) )
+// 	$content_width = 840;
 
 define('ENV_MODE', getenv('ENV_MODE'));
 define('WP_ENV', getenv('WP_ENV'));
@@ -63,22 +100,7 @@ Mio_helper::load('functions/demo-mode.php');
 
 require(TEMPLATEPATH.'/_inc/ogp.php');
 
-// 設定権限がないユーザーにはACFを非表示にする
-add_filter('acf/settings/show_admin', function($show) {
-	return current_user_can('manage_options');
-});
 
-add_filter('acf/settings/save_json', function($path) {
-	$path = get_theme_file_path('acf-json');
-	return $path;
-});
-
-add_filter('acf/settings/load_json', function($paths) {
-	unset($paths[0]);
-	$paths[] = get_theme_file_path('acf-json');
-
-	return $paths;
-});
 
 // var_dump(HP_Social::view('prefix', 'social', 'option'));
 
@@ -117,12 +139,7 @@ WHERE meta_key LIKE '%menu_%'
 // 	$count++;
 // 	hp_replace_field();
 // }
-add_filter('acf/fields/google_map/api', function($api) {
-	// $api['key'] = 'AIzaSyC2PVeXoLpOd7_52W1NuOsPMSE_UqUpT6A';
-	$api['key'] = 'AIzaSyASFdc_0QU2yCvIjXgW8zCj8i2nIG6yk_U';
 
-	return $api;
-});
 
 
 function hp_h($length) {
@@ -148,7 +165,7 @@ function hp_news_view($check = 'up') {
 	$topics_setting = get_option('options_topics_name', 'option');
 
 	if ($topics_setting === $check) {
-		get_template_part('top', 'topics');
+		echo \View::forge('front/news');
 	}
 }
 
