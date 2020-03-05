@@ -48,7 +48,7 @@ class HP_Dashboard extends HP_Acf
 			$this->add('hp_dashboard_reserve_btn', 'ネット予約ボタン', array($this, 'reserve_btn'));
 
 		// 契約期間
-		$this->add('hp_dashboard_service_days', '契約期間', array($this, 'service_days'));
+		// $this->add('hp_dashboard_service_days', '契約期間', array($this, 'service_days'));
 	}
 
 	// 予約ボタンウィジェット
