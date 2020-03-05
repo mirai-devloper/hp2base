@@ -96,7 +96,7 @@ Mio_Helper::load('options/googlemap.php');
 
 /*** WordPress用関数群の呼び出し ***/
 Mio_helper::load('functions/pagination.php');
-Mio_helper::load('functions/demo-mode.php');
+// Mio_helper::load('functions/demo-mode.php');
 
 require(TEMPLATEPATH.'/_inc/ogp.php');
 
@@ -257,25 +257,26 @@ function pagination($pages = '', $range = 2) {
 		}
 	}
 	if(1 != $pages) {
-		echo "<div class=\"pagination c-fix\">";
-		// if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href=\"".get_pagenum_link(1)."\">&laquo;</a>";
-		if($paged > 1 /*&& $showitems < $pages*/) {
-			echo "<a href=\"".get_pagenum_link($paged - 1)."\" class=\"prev\"><i class=\"fa fa-angle-left\"></i><span>前へ</span></a>";
-		} else {
-			echo "<span class=\"prev not\"><i class=\"fa fa-angle-left\"></i><span>前へ</span></span>";
-		}
-		for ($i=1; $i <= $pages; $i++) {
-			if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
-				echo ($paged == $i)? "<span class=\"current f-aleg_sc\">".$i."</span>":"<a href=\"".get_pagenum_link($i)."\" class=\"inactive f-aleg_sc\" >".$i."</a>";
-			}
-		}
-		if ($paged < $pages /*&& $showitems < $pages*/) {
-			echo "<a href=\"".get_pagenum_link($paged + 1)."\" class=\"next\"><span>次へ</span><i class=\"fa fa-angle-right\"></i></a>";
-		} else {
-			echo "<span class=\"next not\"><span>次へ</span><i class=\"fa fa-angle-right\"></i></span>";
-		}
-		// if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href=\"".get_pagenum_link($pages)."\">&raquo;</a>";
-		echo "</div>\n";
+		echo View::forge('elements/pager', array('pages' => $pages, 'paged' => $paged, 'range' => $range, 'showitems' => $showitems));
+		// echo "<div class=\"pagination c-fix\">";
+		// // if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href=\"".get_pagenum_link(1)."\">&laquo;</a>";
+		// if($paged > 1 /*&& $showitems < $pages*/) {
+		// 	echo "<a href=\"".get_pagenum_link($paged - 1)."\" class=\"prev\"><i class=\"fa fa-angle-left\"></i><span>前へ</span></a>";
+		// } else {
+		// 	echo "<span class=\"prev not\"><i class=\"fa fa-angle-left\"></i><span>前へ</span></span>";
+		// }
+		// for ($i=1; $i <= $pages; $i++) {
+		// 	if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
+		// 		echo ($paged == $i)? "<span class=\"current f-aleg_sc\">".$i."</span>":"<a href=\"".get_pagenum_link($i)."\" class=\"inactive f-aleg_sc\" >".$i."</a>";
+		// 	}
+		// }
+		// if ($paged < $pages /*&& $showitems < $pages*/) {
+		// 	echo "<a href=\"".get_pagenum_link($paged + 1)."\" class=\"next\"><span>次へ</span><i class=\"fa fa-angle-right\"></i></a>";
+		// } else {
+		// 	echo "<span class=\"next not\"><span>次へ</span><i class=\"fa fa-angle-right\"></i></span>";
+		// }
+		// // if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href=\"".get_pagenum_link($pages)."\">&raquo;</a>";
+		// echo "</div>\n";
 	}
 }
 

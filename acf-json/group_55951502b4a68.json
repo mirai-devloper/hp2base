@@ -19,6 +19,49 @@
             "endpoint": 0
         },
         {
+            "key": "field_55951510eb90c",
+            "label": "ふりがな",
+            "name": "furigana",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "例）なまえ　たろう",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_559a4240a4fe4",
+            "label": "ヘアカタログと紐付け",
+            "name": "staff_haircatalog_link",
+            "type": "taxonomy",
+            "instructions": "ヘアカタログのページにリンクを表示するのに使用します。\r\nスタッフと担当者の項目は必ず同じものにチェックしてください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "com_category",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
             "key": "field_559516d0eb90d",
             "label": "役職",
             "name": "manage",
@@ -374,22 +417,6 @@
             "placeholder": "http:\/\/"
         },
         {
-            "key": "field_5595461fc1597",
-            "label": "Google+",
-            "name": "staff_google_plus",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "http:\/\/"
-        },
-        {
             "key": "field_55954663c1599",
             "label": "Pinterest",
             "name": "staff_pinterest",
@@ -435,5 +462,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1560941042
+    "modified": 1583392893
 }

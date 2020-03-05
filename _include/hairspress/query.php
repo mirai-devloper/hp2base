@@ -49,3 +49,5 @@ class HP_Query
 		}
 	}
 }
+
+new HP_Query();

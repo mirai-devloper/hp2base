@@ -57,31 +57,31 @@ function get_hp_stylist_manage($post_id = 0) {
   $catalog_term = get_the_terms( $post->ID, 'com_category' );
   // var_dump($catalog_term);
   if( $catalog_term ) {
-    // $staff_args = array(
-    //   'post_type' => 'staff',
-    //   'tax_query' => array(
-    //     array(
-    //       'taxonomy' => 'com_category',
-    //       'field' => 'term_id',
-    //       'terms' => array($catalog_term[0]->term_id)
-    //     )
-    //   )
-    // );
-    // $staff_query = new WP_Query($staff_args);
-    // if( $staff_query->have_posts() ) : $staff_query->the_post();
-    //   $manages = get_field('manage', $post->ID);
+    $staff_args = array(
+      'post_type' => 'staff',
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'com_category',
+          'field' => 'term_id',
+          'terms' => array($catalog_term[0]->term_id)
+        )
+      )
+    );
+    $staff_query = new WP_Query($staff_args);
+    if( $staff_query->have_posts() ) : $staff_query->the_post();
+      $manages = get_field('manage', $post->ID);
 
-    //   $str = null;
-    //   foreach( $manages as $manage ) {
-    //     $str .= !empty($str) ? '・' : '';
-    //     $str .= $manage->name;
-    //   }
-    //   // $manage = $manages && !empty($manages) ? $manages[0] : NULL;
-    //   if ( !is_null($str) ) {
-    //     return $str;
-    //   }
-		// endif;
-		$manages = get_field('manage', $post_id);
+      $str = null;
+      foreach( $manages as $manage ) {
+        $str .= !empty($str) ? '・' : '';
+        $str .= $manage->name;
+      }
+      // $manage = $manages && !empty($manages) ? $manages[0] : NULL;
+      if ( !is_null($str) ) {
+        return $str;
+      }
+		endif;
+		// $manages = get_field('manage', $post_id);
 
 		$str = '';
 		if ($manages) {

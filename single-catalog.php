@@ -4,68 +4,48 @@
 <article>
 <div id="catalog" class="c-wrap">
 	<div class="container">
-		<div class="row catalog-single">
+		<div class="catalog-single">
 		<?php if( have_posts() ) : ?>
 			<?php while( have_posts() ) : the_post(); ?>
-				<div class="col-xs-12 col-sm-4">
-					<!-- スタイル写真 -->
+				<!-- スタイル写真 -->
+				<div class="catalog-single__image">
 					<div class="catalog-picture">
-					<!-- 写真のボディ -->
-					<?php if ($images = HP_Acf::get('catalog_photo_style')) : ?>
+						<!-- 写真のボディ -->
 						<div class="catalog-picture-body">
-							<div class="pic-wrap">
-								<?php
-									foreach ($images as $k1 => $v1) :
-										$img = $v1['sizes'];
-								?>
-								<div data-catalog-body="<?= 'catalogImage_'.$k1; ?>" class="pic <?= ($k1 === 0) ? 'active' : ''; ?>" style="background-image:url('<?= esc_url_raw($img['catalog-single']); ?>')">
-									<!-- <img src="<?= esc_url($img['catalog-single']); ?>" width="<?= esc_attr($img['catalog-single-width']); ?>" height="<?= esc_attr($img['catalog-single-height']); ?>" alt=""> -->
-								</div>
-								<?php endforeach; ?>
-							</div>
-						</div>
-					<?php else : ?>
-						<div class="catalog-picture-body not-length">
-							<div class="pic-wrap">
-							<?php if (has_post_thumbnail(get_the_ID())) : ?>
-								<div class="pic active" style="background-image:url('<?= get_the_post_thumbnail_url(get_the_ID(), 'catalog-single'); ?>')"></div>
-							<?php else : ?>
-								<?php if (is_admin_bar_showing()) : ?>
-								<div class="pic active">
-									<p style="color: #f00;">システム：画像が設定されていません。<br>編集画面から「写真設定」タブより写真の登録をしてください。<br>「写真設定」が設定されていなくアイキャッチ画像のみが設定されている場合は、アイキャッチ画像が表示されます。</p>
-								</div>
+							<div class="pic-wrap <?= has_post_thumbnail() ? 'not-length' : ''; ?>">
+								<?php if ($images = HP_Acf::get('catalog_photo_style')) : ?>
+									<?php foreach ($images as $k1 => $v1) : ?>
+										<div data-catalog-body="<?= 'catalogImage_'.$k1; ?>" class="pic <?= ($k1 === 0) ? 'active' : ''; ?>" style="background-image:url(<?= wp_get_attachment_image_url($v1['ID'], 'catalog-single'); ?>)">
+										</div>
+									<?php endforeach; ?>
+								<?php elseif (has_post_thumbnail(get_the_ID())) : ?>
+									<div class="pic active" style="background-image:url('<?= get_the_post_thumbnail_url(get_the_ID(), 'catalog-single'); ?>')"></div>
 								<?php else : ?>
-								<div class="pic active">
-									<div class="not-picture">
-										<span>Not Picture</span>
+									<div class="pic active">
+										<div class="not-picture">
+											<span>Not Picture</span>
+										</div>
 									</div>
-								</div>
 								<?php endif; ?>
-							<?php endif; ?>
 							</div>
 						</div>
-					<?php endif; ?>
-
-					<?php if ($images = HP_Acf::get('catalog_photo_style')) : ?>
-						<div class="catalog-picture-thumbnails">
-							<div class="catalog-picture-list">
-								<?php foreach ($images as $k2 => $v2) :
-									$img = $v2['sizes'];
-								?>
-									<a href="#" data-catalog-target="<?= 'catalogImage_'.$k2; ?>" class="catalog-picture-list-item <?= ($k2 == 0) ? 'active' : ''; ?>">
-										<img src="<?= esc_url($img['thumbnail']); ?>" width="<?= esc_attr($img['thumbnail-width']); ?>" height="<?= esc_attr($img['thumbnail-height']); ?>" alt="">
-									</a>
-								<?php endforeach; ?>
+						<!-- ここまで - スタイル写真 -->
+						<?php if ($images = HP_Acf::get('catalog_photo_style')) : ?>
+							<div class="catalog-picture-thumbnails">
+								<div class="catalog-picture-list">
+									<?php foreach ($images as $k2 => $v2) : ?>
+										<a href="#" data-catalog-target="<?= 'catalogImage_'.$k2; ?>" class="catalog-picture-list-item <?= ($k2 == 0) ? 'active' : ''; ?>">
+											<?= wp_get_attachment_image($v2['ID'], 'thumbnail'); ?>
+										</a>
+									<?php endforeach; ?>
+								</div>
 							</div>
-						</div>
-					<?php endif; ?>
+						<?php endif; ?>
 					</div>
-					<!-- /.catalog-picture -->
-					<!-- ここまで - スタイル写真 -->
+					<!-- ここまで - スタイル写真のラッパー -->
 				</div>
-				<!-- ここまで - スタイル写真のラッパー -->
 
-				<div class="col-xs-12 col-sm-8">
+				<div class="catalog-single__data">
 					<!-- カタログヘッダー -->
 					<header class="catalog-header">
 						<!-- タイトル -->

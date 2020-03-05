@@ -193,7 +193,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/object-fit-images/3.2.4/ofi.min.js"></script>
 <script>objectFitImages();</script>
-<?php HP_Demo_Mode::demo(); // デモモード ?>
+<?php Demo::init(); // デモモード ?>
 <?php wp_footer(); ?>
 </body>
 </html>

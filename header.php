@@ -15,10 +15,7 @@
 	<?= HP_Google::console(); ?>
 	<?php wp_head(); ?>
 </head>
-<?php
-$body_class = HP_Demo_Mode::body_class();
-?>
-<body <?php body_class($body_class); ?>>
+<body <?php body_class(Demo::body_class()); ?>>
 <?php if ($tc = HP_Google::tracking_code()) : ?>
 <script>var tracking_id = '<?= $tc; ?>';</script>
 <!-- Google Tag Manager -->

@@ -42,7 +42,7 @@
         },
         {
             "key": "field_55952b5ad17d4",
-            "label": "ヘアスタイルへのコメント",
+            "label": "コメント",
             "name": "cappeal",
             "type": "textarea",
             "instructions": "ヘアスタイルに対してのアピールポイントやコメントなどを、自由にお書き下さい。",
@@ -57,9 +57,7 @@
             "placeholder": "",
             "maxlength": "",
             "rows": 6,
-            "new_lines": "br",
-            "readonly": 0,
-            "disabled": 0
+            "new_lines": "br"
         },
         {
             "key": "field_55db2d92691d8",
@@ -253,27 +251,6 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_55baf83c4cd79",
-            "label": "以前の料金項目",
-            "name": "cmoney",
-            "type": "text",
-            "instructions": "システムが新しくなり、この項目に入力されている内容が使用できないため、この項目より上にある「所要時間」と「料金」の項目に新しく入力をお願い致します。",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
             "key": "field_55953490edffb",
             "label": "写真設定",
             "name": "",
@@ -362,5 +339,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1560940941
+    "modified": 1583394393
 }
