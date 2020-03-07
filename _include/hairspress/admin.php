@@ -65,10 +65,11 @@ class HP_Admin
 	 */
 	public function theme_color()
 	{
-		// remove_filter('admin_color_scheme_picker', 'admin_color_scheme_picker');
-		// add_filter('get_user_option_admin_color', function() {
-		// 	return 'coffee';
-		// });
+		remove_filter('admin_color_scheme_picker', 'admin_color_scheme_picker');
+		add_filter('get_user_option_admin_color', function() {
+			// return 'coffee';
+			return 'hairspress_01'
+		});
 	}
 
 	/**
