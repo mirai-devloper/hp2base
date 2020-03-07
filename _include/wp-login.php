@@ -8,7 +8,7 @@ new WP_Mio_Login;
 class WP_Mio_Login
 {
 	public $cap = 'manage_options';
-	
+
 	/*
 	 * __construct
 	 */
@@ -97,7 +97,7 @@ class WP_Mio_Login
 		});
 
 		// ロゴヘッダーのタイトル
-		add_filter('login_headertitle', function() {
+		add_filter('login_headertext', function() {
 			return get_bloginfo('title');
 		});
 

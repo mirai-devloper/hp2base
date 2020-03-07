@@ -39,9 +39,9 @@ class Mio
 		add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
 		add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts_child'), 1);
 
-		add_filter('acf/settings/google_api_key', function() {
-			return 'AIzaSyA1Lf1DqEhix6KzZSf9h64UfJ2jZi6wF-4';
-		});
+		// add_filter('acf/settings/google_api_key', function() {
+		// 	return 'AIzaSyA1Lf1DqEhix6KzZSf9h64UfJ2jZi6wF-4';
+		// });
 
 		self::$conf = include_once dirname(__FILE__)."/config/config.php";
 	}

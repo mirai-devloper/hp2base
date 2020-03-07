@@ -57,12 +57,12 @@ function lengthSearch() {
 
 jQuery(document).ready(function($) {
   // カタログのURL
-  var urls = '<?php echo esc_url(get_post_type_archive_link('catalog')); ?>';
+  var urls = '<?= esc_url(get_post_type_archive_link('catalog')); ?>';
 
   // クエリー
-  var lengthVars = '<?php echo get_query_var("length"); ?>';
-  var stylistVars = '<?php echo get_query_var("stylist"); ?>';
-  var tagVars = '<?php echo get_query_var("catalog_tag"); ?>';
+  var lengthVars = '<?= get_query_var("length"); ?>';
+  var stylistVars = '<?= get_query_var("stylist"); ?>';
+  var tagVars = '<?= get_query_var("catalog_tag"); ?>';
 
   // レングスの記号除去
   var lengRep = lengthVars.replace(/[!"#$%&'()\*\+\-\.\/:;<=>?@\[\\\]^_`{|}~]/g, '');

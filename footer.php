@@ -140,7 +140,7 @@
 					<li><a href="<?= get_permalink($pages); ?>#accessmap"><i class="fa fa-map-marker"></i><span>アクセス</span></a></li>
 				</ul>
 				<?php endif; ?>
-				<?= HP_Social::view('prefix', 'social', 'option', array('class' => 'social-icon drawer-social list-inline')); ?>
+				<?= HP_Social::view('prefix', 'social', 'option', array('class' => 'social-icon drawer-social')); ?>
 			</nav>
 		</div>
 	</div>

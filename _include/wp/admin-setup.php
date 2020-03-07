@@ -148,6 +148,7 @@ class Mio_Admin_Setup
 		$dashboards['dashboard'] = array(
 			'normal' => array(
 				'dashboard_right_now', // 現在の状況
+				'dashboard_activity', // アクティビティ
 				'dashboard_recent_comments', // 最近のコメント
 				'dashboard_incoming_links', // 被リンク
 				'dashboard_plugins', // プラグイン

@@ -1,4 +1,11 @@
 <?php
+if (!isset($content_width)) {
+	$content_width = 840;
+}
+
+define('ENV_MODE', getenv('ENV_MODE'));
+define('WP_ENV', getenv('WP_ENV'));
+
 define('HP_DOCROOT', __DIR__.DIRECTORY_SEPARATOR);
 
 define('HP_BASEDIR', '/');
@@ -45,12 +52,8 @@ add_filter('acf/fields/google_map/api', function($api) {
 	return $api;
 });
 
-// ブログのコンテンツ幅の最大値（エディタエリアに影響）
-// if ( ! isset( $content_width ) )
-// 	$content_width = 840;
 
-define('ENV_MODE', getenv('ENV_MODE'));
-define('WP_ENV', getenv('WP_ENV'));
+
 
 
 // Mio_Helper
@@ -174,13 +177,7 @@ function hp_news_view($check = 'up') {
 // アイキャッチ画像のタグ出力設定
 function mio_get_thumbnail( $thumb_name = 'medium', $thumb_style = null ) {
 	global $post;
-	$gtdu = get_template_directory_uri();
-	$post_type = get_post_type();
-	if( $thumb_style !== null ) {
-		$style = ' style="'.$thumb_style['style'].'"';
-	} else {
-		$style = '';
-	}
+
 	$image = '';
 	if( has_post_thumbnail() ) {
 		$image = get_the_post_thumbnail( $post->ID, $thumb_name, $thumb_style );
@@ -195,17 +192,8 @@ function mio_get_thumbnail( $thumb_name = 'medium', $thumb_style = null ) {
 
 			$keys = array_keys($files);
 			$attach_id = $keys[0];
-			$thumb = wp_get_attachment_image_src( $attach_id, $thumb_name );
-			$width = ' width="'.$thumb[1].'"';
-			$height = ' height="'.$thumb[2].'"';
-			$image = '<img src="'.$thumb[0].'"'.$width.$height.' alt="*"'.$style.'>';
+			$image = wp_get_attachment_image( $attach_id, $thumb_name );
 		} else {
-			// if( is_front_page() ) {
-			//   $image = '<img src="'.$gtdu.'/common/images/common/img_no-image_top.png" alt="*">';
-			// }
-			// if( !is_front_page() && $post_type == 'post' ) {
-			//   $image = '<img src="'.$gtdu.'/common/images/common/img_no-image_loop.png" alt="*">';
-			// }
 			$image = '<span class="not-thumb"></span>';
 		}
 	}
@@ -222,18 +210,17 @@ function mio_get_catalog_thumb( $thumb_name = 'medium', $thumb_style = null ) {
 	}
 	if ( has_post_thumbnail() ) {
 		the_post_thumbnail( $thumb_name, $thumb_style );
-		$image = get_the_post_thumbnail( $post->ID, $thumb_name, $thumb_style );
 	} else {
-		$images = get_field( 'catalog_photo_style' );
-		if ( $images ) {
+		if ( $images = get_field( 'catalog_photo_style' ) ) {
 			$image = $images[0];
-			printf(
-				'<img src="%1$s" width="%2$s" height="%3$s" %4$s alt="">',
-				esc_url( $image['sizes'][$thumb_name] ),
-				esc_attr( $image['sizes'][$thumb_name.'-width'] ),
-				esc_attr( $image['sizes'][$thumb_name.'-height'] ),
-				$style
-			);
+			echo wp_get_attachment_image($image['ID'], $thumb_name, false, $thumb_style);
+			// printf(
+			// 	'<img src="%1$s" width="%2$s" height="%3$s" %4$s alt="">',
+			// 	esc_url( $image['sizes'][$thumb_name] ),
+			// 	esc_attr( $image['sizes'][$thumb_name.'-width'] ),
+			// 	esc_attr( $image['sizes'][$thumb_name.'-height'] ),
+			// 	$style
+			// );
 		} else {
 			echo '<span class="not-thumb"></span>';
 		}
@@ -257,26 +244,12 @@ function pagination($pages = '', $range = 2) {
 		}
 	}
 	if(1 != $pages) {
-		echo View::forge('elements/pager', array('pages' => $pages, 'paged' => $paged, 'range' => $range, 'showitems' => $showitems));
-		// echo "<div class=\"pagination c-fix\">";
-		// // if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href=\"".get_pagenum_link(1)."\">&laquo;</a>";
-		// if($paged > 1 /*&& $showitems < $pages*/) {
-		// 	echo "<a href=\"".get_pagenum_link($paged - 1)."\" class=\"prev\"><i class=\"fa fa-angle-left\"></i><span>前へ</span></a>";
-		// } else {
-		// 	echo "<span class=\"prev not\"><i class=\"fa fa-angle-left\"></i><span>前へ</span></span>";
-		// }
-		// for ($i=1; $i <= $pages; $i++) {
-		// 	if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
-		// 		echo ($paged == $i)? "<span class=\"current f-aleg_sc\">".$i."</span>":"<a href=\"".get_pagenum_link($i)."\" class=\"inactive f-aleg_sc\" >".$i."</a>";
-		// 	}
-		// }
-		// if ($paged < $pages /*&& $showitems < $pages*/) {
-		// 	echo "<a href=\"".get_pagenum_link($paged + 1)."\" class=\"next\"><span>次へ</span><i class=\"fa fa-angle-right\"></i></a>";
-		// } else {
-		// 	echo "<span class=\"next not\"><span>次へ</span><i class=\"fa fa-angle-right\"></i></span>";
-		// }
-		// // if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href=\"".get_pagenum_link($pages)."\">&raquo;</a>";
-		// echo "</div>\n";
+		echo \View::forge('elements/pager', array(
+			'pages' => $pages,
+			'paged' => $paged,
+			'range' => $range,
+			'showitems' => $showitems
+		));
 	}
 }
 
@@ -679,3 +652,13 @@ add_filter('hp_nav_menu_title', function($title, $item) {
 
 	return $title;
 }, 10, 2);
+
+
+add_action('admin_init', function() {
+	wp_admin_css_color(
+		'hairspress_01',
+		__('HairsPress 01'),
+		\Asset::get_file_uri('admin-colors.css', 'css'),
+		array('#3C4242', '#3C4242', '#3488C9', '#BCCFEB')
+	);
+});

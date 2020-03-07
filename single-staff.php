@@ -2,9 +2,9 @@
 
 <!-- ここから - コンテンツ -->
 <article>
-<div id="staff" class="c-wrap">
+<div id="staff" class="c-wrap staff-single">
 	<div class="container">
-		<div class="row staff-single">
+		<div class="staff-single__row">
 			<?php
 				$single_args = array(
 					'post_type' => 'staff'
@@ -12,7 +12,7 @@
 				$query = new WP_Query($single_args);
 				if( have_posts() ) : while( have_posts() ) : the_post();
 			?>
-			<div class="col-xs-12 col-sm-4 sp-mode">
+			<div class="staff-single__picture">
 				<!-- スタッフ写真 -->
 				<div class="staff-picture">
 					<div class="pic">
@@ -28,21 +28,26 @@
 
 				<?php if( HP_Social::option_url('prefix_staff', 'social_staff', get_the_ID()) ) : ?>
 				<div class="staff-social">
-					<?= HP_Social::view('prefix_staff', 'social_staff', get_the_ID(), array('class' => 'social-icon list-inline')); ?>
+					<?= HP_Social::view('prefix_staff', 'social_staff', get_the_ID(), array('class' => 'social-icon')); ?>
 				</div>
 				<?php endif; ?>
 			</div>
 
-			<div class="col-xs-12 col-sm-8">
+			<div class="staff-single__data">
 				<!-- スタッフヘッダー -->
 				<header class="staff-header">
 					<!-- タイトル -->
-					<h1 class="title"><span class="name"><?php the_title(); ?></span><?php if ($furigana = HP_Acf::get('furigana', get_the_ID())) : ?>
-						<span class="kana"><?= $furigana; ?></span>
-					<?php endif; ?></h1>
+					<h1 class="title">
+						<span class="name"><?php the_title(); ?></span>
+						<?php if ($furigana = HP_Acf::get('furigana', get_the_ID())) : ?>
+							<span class="kana"><?= $furigana; ?></span>
+						<?php endif; ?>
+					</h1>
 
 					<?php if ($get_manage = get_hp_stylist_manage()) : ?>
-					<p class="manage"><span><?php hp_stylist_manage(); ?></span></p>
+						<p class="manage">
+							<span><?php hp_stylist_manage(); ?></span>
+						</p>
 					<?php endif; ?>
 					<?php if ( ! (HP_Acf::get('reserve_btn_hidden', get_the_ID()))) : ?>
 						<?php if ($staff_reserve = HP_Acf::get('reserve_staff', get_the_ID())) : ?>
@@ -61,7 +66,6 @@
 
 				<!-- コンテンツエリア -->
 				<section class="staff-body">
-					<!-- <div class="sp-space"></div> -->
 					<!-- スタイル情報のテーブル -->
 					<table class="staff-table">
 					<?php
@@ -83,27 +87,28 @@
 						echo $profile_table;
 					?>
 					<?php
-					$staff_blog = get_field('blog_url_for', get_the_id());
-					$staff_blog_text = get_field('blog_url_text', get_the_id());
-					$staff_blog_category = get_field('blog_url_select', get_the_id());
+						$staff_blog = get_field('blog_url_for', get_the_id());
+						$staff_blog_text = get_field('blog_url_text', get_the_id());
+						$staff_blog_category = get_field('blog_url_select', get_the_id());
 
-					$blog_url = NULL;
-					if( strstr($staff_blog, 'URLを入力する') ) {
-						if( !empty($staff_blog_text) ) {
-							$blog_url = $staff_blog_text;
+						$blog_url = NULL;
+						if ( strstr($staff_blog, 'URLを入力する') ) {
+							if ( !empty($staff_blog_text) ) {
+								$blog_url = $staff_blog_text;
+							}
+						} else {
+							if ( !empty($staff_blog_category) ) {
+								$link = get_term_link($staff_blog_category, 'category');
+								$blog_url = $link;
+							}
 						}
-					} else {
-						if( !empty($staff_blog_category) ) {
-							$link = get_term_link($staff_blog_category, 'category');
-							$blog_url = $link;
-						}
-					}
-
-					if( !empty($blog_url) ) : ?>
+					?>
+					<?php if ( !empty($blog_url) ) : ?>
 						<tr class="blog">
 							<th>ブログ</th>
-							<td><a href="<?php echo esc_url($blog_url); ?>"><?php echo esc_url($blog_url); ?>
-							</a></td>
+							<td>
+								<a href="<?= esc_url($blog_url); ?>"><?= esc_url($blog_url); ?></a>
+							</td>
 						</tr>
 					<?php endif; ?>
 					</table>
@@ -113,7 +118,7 @@
 					<!-- スタッフコメント -->
 					<?php
 						$appeal = function_exists('get_field') ? get_field('appeal', get_the_id()) : null;
-						if( !empty($appeal) ) {
+						if ( !empty($appeal) ) {
 							echo '<div class="staff-comment">'.$appeal.'</div>';
 						}
 					?>
@@ -144,35 +149,34 @@
 				// 'post__not_in' => array($queri_obj->ID)
 			);
 			$style_query = new WP_Query($style_args);
-			if( $style_query->have_posts() ) :
 		?>
-		<!-- ヘアカタログ一覧（カルーセル） -->
-		<div class="row c-wrap">
-			<section class="catalog-footer">
-				<h2 class="other-title">Other Styles</h2>
-				
-				<!-- 一覧ボタン -->
-				<a href="<?php echo get_term_link($other_term[0]); ?>" class="btn btn-primary btn-sm read-more"><i class="fa fa-angle-right"></i>一覧を見る</a>
+		<?php if ( $style_query->have_posts() ) : ?>
+			<!-- ヘアカタログ一覧（カルーセル） -->
+			<div class="row c-wrap">
+				<section class="catalog-footer">
+					<h2 class="other-title">Other Styles</h2>
 
-				<!-- カルーセル開始 -->
-				<div class="other-catalog catalog-swiper staff-other-catalog">
-					<ul class="swiper-wrapper">
-						<?php while( $style_query->have_posts() ) : $style_query->the_post(); ?>
-						<li class="swiper-slide">
-							<a href="<?php the_permalink(); ?>">
-								<?php mio_get_thumbnail('catalog-staff'); ?>
-							</a>
-						</li>
-						<?php endwhile; ?>
-					</ul>
-					<div class="swiper-scrollbar catalog-scrollbar"></div>
-				</div>
-				<!-- /.other-catalog -->
-				<!-- ここまで - カルーセル -->
-			</section>
-		</div>
-		<!-- ここまで - ヘアカタログ（カルーセル） -->
-		<?php else : ?>
+					<!-- 一覧ボタン -->
+					<a href="<?= get_term_link($other_term[0]); ?>" class="btn btn-primary btn-sm read-more"><i class="fa fa-angle-right"></i>一覧を見る</a>
+
+					<!-- カルーセル開始 -->
+					<div class="other-catalog catalog-swiper staff-other-catalog">
+						<ul class="swiper-wrapper">
+							<?php while( $style_query->have_posts() ) : $style_query->the_post(); ?>
+							<li class="swiper-slide">
+								<a href="<?php the_permalink(); ?>">
+									<?php mio_get_thumbnail('catalog-staff'); ?>
+								</a>
+							</li>
+							<?php endwhile; ?>
+						</ul>
+						<div class="swiper-scrollbar catalog-scrollbar"></div>
+					</div>
+					<!-- /.other-catalog -->
+					<!-- ここまで - カルーセル -->
+				</section>
+			</div>
+			<!-- ここまで - ヘアカタログ（カルーセル） -->
 		<?php endif; ?>
 		<?php wp_reset_postdata(); ?>
 	</div>
@@ -181,50 +185,54 @@
 </article>
 <!-- ここまで - コンテンツ -->
 
+<?php
+	$current_id = get_queried_object_id();
+
+	$staff_args = array(
+		'post_type'       => 'staff',
+		'posts_per_page'  => -1,
+		'post__not_in' => array($current_id)
+	);
+
+	$staff_query = new WP_Query( $staff_args );
+?>
+<?php if ( $staff_query->have_posts() ) : ?>
 <div id="otherStaff" class="other-staff">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 col-md-offset-2">
-				<h2 class="title"><span class="en">OTHER<br class="sp-br"> STAFF</span><span class="jp">その他のスタッフ</span></h2>
-				<p class="center"><a href="<?php echo get_post_type_archive_link('staff'); ?>" class="btn btn-default btn-sm"><i class="fa fa-angle-left"></i>一覧に戻る</a></p>
+				<h2 class="title">
+					<span class="en">OTHER<br class="sp-br"> STAFF</span>
+					<span class="jp">その他のスタッフ</span>
+				</h2>
+				<p class="center">
+					<a href="<?php echo get_post_type_archive_link('staff'); ?>" class="btn btn-default btn-sm"><i class="fa fa-angle-left"></i>一覧に戻る</a>
+				</p>
 			</div>
 
 			<div class="col-sm-9 col-md-6">
 				<div class="other-staff-list swiper-container">
-					<?php
-					$current_id = get_queried_object_id();
-
-					$staff_args = array(
-						'post_type'       => 'staff',
-						'posts_per_page'  => -1,
-						'post__not_in' => array($current_id)
-					);
-					
-					$staff_query = new WP_Query( $staff_args );
-					if( $staff_query->have_posts() ) : ?>
-						<ul class="staff-list swiper-wrapper">
+					<ul class="staff-list swiper-wrapper">
 						<?php while( $staff_query->have_posts() ) : $staff_query->the_post(); ?>
-						<li class="swiper-slide">
-							<a href="<?php the_permalink(); ?>" class="item">
-								<div class="thumb"><?php mio_get_thumbnail('square'); ?></div>
-								<span class="name"><i class="fa fa-angle-right"></i><?php the_title(); ?></span>
-								<span class="manage"><?php hp_stylist_manage(); ?></span>
-							</a>
-						</li>
+							<li class="swiper-slide">
+								<a href="<?php the_permalink(); ?>" class="item">
+									<div class="thumb"><?php mio_get_thumbnail('square'); ?></div>
+									<span class="name"><i class="fa fa-angle-right"></i><?php the_title(); ?></span>
+									<span class="manage"><?php hp_stylist_manage(); ?></span>
+								</a>
+							</li>
 						<?php endwhile; ?>
-						</ul>
-						<div class="staff-list-pagination swiper-pagination"></div>
-						<div class="staff-list-next swiper-button-next"></div>
-						<div class="staff-list-prev swiper-button-prev"></div>
-					<?php else : ?>
-					<?php endif; ?>
-					<?php wp_reset_postdata(); ?>
+					</ul>
+					<div class="staff-list-pagination swiper-pagination"></div>
+					<div class="staff-list-next swiper-button-next"></div>
+					<div class="staff-list-prev swiper-button-prev"></div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <!-- /#otherStaff -->
-
+<?php endif; ?>
+<?php wp_reset_postdata(); ?>
 
 <?php get_footer(); ?>

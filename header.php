@@ -41,9 +41,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <header>
 	<div id="header" class="header">
 	<div class="header-top">
-		<div class="container-fullid clearfix">
-			<div class="hidden-xs hidden-sm">
-				<div class="col-xs-6 left">
+		<div class="container-fullid header-top__inner">
+			<div class="header-top__row">
+				<div class="header-top__title">
 					<h1 class="site-title"><?php
 						bloginfo('description');
 						if (get_bloginfo('description') and get_bloginfo('name'))
@@ -53,8 +53,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 						bloginfo('name');
 					?></h1>
 				</div>
-				<div class="col-xs-6 right">
-					<?= HP_Social::view('prefix', 'social', 'option', array('class' => 'social-icon list-inline')); ?>
+				<div class="header-top__nav">
+					<?= HP_Social::view('prefix', 'social', 'option', array('class' => 'social-icon')); ?>
 					<?php
 						if ($access = get_page_by_path('access'))
 							$pages = $access->ID;
@@ -63,7 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							$pages = $salon->ID;
 					?>
 					<?php if (isset($pages)) : ?>
-					<ul class="subnavi list-inline">
+					<ul class="subnavi">
 						<li><a href="<?= get_permalink($pages); ?>#opentime"><i class="fa fa-clock-o"></i><span>営業時間</span></a></li>
 						<li><a href="<?= get_permalink($pages); ?>#accessmap"><i class="fa fa-map-marker"></i><span>アクセス</span></a></li>
 					</ul>
@@ -74,9 +74,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	</div>
 
 	<div class="header-middle">
-		<div class="container-fullid">
-			<div class="row">
-				<div class="col-sm-4 col-md-4">
+		<div class="container-fullid header-middle__inner">
+			<div class="header-middle__row">
+				<div class="header-middle__logo">
 					<div class="site-logo">
 						<a href="<?= esc_url(home_url()); ?>"><?php get_logo_id() ? the_logo() : bloginfo('title'); ?></a>
 					</div>
@@ -90,9 +90,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					$reserve_url = HP_Acf::reserve_url();
 				?>
 				<?php if ($salon_tel or $reserve_url) : ?>
-				<div class="col-sm-8 col-md-8 clearfix hidden-xs">
-					<div class="alignright header-button-area">
-						<ul class="header-contact list-inline">
+				<div class="header-middle__button">
+					<div class="header-button-area">
+						<ul class="header-contact">
 							<?php if ($salon_tel) : ?>
 							<li>
 								<a href="tel:<?= esc_attr($salon_tel); ?>" class="btn btn-default btn-xl tel-link">

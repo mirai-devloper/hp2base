@@ -26,7 +26,7 @@ class HP_Admin_Login
 		});
 
 		// タイトル変更
-		add_filter('login_headertitle', function() {
+		add_filter('login_headertext', function() {
 			return 'HairsPress';
 		});
 
