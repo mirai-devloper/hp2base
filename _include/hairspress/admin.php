@@ -68,7 +68,7 @@ class HP_Admin
 		remove_filter('admin_color_scheme_picker', 'admin_color_scheme_picker');
 		add_filter('get_user_option_admin_color', function() {
 			// return 'coffee';
-			return 'hairspress_01'
+			return 'hairspress_01';
 		});
 	}
 
