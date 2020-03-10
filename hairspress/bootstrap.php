@@ -47,3 +47,10 @@ register_widget('Hairspress\\App\\Widget_Archives');
 unregister_widget('WP_Widget_Recent_Comments');
 unregister_widget('WP_Widget_Meta');
 unregister_widget('WP_Widget_RSS');
+
+$hairspress_admin = new Hairspress\App\Wordpress_Admin();
+$hairspress_admin->init();
+
+$hairspress_tinymce = new Hairspress\App\Wordpress_Tinymce();
+$hairspress_tinymce->init();
+

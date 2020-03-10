@@ -74,33 +74,32 @@ class Mio
 	public function theme_setup()
 	{
 		add_theme_support('title-tag');
-		add_theme_support(
-			'html5',
-			array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption')
-		);
+		add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
 		add_theme_support('post-thumbnails');
 
 		// Thumbnail Support
-		add_theme_support( 'post-thumbnails' );
+		add_theme_support('post-thumbnails');
 		//初期設定の投稿サムネイル値
 		set_post_thumbnail_size( 300, 300 );
 
 		// 各種サムネイルサイズ
-		add_image_size( 'logo', 9999, 100);
-		add_image_size( 'front-free-thumb', 640, 384, true );
-		add_image_size( 'catalog-loop', 320, 393, true);
-		add_image_size( 'catalog-thumb', 284, 432, true);
-		add_image_size( 'catalog-staff', 232, 296, true);
-		add_image_size( 'catalog-single', 360, 460, true);
-		add_image_size( 'staff', 320, 9999);
-		add_image_size( 'square', 252, 252, true);
-		add_image_size( 'salon-info', 620, 420, true);
-		add_image_size( 'salon-info-map', 620, 9999);
-		add_image_size( 'admin-thumb', 80, 80, true);
-		add_image_size( 'youtube', 320, 180, true);
-		add_image_size( 'mio-slider-thumb', 240, 100, true );
-		add_image_size( 'mio-slider-large', 1280, 545, true );
+		add_image_size('logo', 9999, 100);
+		add_image_size('front-free-thumb', 640, 384, true);
+		add_image_size('catalog-loop', 320, 393, true);
+		add_image_size('catalog-thumb', 284, 432, true);
+		add_image_size('catalog-staff', 232, 296, true);
+		add_image_size('catalog-single', 360, 460, true);
+		add_image_size('staff', 320, 9999);
+		add_image_size('square', 252, 252, true);
+		add_image_size('salon-info', 620, 420, true);
+		add_image_size('salon-info-map', 620, 9999);
+		add_image_size('admin-thumb', 80, 80, true);
+		add_image_size('youtube', 320, 180, true);
+		add_image_size('mio-slider-thumb', 240, 100, true);
+		add_image_size('mio-slider-large', 1280, 545, true);
 		add_image_size('ogp', 1200, 630, true);
+
+		add_theme_support('responsive-embeds');
 
 		add_editor_style(array('assets/css/editor-style.css'));
 

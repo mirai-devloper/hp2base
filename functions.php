@@ -585,9 +585,6 @@ require_once (TEMPLATEPATH . '/_inc/hp-options-theme.php');
 // Mio-Theme MetaField
 require_once (TEMPLATEPATH . '/_inc/hp-custom-meta-seo.php');
 
-//カスタムエディター
-require_once (TEMPLATEPATH . '/_inc/hp-custom-editor.php');
-
 //カスタム投稿タイプ
 require_once (TEMPLATEPATH . '/_inc/hp-custom-posts.php');
 
@@ -654,11 +651,3 @@ add_filter('hp_nav_menu_title', function($title, $item) {
 }, 10, 2);
 
 
-add_action('admin_init', function() {
-	wp_admin_css_color(
-		'hairspress_01',
-		__('HairsPress 01'),
-		\Asset::get_file_uri('admin-colors.css', 'css'),
-		array('#3C4242', '#3C4242', '#3488C9', '#BCCFEB')
-	);
-});
