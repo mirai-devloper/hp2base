@@ -1,4 +1,8 @@
 ::: Log :::
+Ver: 2.3.13
+ - [fixed] InternetExplorerのFlexboxの修正
+ - [fixed] object-fitの互換性を修正
+
 Ver: 2.3.4
  - [fixed] ナビゲーション回りのCSSがおかしくなったので修正
 

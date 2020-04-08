@@ -17,7 +17,9 @@
 									<a href="<?php the_permalink(); ?>" class="staff-flex__link">
 										<div class="thumb">
 											<?php if( has_post_thumbnail() ) : ?>
-												<?php the_post_thumbnail('staff'); ?>
+												<div class="thumb-box">
+													<?php the_post_thumbnail('staff'); ?>
+												</div>
 											<?php else : ?>
 												<span class="not-thumb"></span>
 											<?php endif; ?>

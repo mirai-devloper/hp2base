@@ -32,7 +32,7 @@ class Wordpress_Tinymce {
 		$init['extended_valid_elements'] = "iframe[id|class|title|style|align|frameborder|height|longdesc|marginheight|marginwidth|name|scrolling|src|width]";
 
 		if (version_compare($wp_version, '3.9', '>=')) {
-			if ($init['language'] === 'ja') {
+			if (isset($init['language']) and $init['language'] === 'ja') {
 				$init['block_formats'] = '段落=p; 見出し2=h2; 見出し3=h3; 見出し4=h4; 見出し5=h5; 見出し6=h6; 整形済みテキスト=pre;';
 			}
 			return $init;

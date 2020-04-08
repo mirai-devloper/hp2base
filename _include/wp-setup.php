@@ -103,6 +103,9 @@ class Mio
 
 		add_editor_style(array('assets/css/editor-style.css'));
 
+		add_theme_support('wp-block-styles');
+		add_theme_support('align-wide');
+
 		register_nav_menus(
 			array(
 				'primary-menu' => 'メインメニュー',
@@ -197,7 +200,6 @@ class Mio
 			'4.7.0'
 		);
 
-
 		wp_enqueue_style(
 			'font-mirai',
 			$this->asset_uri($this->min_css('font-mirai.css'), 'css'),
@@ -260,6 +262,14 @@ class Mio
 					break;
 			}
 		}
+
+		wp_enqueue_style(
+			'hairspress-block-editor',
+			$this->asset_uri('block-editor.css', 'css'),
+			false,
+			$this->filemtime('block-editor.css', 'css'),
+			'all'
+		);
 
 		// JavaScript
 		wp_enqueue_script('jquery');
