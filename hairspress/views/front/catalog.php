@@ -1,12 +1,16 @@
 <?php
-	$catalog_args = array(
-		'post_type'      => 'catalog',
-		'posts_per_page' => 20,
-		'order'          => 'DESC',
-		'orderby'        => 'date',
-		'ignore_sticky_posts' => true
-	);
-	$catalog = new WP_Query($catalog_args);
+	$catalog = get_transient('hairspress_front_catalog');
+	if ($catalog === false) {
+		$catalog_args = array(
+			'post_type'      => 'catalog',
+			'posts_per_page' => 20,
+			'order'          => 'DESC',
+			'orderby'        => 'date',
+			'ignore_sticky_posts' => true
+		);
+		$catalog = new WP_Query($catalog_args);
+		set_transient('hairspress_front_catalog', $catalog, 3600);
+	}
 ?>
 <?php if( $catalog->have_posts() ) : ?>
 <div id="frontCatalog" class="c-wrap front-catalog-wrap">

@@ -11,24 +11,29 @@ get_header(); ?>
 
     <div class="row">
       <?php
-        $menu_args = array(
-          'post_type'      => 'menu',
-          'posts_per_page' => -1,
-        );
-        $menu_query = new WP_Query( $menu_args );
+				$menu_query = get_transient('hairspress_menu');
+				if($menu_query === false) {
+					$menu_args = array(
+						'post_type'      => 'menu',
+						'posts_per_page' => -1,
+					);
+					$menu_query = new WP_Query( $menu_args );
+					set_transient('hairspress_menu', $menu_query, 3600);
+				}
       ?>
-      <?php if( $menu_query->have_posts() ) : while( $menu_query->have_posts() ) : $menu_query->the_post(); ?>
+      <?php if( $menu_query->have_posts() ) : ?>
+				<?php while( $menu_query->have_posts() ) : $menu_query->the_post(); ?>
 
-      <?php get_template_part('temp', 'menu'); ?>
+					<?php get_template_part('temp', 'menu'); ?>
 
-      <?php endwhile; ?>
+				<?php endwhile; ?>
       <?php else : ?>
-      <?php if( is_admin_bar_showing() ) : ?>
-      <p><span style="color: #f00;">システム：メニューが作成されていません。メニューを作成して、公開をしてください。</span></p>
-      <?php else : ?>
-      <p>申し訳ございません。こちらのページはまだ作成が完了していないようです。</p>
-      <p>完成するまで今しばらくお待ちください。</p>
-      <?php endif; ?>
+				<?php if( is_admin_bar_showing() ) : ?>
+					<p><span style="color: #f00;">システム：メニューが作成されていません。メニューを作成して、公開をしてください。</span></p>
+				<?php else : ?>
+					<p>申し訳ございません。こちらのページはまだ作成が完了していないようです。</p>
+					<p>完成するまで今しばらくお待ちください。</p>
+				<?php endif; ?>
       <?php endif; ?>
       <?php wp_reset_postdata(); ?>
     </div>

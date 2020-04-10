@@ -1,4 +1,6 @@
-<?php $freespace_check = HP_Acf::get('free_space_hidden', 'option'); ?>
+<?php
+	$freespace_check = HP_Acf::get('free_space_hidden', 'option');
+?>
 <?php if ( $freespace_check and have_rows('free_space', 'option')) : ?>
 <div id="freespace" class="c-wrap freespace-wrap">
 	<div class="container">

@@ -1,14 +1,18 @@
 <?php
-	$blog_args = array(
-		'post_type'           => 'post',
-		'order'               => 'DESC',
-		'orderby'             => 'date',
-		'posts_per_page'      => 4,
-		'ignore_sticky_posts' => true
-	);
-	$blog = new WP_Query($blog_args);
+	$blog = get_transient('hairspress_front_blog');
+	if ($blog === false) {
+		$blog_args = array(
+			'post_type'           => 'post',
+			'order'               => 'DESC',
+			'orderby'             => 'date',
+			'posts_per_page'      => 4,
+			'ignore_sticky_posts' => true
+		);
+		$blog = new WP_Query($blog_args);
+		set_transient('hairspress_front_blog', $blog, 3600);
+	}
 ?>
-<?php if( $blog->have_posts() ) : ?>
+<?php if($blog->have_posts()) : ?>
 <div id="frontBlog" class="front-blog">
 	<div class="container">
 		<h2 class="c-title"><span class="en">Blog</span></h2>
