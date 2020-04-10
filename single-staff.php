@@ -134,24 +134,20 @@
 		<!-- /.staff-single -->
 
 		<?php
-			$style_query = get_transient('hairspress_staff_catalog');
 			$other_term = get_the_terms($post->ID, 'com_category');
-			if ($style_query === false) {
-				$style_args = array(
-					'post_type' => 'catalog',
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'com_category',
-							'field' => 'term_id',
-							'terms' => array($other_term[0]->term_id)
-						)
-					),
-					'posts_per_page' => 20,
-					// 'post__not_in' => array($queri_obj->ID)
-				);
-				$style_query = new WP_Query($style_args);
-				set_transient('hairspress_staff_catalog', $style_query, 3600);
-			}
+			$style_args = array(
+				'post_type' => 'catalog',
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'com_category',
+						'field' => 'term_id',
+						'terms' => array($other_term[0]->term_id)
+					)
+				),
+				'posts_per_page' => 20,
+				// 'post__not_in' => array($queri_obj->ID)
+			);
+			$style_query = new WP_Query($style_args);
 		?>
 		<?php if ( $style_query->have_posts() ) : ?>
 			<!-- ヘアカタログ一覧（カルーセル） -->
@@ -189,20 +185,15 @@
 <!-- ここまで - コンテンツ -->
 
 <?php
+	$current_id = get_queried_object_id();
 
-	$staff_query = get_transient('hairspress_staff_other');
-	if ($staff_query === false) {
-		$current_id = get_queried_object_id();
+	$staff_args = array(
+		'post_type'       => 'staff',
+		'posts_per_page'  => -1,
+		'post__not_in' => array($current_id)
+	);
 
-		$staff_args = array(
-			'post_type'       => 'staff',
-			'posts_per_page'  => -1,
-			'post__not_in' => array($current_id)
-		);
-
-		$staff_query = new WP_Query( $staff_args );
-		set_transient('hairspress_staff_other', $staff_query, 3600);
-	}
+	$staff_query = new WP_Query( $staff_args );
 ?>
 <?php if ( $staff_query->have_posts() ) : ?>
 <div id="otherStaff" class="other-staff">

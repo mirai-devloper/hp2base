@@ -82,12 +82,12 @@ function hairspress_delete_transient($post_id, $post) {
 			break;
 		case 'catalog':
 			delete_transient('hairspress_front_catalog');
-			delete_transient('hairspress_staff_catalog');
-			delete_transient('hairspress_catalog_other');
+			// delete_transient('hairspress_staff_catalog');
+			// delete_transient('hairspress_catalog_other');
 			break;
 		case 'staff':
-			delete_transient('hairspress_staff_other');
-			delete_transient('hairspress_catalog_staff');
+			// delete_transient('hairspress_staff_other');
+			// delete_transient('hairspress_catalog_staff');
 			break;
 		default:
 			# code...

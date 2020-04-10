@@ -188,24 +188,20 @@
 			$queri_obj = get_queried_object();
 			$other_term = get_the_terms($post->ID, 'com_category');
 
-			$style_query = get_transient('hairspress_catalog_other');
-			if ($style_query === false) {
-				$style_args = array(
-					'post_type' => 'catalog',
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'com_category',
-							'field' => 'term_id',
-							'terms' => array($other_term[0]->term_id)
-						)
-					),
-					'posts_per_page' => 20,
-					'post__not_in' => array($queri_obj->ID),
-					'ignore_sticky_posts' => true
-				);
-				$style_query = new WP_Query($style_args);
-				set_transient('hairspress_catalog_other', $style_query, 3600);
-			}
+			$style_args = array(
+				'post_type' => 'catalog',
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'com_category',
+						'field' => 'term_id',
+						'terms' => array($other_term[0]->term_id)
+					)
+				),
+				'posts_per_page' => 20,
+				'post__not_in' => array($queri_obj->ID),
+				'ignore_sticky_posts' => true
+			);
+			$style_query = new WP_Query($style_args);
 		?>
 		<?php if( $style_query->have_posts() ) : ?>
 		<!-- ヘアカタログ一覧（カルーセル） -->
@@ -256,35 +252,31 @@
 			<div class="col-sm-9 col-md-6">
 				<div class="other-staff-list swiper-container">
 					<?php
-						$staff_query = get_transient('hairspress_catalog_staff');
-						if ($staff_query === false) {
-							$com_category = 'com_category';
-							// $current_staff = get_the_terms(get_the_ID(), $com_category);
-							// var_dump($current_staff);
-							$other_staff_args = array(
-								'pad_counts' => true,
-								'hide_empty' => true,
-								'fields' => 'ids'
-							);
+						$com_category = 'com_category';
+						// $current_staff = get_the_terms(get_the_ID(), $com_category);
+						// var_dump($current_staff);
+						$other_staff_args = array(
+							'pad_counts' => true,
+							'hide_empty' => true,
+							'fields' => 'ids'
+						);
 
-							$other_staff_terms = get_terms($com_category, $other_staff_args);
-							$other_staff_array = array_values($other_staff_terms);
+						$other_staff_terms = get_terms($com_category, $other_staff_args);
+						$other_staff_array = array_values($other_staff_terms);
 
-							$staff_args = array(
-								'post_type' => 'staff',
-								'tax_query' => array(
-									array(
-										'taxonomy' => $com_category,
-										'field' => 'term_id',
-										'terms' => $other_staff_array
-									)
-								),
-								'posts_per_page'  => -1,
-							);
+						$staff_args = array(
+							'post_type' => 'staff',
+							'tax_query' => array(
+								array(
+									'taxonomy' => $com_category,
+									'field' => 'term_id',
+									'terms' => $other_staff_array
+								)
+							),
+							'posts_per_page'  => -1,
+						);
 
-							$staff_query = new WP_Query( $staff_args );
-							set_transient('hairspress_catalog_staff', $staff_query, 3600);
-						}
+						$staff_query = new WP_Query( $staff_args );
 					?>
 					<?php if( $staff_query->have_posts() ) : ?>
 						<ul class="staff-list swiper-wrapper">
