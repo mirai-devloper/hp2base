@@ -2,32 +2,24 @@
 	$freespace_check = HP_Acf::get('free_space_hidden', 'option');
 ?>
 <?php if ( $freespace_check and have_rows('free_space', 'option')) : ?>
-<div id="freespace" class="c-wrap freespace-wrap">
+<div id="bannerSpace" class="bannerspace">
 	<div class="container">
-		<div class="row">
+		<div class="bannerspace__row">
 			<?php while (have_rows('free_space', 'option')) : the_row(); ?>
 				<?php if (get_row_layout() === 'フリースペース' and get_sub_field('image')) : ?>
-				<div class="col-sm-4">
-					<figure class="freespace">
+				<div class="bannerspace__item">
+					<figure class="bannerspace__figure">
 						<?php
 							$url_customer = get_sub_field('url_customer');
-							if ($url_customer) {
-								$link = get_sub_field('url');
-							} else {
-								$link = get_sub_field('url_selector');
-							}
-							$target = '_self';
-							if (get_sub_field('link_target')) {
-								$target = '_blank';
-							}
+							$link = $url_customer ? get_sub_field('url') : get_sub_field('url_selector');
 
-							$image = '<span class="not-thumb"></span>';
+							$image = '';
 							if ($image_id = get_sub_field('image')) {
 								$image = wp_get_attachment_image($image_id, 'front-free-thumb');
 							}
 
 							$title = '';
-							if ($title_text = get_sub_field('link_text')) {
+							if ($title_text = get_sub_field('link_text') and $title_text) {
 								$title = sprintf(
 									'<figcaption>%1$s</figcaption>',
 									strip_tags($title_text)
@@ -38,7 +30,7 @@
 								printf(
 									'<a href="%1$s" target="%2$s">%3$s</a>',
 									esc_url($link),
-									$target,
+									get_sub_field('link_target') ? '_blank' : '_self',
 									$image.$title
 								);
 							} else {
@@ -52,5 +44,5 @@
 		</div>
 	</div>
 </div>
-<!-- /#freespace -->
+<!-- /#bannerSpace -->
 <?php endif; ?>

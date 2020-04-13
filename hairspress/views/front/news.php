@@ -1,13 +1,17 @@
 <?php
-	$news_args = array(
-		'post_type'           => 'topics',
-		'order'               => 'DESC',
-		'orderby'             => 'date',
-		'posts_per_page'      => 5,
-		'ignore_sticky_posts' => true,
-	);
+	$news = get_transient('hairspress_front_news');
+	if ($news === false) {
+		$news_args = array(
+			'post_type'           => 'topics',
+			'order'               => 'DESC',
+			'orderby'             => 'date',
+			'posts_per_page'      => 5,
+			'ignore_sticky_posts' => true,
+		);
 
-	$news = new WP_Query( $news_args );
+		$news = new WP_Query( $news_args );
+		set_transient('hairspress_front_news', $news, 3600);
+	}
 ?>
 <?php if( $news->have_posts() ) : ?>
 <div id="frontInfo" class="front-info">
