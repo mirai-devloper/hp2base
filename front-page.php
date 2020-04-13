@@ -20,7 +20,6 @@
 
 <?php hp_news_view('up'); ?>
 
-
 <?= View::forge('front/space'); ?>
 
 <?= View::forge('front/blog'); ?>
