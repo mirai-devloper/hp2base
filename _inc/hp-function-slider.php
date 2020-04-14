@@ -13,25 +13,18 @@ add_action('wp_head', function() {
 		'delay' => 5000,
 	);
 
-	$slider_setting = get_transient('slider_setting');
+	$data = array();
 
-	if ($slider_setting === false) {
-		$data = array();
-
-		if ($mode = get_field('hp_slider_mode', 'option') and $mode) {
-			$data['mode'] = $mode;
-		}
-		if ($speed = get_field('hp_slider_speed', 'option') and $speed) {
-			$data['speed'] = (int) $speed;
-		}
-		if ($delay = get_field('hp_slider_pause', 'option') and $delay) {
-			$data['delay'] = (int) $delay;
-		}
-		$data = wp_parse_args($data, $defaults);
-		set_transient('slider_setting', $data, 3600);
-	} else {
-		$data = wp_parse_args($slider_setting, $defaults);
+	if ($mode = get_field('hp_slider_mode', 'option') and $mode) {
+		$data['mode'] = $mode;
 	}
+	if ($speed = get_field('hp_slider_speed', 'option') and $speed) {
+		$data['speed'] = (int) $speed;
+	}
+	if ($delay = get_field('hp_slider_pause', 'option') and $delay) {
+		$data['delay'] = (int) $delay;
+	}
+	$data = wp_parse_args($data, $defaults);
 
 	echo '<script>var sliderOptions = '.json_encode($data).'; window.sliderOptions = sliderOptions;</script>';
 }, 10);

@@ -99,7 +99,6 @@ add_action('save_post', 'hairspress_delete_transient', 10, 2);
 add_action('update_option_options_hp_slider_settings', function($old_value, $value) {
 	if ($old_value !== $value) {
 		delete_transient('hairspress_front_slider');
-		delete_transient('slider_setting');
 	}
 }, 10, 2);
 
