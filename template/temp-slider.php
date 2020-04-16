@@ -22,7 +22,7 @@
 						?>
 						<div class="pogoSlider-slide">
 							<div class="slider__content-item">
-								<?= wp_get_attachment_image($slider['id'], 'hairspress-slider'); ?>
+								<?= wp_get_attachment_image($slider['id'], 'mio-slider-large'); ?>
 							</div>
 							<?php if ( ! empty($description) ) : ?>
 								<p class="pogoSlider-slide-element pogoSlider-slider-description" data-in="slideRight" data-out="slideLeft" data-duration="750" data-delay="500">
