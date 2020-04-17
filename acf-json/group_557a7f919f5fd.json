@@ -20,6 +20,71 @@
             "esc_html": 0
         },
         {
+            "key": "field_5e9824b20003c",
+            "label": "スライドショーの画像設定",
+            "name": "hpSlider",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5e9827970003d",
+                    "label": "画像の追加",
+                    "name": "images",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 0,
+                    "max": 0,
+                    "layout": "block",
+                    "button_label": "画像を追加",
+                    "sub_fields": [
+                        {
+                            "key": "field_5e9827e40003e",
+                            "label": "画像ファイル",
+                            "name": "image",
+                            "type": "image_aspect_ratio_crop",
+                            "instructions": "最小サイズ：幅1280px X 高596px",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "crop_type": "pixel_size",
+                            "aspect_ratio_width": 1280,
+                            "aspect_ratio_height": 596,
+                            "return_format": "id",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "min_width": 0,
+                            "min_height": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "key": "field_557a7fb9458ab",
             "label": "スライダー設定",
             "name": "hp_slider_settings",
@@ -79,5 +144,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1586855940
+    "modified": 1587030269
 }

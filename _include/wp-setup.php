@@ -96,7 +96,7 @@ class Mio
 		add_image_size('admin-thumb', 80, 80, true);
 		add_image_size('youtube', 320, 180, true);
 		add_image_size('mio-slider-thumb', 240, 100, true);
-		add_image_size('mio-slider-large', 1280, 545, true);
+		add_image_size('mio-slider-large', 1280, 596, true);
 		add_image_size('hairspress-slider', 1600, 9999, true);
 		add_image_size('ogp', 1200, 630, true);
 

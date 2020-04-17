@@ -1,1 +1,136 @@
-@charset "UTF-8";body.block-editor-page .editor-block-list__block,body.block-editor-page .editor-post-title__input{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3",Meiryo,sans-serif!important}body.block-editor-page .editor-block-list__block{font-size:14px}body.block-editor-page .edit-post-visual-editor p:not(.wp-block-cover-text){font-size:14px}body.block-editor-page .wp-block-pullquote blockquote>.block-library-pullquote__content .editor-rich-text__tinymce[data-is-empty=true]:before,body.block-editor-page .wp-block-pullquote blockquote>.editor-rich-text p{font-size:24px!important}body.block-editor-page .wp-block-pullquote cite,body.block-editor-page .wp-block-pullquote footer,body.block-editor-page .wp-block-pullquote__citation{font-size:13px}body.block-editor-page .editor-post-title__block textarea{margin:0 0 20px!important;padding:8px 0!important;font-size:1.6rem!important}body.branch-5-1.block-editor-page .editor-post-title__block>div,body.branch-5-2.block-editor-page .editor-post-title__block>div,body.branch-5-3.block-editor-page .editor-post-title__block>div,body.branch-5.block-editor-page .editor-post-title__block>div{margin-left:13px;margin-right:13px}body.block-editor-page .editor-post-title__block>div{margin-left:0;margin-right:0}body.block-editor-page .editor-block-list__block h1,body.block-editor-page .editor-block-list__block h2,body.block-editor-page .editor-block-list__block h3{margin:0 0 20px!important;padding:7px 0 7px 10px!important;font-size:1.4rem!important}body.block-editor-page .wp-block{max-width:730px!important;max-height:none!important}body.branch-5-1.block-editor-page .wp-block,body.branch-5-2.block-editor-page .wp-block,body.branch-5-3.block-editor-page .wp-block,body.branch-5.block-editor-page .wp-block{max-width:760px!important;max-height:none!important}body.block-editor-page.full-width-page .wp-block{max-width:1200px!important;max-height:none!important}body.branch-5-1.block-editor-page.full-width-page .wp-block,body.branch-5-2.block-editor-page.full-width-page .wp-block,body.branch-5-3.block-editor-page.full-width-page .wp-block,body.branch-5.block-editor-page.full-width-page .wp-block{max-width:1230px!important;max-height:none!important}.wp-block[data-align=wide]{max-width:800px!important}body.branch-5 .wp-block[data-align=wide],body.branch-5-1 .wp-block[data-align=wide],body.branch-5-2 .wp-block[data-align=wide],body.branch-5-3 .wp-block[data-align=wide]{max-width:830px!important}body.branch-5 .wp-block[data-align=wide],body.branch-5-1 .wp-block[data-align=wide],body.branch-5-2 .wp-block[data-align=wide],body.branch-5-3 .wp-block[data-align=wide]{max-width:830px!important}body.block-editor-page .wp-block[data-align=full]{max-width:none!important}.pfw{display:block}.pfw-container{margin:0 auto;padding:0 15px}@media (min-width:576px){.pfw-container{max-width:500px}}@media (min-width:768px){.pfw-container{max-width:720px}}@media (min-width:992px){.pfw-container{max-width:860px}}@media (min-width:1200px){.pfw-container{max-width:1150px}}.pfw-content{overflow:hidden}@media (min-width:576px){.pfw-content .alignfull{position:relative;left:50%;width:100vw;transform:translateX(-50%)}}
+@charset "UTF-8";
+/*
+ * editor-style-gutenberg.css
+ * @package WordPress ～5.4
+ * License: GPLv2 or later
+*/
+/* font-family */
+body.block-editor-page .editor-post-title__input,
+body.block-editor-page .editor-block-list__block {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif !important; }
+
+/* 標準 font-size(16px) を 14px にする場合 */
+body.block-editor-page .editor-block-list__block {
+  font-size: 14px; }
+
+body.block-editor-page .edit-post-visual-editor p:not(.wp-block-cover-text) {
+  font-size: 14px; }
+
+/* blockquote だけ font-size を標準に戻す */
+body.block-editor-page .wp-block-pullquote blockquote > .block-library-pullquote__content .editor-rich-text__tinymce[data-is-empty="true"]:before,
+body.block-editor-page .wp-block-pullquote blockquote > .editor-rich-text p {
+  font-size: 24px !important; }
+
+body.block-editor-page .wp-block-pullquote__citation,
+body.block-editor-page .wp-block-pullquote cite,
+body.block-editor-page .wp-block-pullquote footer {
+  font-size: 13px; }
+
+/* メインタイトル 装飾  */
+body.block-editor-page .editor-post-title__block textarea {
+  margin: 0 0 20px !important;
+  padding: 8px 0 !important;
+  font-size: 1.6rem !important; }
+
+/* タイトル幅合わせ Fix WordPress～5.3   */
+body.branch-5.block-editor-page .editor-post-title__block > div,
+body.branch-5-1.block-editor-page .editor-post-title__block > div,
+body.branch-5-2.block-editor-page .editor-post-title__block > div,
+body.branch-5-3.block-editor-page .editor-post-title__block > div {
+  margin-left: 13px;
+  margin-right: 13px; }
+
+/* タイトル幅合わせ Fix WordPress5.4 */
+body.block-editor-page .editor-post-title__block > div {
+  margin-left: 0;
+  margin-right: 0; }
+
+/* ブロックタイトル 装飾 */
+body.block-editor-page .editor-block-list__block h1,
+body.block-editor-page .editor-block-list__block h2,
+body.block-editor-page .editor-block-list__block h3 {
+  margin: 0 0 20px !important;
+  padding: 7px 0 7px 10px !important;
+  font-size: 1.4rem !important; }
+
+/* 表示幅設定 メインカラム */
+/* Content-Width 730px WordPress5.4 */
+body.block-editor-page .wp-block {
+  max-width: 730px !important;
+  max-height: none !important; }
+
+/* Content-Width 730px WordPress～5.3 */
+body.branch-5.block-editor-page .wp-block,
+body.branch-5-1.block-editor-page .wp-block,
+body.branch-5-2.block-editor-page .wp-block,
+body.branch-5-3.block-editor-page .wp-block {
+  max-width: 760px !important;
+  /* 730 + 30 */
+  max-height: none !important; }
+
+/* メインカラム full-width-page */
+/* Content-Width full-width-page 1200px WordPress5.4 */
+body.block-editor-page.full-width-page .wp-block {
+  max-width: 1200px !important;
+  max-height: none !important; }
+
+/* Content-Width full-width-page 1200px WordPress～5.3 */
+body.branch-5.block-editor-page.full-width-page .wp-block,
+body.branch-5-1.block-editor-page.full-width-page .wp-block,
+body.branch-5-2.block-editor-page.full-width-page .wp-block,
+body.branch-5-3.block-editor-page.full-width-page .wp-block {
+  max-width: 1230px !important;
+  /* 1200 + 30 */
+  max-height: none !important; }
+
+/* 幅広 Fix ordPress5.4  800px */
+.wp-block[data-align="wide"] {
+  max-width: 800px !important; }
+
+/* 幅広 Fix WordPress～5.3  800px */
+body.branch-5 .wp-block[data-align="wide"],
+body.branch-5-1 .wp-block[data-align="wide"],
+body.branch-5-2 .wp-block[data-align="wide"],
+body.branch-5-3 .wp-block[data-align="wide"] {
+  max-width: 830px !important;
+  /* 800 + 30 */ }
+
+body.branch-5 .wp-block[data-align="wide"],
+body.branch-5-1 .wp-block[data-align="wide"],
+body.branch-5-2 .wp-block[data-align="wide"],
+body.branch-5-3 .wp-block[data-align="wide"] {
+  max-width: 830px !important;
+  /* 800 + 30 */ }
+
+/* 全幅 Fix */
+body.block-editor-page .wp-block[data-align="full"] {
+  max-width: none !important; }
+
+.pfw {
+  display: block; }
+
+.pfw-container {
+  margin: 0 auto;
+  padding: 0 15px; }
+  @media (min-width: 576px) {
+    .pfw-container {
+      max-width: 500px; } }
+  @media (min-width: 768px) {
+    .pfw-container {
+      max-width: 720px; } }
+  @media (min-width: 992px) {
+    .pfw-container {
+      max-width: 860px; } }
+  @media (min-width: 1200px) {
+    .pfw-container {
+      max-width: 1150px; } }
+
+.pfw-content {
+  overflow: hidden; }
+  @media (min-width: 576px) {
+    .pfw-content .alignfull {
+      position: relative;
+      left: 50%;
+      width: 100vw;
+      transform: translateX(-50%); } }
+/*# sourceMappingURL=maps/block-editor.css.map */
