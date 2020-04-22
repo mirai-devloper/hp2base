@@ -47,7 +47,10 @@ $hp2baseUpdateChecker->getVcsApi()->enableReleaseAssets();
 
 // 設定権限がないユーザーにはACFを非表示にする
 add_filter('acf/settings/show_admin', function($show) {
-	return current_user_can('manage_options');
+	if (defined('WP_DEBUG')) {
+		return WP_DEBUG;
+	}
+	return $show;
 });
 
 add_filter('acf/settings/save_json', function($path) {
@@ -96,11 +99,16 @@ function hairspress_delete_transient($post_id, $post) {
 }
 add_action('save_post', 'hairspress_delete_transient', 10, 2);
 
-add_action('update_option_options_hp_slider_settings', function($old_value, $value) {
-	if ($old_value !== $value) {
-		delete_transient('hairspress_front_slider');
+add_action('acf/save_post', function() {
+	$screen = get_current_screen();
+	if (strpos($screen->id, 'theme-slider-settings')) {
+		$hpSlider = get_field('hpSlider', 'option');
+		$getSlider = get_transient('hairspress_front_hpSlider');
+		if ($getSlider !== $hpSlider) {
+			delete_transient('hairspress_front_hpSlider');
+		}
 	}
-}, 10, 2);
+}, 20);
 
 
 // Mio_Helper

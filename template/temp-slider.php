@@ -1,18 +1,10 @@
 <?php
-	$sliders = get_transient('hairspress_front_slider');
+	$sliders = get_transient('hairspress_front_hpSlider');
 	if ($sliders === false) {
-		$sliders = get_field('hp_slider_settings', 'option');
-		set_transient('hairspress_front_slider', $sliders, 3600);
-		if ($hpSlider = get_field('hpSlider', 'option') and $hpSlider) {
-			$sliders = array();
-			if (isset($hpSlider['images'])) {
-				foreach ($hpSlider['images'] as $slider) {
-					$sliders[] = array(
-						'id' => $slider['image']
-					);
-				}
-				set_transient('hairspress_front_slider', $sliders, 3600);
-			}
+		$hpSlider = get_field('hpSlider', 'option');
+		if ($hpSlider and isset($hpSlider['images'])) {
+			$sliders = $hpSlider['images'];
+			set_transient('hairspress_front_hpSlider', $sliders, 3600);
 		}
 	}
 
@@ -25,11 +17,16 @@
 				<div class="pogoSlider pogoSlider-inner">
 					<?php foreach ($sliders as $slider) : ?>
 						<?php
-							$meta = get_post($slider['id']);
+							if (isset($slider['id'])) {
+								$slider_id = $slider['id'];
+							} elseif (isset($slider['image'])) {
+								$slider_id = $slider['image'];
+							}
+							$meta = get_post($slider_id);
 						?>
 						<div class="pogoSlider-slide">
 							<div class="slider__content-item">
-								<?= wp_get_attachment_image($slider['id'], 'mio-slider-large'); ?>
+								<?= wp_get_attachment_image($slider_id, 'mio-slider-large'); ?>
 							</div>
 							<?php if (isset($meta->post_content) and ! empty($meta->post_content)) : ?>
 								<p class="pogoSlider-slide-element pogoSlider-slider-description" data-in="slideRight" data-out="slideLeft" data-duration="750" data-delay="500">
