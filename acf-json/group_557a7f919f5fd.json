@@ -15,7 +15,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "アップロードできる画像の最小サイズがございますので、ご注意下さい。\r\n最小の横幅は960px以上が必要になります。\r\n\r\n<h4>推奨の画像サイズについて<\/h4>\r\n<p><span style=\"color: #e22;\">横幅：1280px　　高さ：596px<\/span><\/p>\r\n\r\n上記サイズ内に写真を合わせることで、綺麗に収まります。",
+            "message": "<h4>推奨の画像サイズについて<\/h4>\r\n<p><span style=\"color: #e22;\">横幅：1280px　　高さ：596px<\/span><\/p>\r\n\r\n上記サイズ内に写真を合わせることで、綺麗に収まります。",
             "new_lines": "wpautop",
             "esc_html": 0
         },
@@ -83,33 +83,6 @@
                     ]
                 }
             ]
-        },
-        {
-            "key": "field_557a7fb9458ab",
-            "label": "スライダー設定",
-            "name": "hp_slider_settings",
-            "type": "gallery",
-            "instructions": "トップページに表示する写真を設定できます。",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "min": "",
-            "max": 6,
-            "preview_size": "mio-slider-thumb",
-            "library": "uploadedTo",
-            "min_width": 960,
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "jpg,jpeg,png,JPG,JPEG,PNG",
-            "return_format": "array",
-            "insert": "append"
         }
     ],
     "location": [
@@ -144,5 +117,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1587030269
+    "modified": 1587634767
 }

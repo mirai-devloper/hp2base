@@ -101,7 +101,7 @@ add_action('save_post', 'hairspress_delete_transient', 10, 2);
 
 add_action('acf/save_post', function() {
 	$screen = get_current_screen();
-	if (strpos($screen->id, 'theme-slider-settings')) {
+	if (strpos($screen->id, 'theme-slider-settings') !== false) {
 		$hpSlider = get_field('hpSlider', 'option');
 		$getSlider = get_transient('hairspress_front_hpSlider');
 		if ($getSlider !== $hpSlider) {
