@@ -110,6 +110,14 @@ add_action('acf/save_post', function() {
 	}
 }, 20);
 
+add_action('do_faviconico', function() {
+	if ($icon = get_site_icon_url(512, get_theme_file_uri('favicon.png'))) {
+		wp_redirect($icon);
+	} else {
+		header('Content-Type: image/vnd.microsoft.icon');
+	}
+	exit;
+});
 
 // Mio_Helper
 define("INCLUDEPATH", TEMPLATEPATH."/_include");
