@@ -120,7 +120,7 @@ add_action('do_faviconico', function() {
 });
 
 add_filter('ssp_output_description', function ($ssp_description) {
-	if ( empty($ssp_description) ) {
+	if ($ssp_description == get_bloginfo('description')) {
 			return "";
 	}
 	return $ssp_description;
