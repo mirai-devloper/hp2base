@@ -119,6 +119,13 @@ add_action('do_faviconico', function() {
 	exit;
 });
 
+add_filter('ssp_output_description', function ($ssp_description) {
+	if ( empty($ssp_description) ) {
+			return "";
+	}
+	return $ssp_description;
+});
+
 // Mio_Helper
 define("INCLUDEPATH", TEMPLATEPATH."/_include");
 get_template_part('_include/mio', 'helper');
