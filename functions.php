@@ -42,9 +42,10 @@ $hp2baseUpdateChecker->getVcsApi()->enableReleaseAssets();
 
 // 設定権限がないユーザーにはACFを非表示にする
 add_filter('acf/settings/show_admin', function($show) {
-	if (defined('WP_DEBUG')) {
-		return WP_DEBUG;
+	if (current_user_can('manage_options')) {
+		return true;
 	}
+
 	return $show;
 });
 
