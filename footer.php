@@ -90,9 +90,7 @@
 				</div>
 			</div>
 
-			<div class="row">
-				<p class="col-xs-12 copyright"><small>&copy; <?= HP_Options::year(); ?> <?= HP_Acf::copyright(); ?> All Rights Reserved.</small></p>
-			</div>
+			<p class="copyright"><small>&copy; <?= HP_Options::year(); ?> <?= HP_Acf::copyright(); ?> All Rights Reserved.</small></p>
 		</div>
 	</div>
 </footer>

@@ -1,11 +1,6 @@
 <?php
-$content_width = 840;
-add_action('template_redirect', function() {
-	global $content_width;
-	if (is_page_template('full-width-page.php')) {
-		$content_width = 1200;
-	}
-});
+$content_width = 720;
+
 add_filter('admin_body_class', function($classes) {
 	global $post;
 	if (isset($post->ID)) {

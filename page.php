@@ -1,19 +1,18 @@
 <?php get_header(); ?>
 
-<!-- ここから - コンテンツ -->
-<div id="pageDefault" class="c-wrap">
-	<div class="container">
-		<h2 class="c-title-page"><span class="en"><?php single_post_title(); ?></span></h2>
 
-		<div class="page-default">
-			<?php if (have_posts()) : ?>
-				<?php while (have_posts()) : the_post(); ?>
+
+<div id="page-<?php the_ID(); ?>" class="page-normal">
+	<?php if (have_posts()) : ?>
+		<?php while (have_posts()) : the_post(); ?>
+			<h2 class="c-title-page">
+				<span class="en"><?php the_title(); ?></span>
+			</h2>
+			<div class="entry-content">
 				<?php the_content(); ?>
-				<?php endwhile; ?>
-			<?php endif; ?>
-		</div>
-	</div>
+			</div>
+		<?php endwhile; ?>
+	<?php endif; ?>
 </div>
-<!-- /#menu -->
 
 <?php get_footer(); ?>
