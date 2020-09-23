@@ -87,8 +87,8 @@
                             "label": "テキスト",
                             "name": "link_text",
                             "type": "text",
-                            "instructions": "テキストを表示する場合は、ご入力ください。",
-                            "required": 0,
+                            "instructions": "バナー下部に表示されるテキストです。必ずご入力ください。\r\n表示・非表示は下にある、トグルボタンにてご変更ください。",
+                            "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
@@ -100,6 +100,25 @@
                             "prepend": "",
                             "append": "",
                             "maxlength": 14
+                        },
+                        {
+                            "key": "field_5f6b0a09d7b54",
+                            "label": "テキストの表示",
+                            "name": "link_text_visibility",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 1,
+                            "ui": 1,
+                            "ui_on_text": "表示",
+                            "ui_off_text": "非表示"
                         },
                         {
                             "key": "field_55d6d95ff8170",
@@ -233,7 +252,7 @@
         "tags",
         "send-trackbacks"
     ],
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1561079967
+    "modified": 1600850541
 }
