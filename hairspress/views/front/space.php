@@ -20,14 +20,14 @@
 
 							$title = '';
 							if ($title_text = get_sub_field('link_text') and $title_text) {
-								$visibility = get_sub_field('link_text_visibility');
-								if (!is_bool($visibility)) {
-									$visibility = true;
-								}
+								// $visibility = get_sub_field('link_text_visibility');
+								// if (!is_bool($visibility)) {
+								// 	$visibility = true;
+								// }
 								$title = sprintf(
 									'<figcaption class="%2$s">%1$s</figcaption>',
 									strip_tags($title_text),
-									$visibility ? 'visible' : 'hidden'
+									'' //$visibility ? 'visible' : 'hidden'
 								);
 							}
 
