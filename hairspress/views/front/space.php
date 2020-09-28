@@ -27,7 +27,7 @@
 								$title = sprintf(
 									'<figcaption class="%2$s">%1$s</figcaption>',
 									strip_tags($title_text),
-									'' //$visibility ? 'visible' : 'hidden'
+									'' // $visibility ? 'visible' : 'hidden'
 								);
 							}
 
