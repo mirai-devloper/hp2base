@@ -11,14 +11,14 @@ get_header(); ?>
 
     <div class="row">
       <?php
-				$menu_query = get_transient('hairspress_menu');
+				// $menu_query = get_transient('hairspress_menu');
+				$menu_args = array(
+					'post_type'      => 'menu',
+					'posts_per_page' => -1,
+				);
+				$menu_query = new WP_Query( $menu_args );
 				if($menu_query === false) {
-					$menu_args = array(
-						'post_type'      => 'menu',
-						'posts_per_page' => -1,
-					);
-					$menu_query = new WP_Query( $menu_args );
-					set_transient('hairspress_menu', $menu_query, 3600);
+					// set_transient('hairspress_menu', $menu_query, 3600);
 				}
       ?>
       <?php if( $menu_query->have_posts() ) : ?>
