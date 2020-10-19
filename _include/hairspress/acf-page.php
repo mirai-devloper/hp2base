@@ -8,7 +8,7 @@ class HP_Acf_Page extends HP_Acf
 	{
 		self::setup();
 
-		add_action('admin_enqueue_scripts', array($this, 'enqueue_script'), 10);
+		add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'), 10);
 	}
 
 	public static function setup()
@@ -71,9 +71,8 @@ class HP_Acf_Page extends HP_Acf
 			parent::add_sub_page($v2);
 	}
 
-	public function enqueue_script()
+	public function admin_enqueue_scripts()
 	{
-		$mio = new Mio;
-		wp_enqueue_script('hp-acf', $mio->paths['js'].'wp-acf.js', array('jquery'), '1.0');
+		wp_enqueue_script('hp-acf', get_theme_file_uri('assets/js/wp-acf.js'), array('jquery'), '1.0');
 	}
 }

@@ -47,7 +47,7 @@ class HP_Admin_Login
 	// CSS
 	public function enqueue_scripts()
 	{
-		wp_enqueue_style('hp-login', $this->dir_uri().'/assets/css/wp-login.css');
+		wp_enqueue_style('hp-login', $this->dir_uri().'/assets/css/login.css');
 
 		// wp_enqueue_script('jquery');
 		wp_enqueue_script('hp-login', $this->dir_uri().'/assets/js/wp-login.js', array());

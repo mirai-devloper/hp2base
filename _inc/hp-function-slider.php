@@ -1,12 +1,14 @@
 <?php
 function hp_get_slider() {
-  get_template_part('template/temp-slider');
+  get_template_part('template-parts/front/slider');
 }
 function hp_the_slider() {
   echo hp_get_slider();
 }
 
 add_action('wp_head', function() {
+	global $wphp;
+
 	$defaults = array(
 		'mode' => 'fade',
 		'speed' => 3500,
@@ -15,13 +17,13 @@ add_action('wp_head', function() {
 
 	$data = array();
 
-	if ($mode = get_field('hp_slider_mode', 'option') and $mode) {
+	if ($mode = $wphp->hp_slider_mode and $mode) {
 		$data['mode'] = $mode;
 	}
-	if ($speed = get_field('hp_slider_speed', 'option') and $speed) {
+	if ($speed = $wphp->hp_slider_speed and $speed) {
 		$data['speed'] = (int) $speed;
 	}
-	if ($delay = get_field('hp_slider_pause', 'option') and $delay) {
+	if ($delay = $wphp->hp_slider_pause and $delay) {
 		$data['delay'] = (int) $delay;
 	}
 	$data = wp_parse_args($data, $defaults);

@@ -1,5 +1,6 @@
-<?php get_header(); ?>
+<?php
+	get_header();
 
-<?php get_template_part('loop', 'topics'); ?>
+	get_template_part('template-parts/archive/loop', 'topics');
 
-<?php get_footer(); ?>
+	get_footer();

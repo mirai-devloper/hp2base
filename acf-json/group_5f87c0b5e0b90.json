@@ -1,0 +1,217 @@
+{
+    "key": "group_5f87c0b5e0b90",
+    "title": "セットメニュー",
+    "fields": [
+        {
+            "key": "field_5f87c0e84c000",
+            "label": "詳細",
+            "name": "setmenu",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5f87c1b58bc72",
+                    "label": "基本情報",
+                    "name": "",
+                    "type": "tab",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placement": "left",
+                    "endpoint": 0
+                },
+                {
+                    "key": "field_5f87c1e48bc73",
+                    "label": "所要時間",
+                    "name": "time_required",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "例）２時間　など",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5f87c44e8bc74",
+                    "label": "料金",
+                    "name": "price",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_5f87c4828bc75",
+                            "label": "最小金額",
+                            "name": "min",
+                            "type": "number",
+                            "instructions": "半角数字のみ",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": 5000,
+                            "prepend": "￥",
+                            "append": "",
+                            "min": 0,
+                            "max": "",
+                            "step": 1
+                        },
+                        {
+                            "key": "field_5f87c5158bc76",
+                            "label": "〜",
+                            "name": "kara",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 1,
+                            "ui_on_text": "付ける",
+                            "ui_off_text": "付けない"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_5f880126490d3",
+                    "label": "予約URL",
+                    "name": "reserve_url",
+                    "type": "url",
+                    "instructions": "何も設定しない状態にすれば、サロン情報の予約URLが利用されます。",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5f87cbf673e4a",
+                    "label": "画像設定",
+                    "name": "",
+                    "type": "tab",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placement": "left",
+                    "endpoint": 0
+                },
+                {
+                    "key": "field_5f87ccbf73e4c",
+                    "label": "画像一覧",
+                    "name": "images",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 0,
+                    "max": 3,
+                    "layout": "block",
+                    "button_label": "画像の追加",
+                    "sub_fields": [
+                        {
+                            "key": "field_5f87cc0573e4b",
+                            "label": "画像",
+                            "name": "image",
+                            "type": "image_aspect_ratio_crop",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "crop_type": "aspect_ratio",
+                            "aspect_ratio_width": 360,
+                            "aspect_ratio_height": 460,
+                            "return_format": "id",
+                            "preview_size": "catalog-single",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "jpeg,jpg,png"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "setmenu"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "format",
+        "page_attributes"
+    ],
+    "active": true,
+    "description": "",
+    "modified": 1602754428
+}

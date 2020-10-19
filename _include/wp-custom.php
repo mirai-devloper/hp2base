@@ -7,21 +7,21 @@ class WP_Mio_Custom
 	public function __construct()
 	{
 		// wp_nav_menu li class filter
-		add_filter('nav_menu_css_class', array($this, 'remove_nav_menu_class'), 100, 1);
-		add_filter('nav_menu_item_id', array($this, 'remove_nav_menu_class'), 100, 1);
-		add_filter('page_css_class', array($this, 'remove_nav_menu_class'), 100, 1);
+		// add_filter('nav_menu_css_class', array($this, 'remove_nav_menu_class'), 100, 1);
+		// add_filter('nav_menu_item_id', array($this, 'remove_nav_menu_class'), 100, 1);
+		// add_filter('page_css_class', array($this, 'remove_nav_menu_class'), 100, 1);
 
 		// 投稿制限のパスワードフォーム
-		add_filter('the_password_form', array($this, 'post_passwd_form'));
-		add_filter('protected_title_format', array($this, 'protected_title'));
+		// add_filter('the_password_form', array($this, 'post_passwd_form'));
+		// add_filter('protected_title_format', array($this, 'protected_title'));
 
 		// More Jump
-		add_filter('the_content_more_link', array($this, 'remove_more_jump'));
-		add_filter('the_content_more_link', array($this, 'more_class'));
+		// add_filter('the_content_more_link', array($this, 'remove_more_jump'));
+		// add_filter('the_content_more_link', array($this, 'more_class'));
 
 		// Comment Text Escape
 		// add_filter('get_comment_text', array($this, 'esc_comment'), 9);
-		add_filter('get_comment_text', 'make_clickable');
+		// add_filter('get_comment_text', 'make_clickable');
 	}
 
 	public function remove_nav_menu_class($var)

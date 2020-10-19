@@ -44,7 +44,7 @@ class HP_Dashboard extends HP_Acf
 		$this->add('hp_dashboard_manual_pdf', 'マニュアルPDF', array($this, 'manual'));
 
 		// 予約ボタン
-		if (parent::reserve_url())
+		if (reserve_url())
 			$this->add('hp_dashboard_reserve_btn', 'ネット予約ボタン', array($this, 'reserve_btn'));
 
 		// 契約期間
@@ -56,18 +56,20 @@ class HP_Dashboard extends HP_Acf
 	{
 		$image_path = get_template_directory().'/assets/images/common/btn_reserve.png';
 		$new_path = ABSPATH.'btn_reserve.png';
-		if ( ! file_exists($new_path))
-			if ( ! copy($image_path, $new_path))
+		if ( ! file_exists($new_path)) {
+			if ( ! copy($image_path, $new_path)) {
 				echo 'faild';
+			}
+		}
 
-		if (parent::reserve_url() and file_exists($new_path))
+		if (reserve_url() and file_exists($new_path))
 		{
 			?>
 <div class="inside">
 	<div id="dashboard_reserve_btn">
 		<h4>ブログ用のネット予約ボタン</h4>
 		<div>
-			<?= Form::text('reserve_btn', '[reserve_btn]', array('id' => 'reserve_btn', 'onclick' => 'select()')); ?>
+			<input type="text" id="reserve_btn" value="[reserve_btn]" onclick="select()">
 			<p>上のコードをコピーして、ブログを書いてる場所などに貼り付けることで利用可能です。<br>以下のようにリンク付きで画像が表示されます。</p>
 			<p><?= do_shortcode('[reserve_btn]'); ?></p>
 		</div>
@@ -91,7 +93,7 @@ class HP_Dashboard extends HP_Acf
 	{
 		$root_url = is_multisite() ? network_home_url() : site_url().'/';
 		$home_url = $root_url.'btn_reserve.png';
-		if ($reserve_url = parent::reserve_url())
+		if ($reserve_url = reserve_url())
 		{
 			return sprintf(
 				'<a href="%1$s" target="_blank">%2$s</a>',

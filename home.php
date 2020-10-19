@@ -1,5 +1,6 @@
-<?php get_header(); ?>
+<?php
+	get_header();
 
-<?= View::forge('blog/archive'); ?>
+	get_template_part('template-parts/archive/loop', 'post');
 
-<?php get_footer(); ?>
+	get_footer();

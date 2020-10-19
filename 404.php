@@ -17,9 +17,10 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="format-detection" content="telephone=no">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<?php wp_head(); ?>
-	<link rel="stylesheet" href="<?= Assets::css('404.css'); ?>">
+	<?= Asset::css('404.css'); ?>
 <style>
 html,body {
 	background-color: #fff;
@@ -46,15 +47,15 @@ html,body {
 						$image = get_bloginfo();
 					}
 				?>
-				<h1><a href="<?= esc_url(home_url()); ?>"><?= $image; ?></a></h1>
+				<h1><a href="<?= home_url('/'); ?>"><?= $image; ?></a></h1>
 				<div class="error-body">
 					<div class="error-head">
 						<h2><span class="en">404 Not Found</span></h2>
 						<p>ページが見つかりません</p>
 						<?php if( is_user_logged_in() ) : ?>
-						<div class="login">
-							<p>ログイン中の場合は、<a href="<?= get_admin_url(); ?>">管理画面へ戻る</a></p>
-						</div>
+							<div class="login">
+								<p>ログイン中の場合は、<a href="<?= get_admin_url(); ?>">管理画面へ戻る</a></p>
+							</div>
 						<?php endif; ?>
 					</div>
 
@@ -63,7 +64,7 @@ html,body {
 						<p>お探しのページが見つからなかったようです。</p>
 						<p>URLをご入力頂いた場合は、入力頂いたURLをよくお確かめの上、再度アクセスしてみてください。<br>
 							リンクから来られた場合は、ページもしくは記事が削除された可能性があります。</p>
-							<p>お手数ではございますが、<a href="<?= esc_url(home_url()); ?>">トップページへ戻る</a>か、下記のメニューよりお探し頂ますようお願い致します。</p>
+							<p>お手数ではございますが、<a href="<?= home_url('/'); ?>">トップページへ戻る</a>か、下記のメニューよりお探し頂ますようお願い致します。</p>
 					</div>
 
 					<div class="error-menu">
@@ -74,38 +75,39 @@ html,body {
 								'container_class' => 'e-gnavi',
 								'items_wrap' => '<h3>サイトメニュー</h3><ul id = "%1$s" class = "%2$s">%3$s</ul>',
 							);
-							wp_nav_menu( $args ); ?>
+							wp_nav_menu( $args );
+						?>
 
 						<?php
 							$blog_args = array(
 								'post_type' => 'post',
 								'showposts' => 5
 							);
-							$blog_query = new WP_Query($blog_args);
-							if( $blog_query->have_posts() ) :
+							$blog = new WP_Query($blog_args);
 						?>
+						<?php if( $blog->have_posts() ) : ?>
 							<div class="e-blog">
 								<h3>ブログの新着</h3>
 								<ul>
-								<?php while( $blog_query->have_posts() ) : $blog_query->the_post(); ?>
+								<?php while( $blog->have_posts() ) : $blog->the_post(); ?>
 									<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 								<?php endwhile; ?>
 								</ul>
-								</div>
+							</div>
 						<?php endif; ?>
 
 						<?php
-							$blog_args = array(
+							$catalog_args = array(
 								'post_type' => 'catalog',
 								'showposts' => 5
 							);
-							$blog_query = new WP_Query($blog_args);
-							if( $blog_query->have_posts() ) :
+							$catalog = new WP_Query($catalog_args);
 						?>
+						<?php if( $catalog->have_posts() ) : ?>
 							<div class="e-catalog">
 								<h3>ヘアカタログの新着</h3>
 								<ul>
-								<?php while( $blog_query->have_posts() ) : $blog_query->the_post(); ?>
+								<?php while( $catalog->have_posts() ) : $catalog->the_post(); ?>
 									<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 								<?php endwhile; ?>
 								</ul>
@@ -120,11 +122,11 @@ html,body {
 	<div class="container-fullid copycolor clearfix">
 		<!-- <div class="row"> -->
 			<div class="col-xs-12">
-				<p class="col-xs-12 copyright"><small>&copy; <?= HP_Options::year(); ?> <?= HP_Acf::copyright(); ?> All Rights Reserved.</small></p>
+				<p class="col-xs-12 copyright"><small>&copy; <?= copyright_year(); ?> <?= copyright(); ?> All Rights Reserved.</small></p>
 			</div>
 		<!-- </div> -->
 	</div>
 </div>
-	<?php wp_footer(); ?>
+<?php wp_footer(); ?>
 </body>
 </html>

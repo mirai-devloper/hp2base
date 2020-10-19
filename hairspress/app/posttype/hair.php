@@ -6,6 +6,7 @@ class Posttype_Hair
 	public function __construct()
 	{
 		add_action('init', array($this, 'register'));
+		// add_action('init', array($this, 'add_rewrite_rule'));
 		add_filter('post_type_link', array($this, 'permalink'), 10, 3);
 		add_filter('post_link', array($this, 'permalink'), 10, 3);
 		add_action( 'manage_hair_posts_columns' , array($this, 'columns'));
@@ -28,7 +29,7 @@ class Posttype_Hair
 			'labels' => array(
 				'name' => 'ヘアカタログ',
 				'menu_name' => 'ヘアカタログ',
-				'singular_name' => 'ヘアカタログ:catalog',
+				'singular_name' => 'ヘアカタログ',
 			),
 			'public' => true,
 			'has_archive' => true,
@@ -94,12 +95,52 @@ class Posttype_Hair
 		$this->rewrite();
 	}
 
+
+	public function add_rewrite_rule()
+	{
+		// ヘアカタログ
+		add_rewrite_rule( 'catalog/details/([0-9]+)/?$', 'index.php?post_type=catalog&p=$matches[1]', 'top' );
+		add_rewrite_rule( 'catalog/details/([0-9]+)(/[0-9]+)?/?$', 'index.php?post_type=catalog&p=$matches[1]&page=$matches[2]', 'top' );
+
+		// ヘアカタログ　タクソノミー
+		add_rewrite_rule( 'catalog/tag/([^/]+)/?$', 'index.php?post_type=catalog&taxonomy=catalog_tag&catalog_tag=$matches[1]', 'top' );
+		add_rewrite_rule( 'catalog/stylist/([^/]+)/?$', 'index.php?post_type=catalog&taxonomy=com_category&stylist=$matches[1]', 'top' );
+
+		// カタログ　レングス
+		add_rewrite_rule( 'catalog/length/([^/]+)/?$', 'index.php?post_type=catalog&taxonomy=catalog_length&length=$matches[1]', 'top' );
+
+		// カタログサーチ
+			// シングルサーチ
+		add_rewrite_rule( 'catalog/search/s/([^/]+)/?$', 'index.php?post_type=catalog&stylist=$matches[1]', 'top' );
+		add_rewrite_rule( 'catalog/search/l/([^/]+)/?$', 'index.php?post_type=catalog&length=$matches[1]', 'top' );
+		add_rewrite_rule( 'catalog/search/t/([^/]+)/?$', 'index.php?post_type=catalog&catalog_tag=$matches[1]', 'top' );
+
+			// 2パターン
+		add_rewrite_rule( 'catalog/search/s/([^/]+)/l/([^/]+)/?$', 'index.php?post_type=catalog&stylist=$matches[1]&length=$matches[2]', 'top' );
+		add_rewrite_rule( 'catalog/search/s/([^/]+)/t/([^/]+)/?$', 'index.php?post_type=catalog&stylist=$matches[1]&catalog_tag=$matches[2]', 'top' );
+		add_rewrite_rule( 'catalog/search/l/([^/]+)/t/[,]?([^/]+)/?$', 'index.php?post_type=catalog&length=$matches[1]&catalog_tag=$matches[2]', 'top' );
+
+		add_rewrite_rule( 'catalog/search/s/([^/]+)/l/([^/]+)/t/([^/]+)/?$', 'index.php?post_type=catalog&stylist=$matches[1]&length=$matches[2]&catalog_tag=$matches[3]', 'top' );
+
+			// ページング
+		add_rewrite_rule( 'catalog/search/s/([^/]+)/page/?([0-9]{1,})/?$', 'index.php?post_type=catalog&stylist=$matches[1]&paged=$matches[2]', 'top' );
+		add_rewrite_rule( 'catalog/search/l/([^/]+)/page/?([0-9]{1,})/?$', 'index.php?post_type=catalog&length=$matches[1]&paged=$matches[2]', 'top' );
+		add_rewrite_rule( 'catalog/search/t/([^/]+)/page/?([0-9]{1,})/?$', 'index.php?post_type=catalog&catalog_tag=$matches[1]&paged=$matches[2]', 'top' );
+
+		add_rewrite_rule( 'catalog/search/s/([^/]+)/l/([^/]+)/page/?([0-9]{1,})/?$', 'index.php?post_type=catalog&stylist=$matches[1]&length=$matches[2]&paged=$matches[3]', 'top' );
+		add_rewrite_rule( 'catalog/search/s/([^/]+)/t/([^/]+)/page/?([0-9]{1,})/?$', 'index.php?post_type=catalog&stylist=$matches[1]&catalog_tag=$matches[2]&paged=$matches[3]', 'top' );
+		add_rewrite_rule( 'catalog/search/l/([^/]+)/t/([^/]+)/page/?([0-9]{1,})/?$', 'index.php?post_type=catalog&length=$matches[1]&catalog_tag=$matches[2]&paged=$matches[3]', 'top' );
+
+		add_rewrite_rule( 'catalog/search/s/([^/]+)/l/([^/]+)/t/([^/]+)/page/?([0-9]{1,})/?$', 'index.php?post_type=catalog&stylist=$matches[1]&length=$matches[2]&catalog_tag=$matches[3]&paged=$matches[4]', 'top' );
+		// add_rewrite_rule( 'catalog/length/([^/]+)/?$', 'index.php?post_type=catalog&length=$matches[1]', 'top' );
+	}
+
 	public function rewrite()
 	{
 		global $wp_rewrite;
 
 		$wp_rewrite->add_rewrite_tag('%catalog%', '(catalog)', 'post_type=');
-		$wp_rewrite->add_permastruct('catalog', '/%catalog%/%post_id%/', false);
+		$wp_rewrite->add_permastruct('catalog', '/%catalog%/details/%post_id%/', false);
 	}
 
 	public function permalink($post_link, $id = 0, $leavename)

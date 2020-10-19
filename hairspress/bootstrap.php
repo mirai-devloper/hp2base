@@ -15,6 +15,7 @@ defined('CRLF') or define('CRLF', chr(13).chr(10));
 // load the base functions
 require __DIR__.DS.'base.php';
 
+
 setup_autoloader();
 
 function setup_autoloader()
@@ -32,21 +33,16 @@ function setup_autoloader()
 	));
 }
 
-// カテゴリーウィジェットの再登録
-unregister_widget('WP_Widget_Categories');
-register_widget('Hairspress\\App\\Widget_Categories');
+require __DIR__.DS.'functions/global.php';
+require __DIR__.DS.'functions/common.php';
+require __DIR__.DS.'functions/google.php';
+require __DIR__.DS.'functions/staff.php';
+require __DIR__.DS.'functions/setmenu.php';
 
-// 最新の投稿ウィジェットの再登録
-unregister_widget('WP_Widget_Recent_Posts');
-register_widget('Hairspress\\App\\Widget_Recentposts');
 
-// アーカイブウィジェットの再登録
-unregister_widget('WP_Widget_Archives');
-register_widget('Hairspress\\App\\Widget_Archives');
-
-unregister_widget('WP_Widget_Recent_Comments');
-unregister_widget('WP_Widget_Meta');
-unregister_widget('WP_Widget_RSS');
+$hairspress_initialize = new Hairspress\App\Wordpress_Initialize();
+$hairspress_login = Hairspress\App\Wordpress_Login::init();
+$hairspress_title = new Hairspress\App\Wordpress_Title();
 
 $hairspress_admin = new Hairspress\App\Wordpress_Admin();
 $hairspress_admin->init();
@@ -54,3 +50,33 @@ $hairspress_admin->init();
 $hairspress_tinymce = new Hairspress\App\Wordpress_Tinymce();
 $hairspress_tinymce->init();
 
+$hairspress_widget = new Hairspress\App\Wordpress_Widget();
+$hairspress_widget->init();
+
+$hairspress_theme = new Hairspress\App\Wordpress_Theme();
+
+$hairspress_post_password = new Hairspress\App\Wordpress_Post_Password();
+
+$hp_setting = get_field('hp_setting', 'option');
+if (!isset($hp_setting['post_type']['catalog'])) {
+	$hp_setting['post_type']['catalog'] = true;
+}
+if (!isset($hp_setting['post_type']['setmenu'])) {
+	$hp_setting['post_type']['setmenu'] = false;
+}
+if (!isset($hp_setting['post_type']['channel'])) {
+	$hp_setting['post_type']['channel'] = true;
+}
+
+if ($hp_setting['post_type']['catalog']) {
+	// $post_type__catalog = new Hairspress\App\Posttype_Hair();
+	add_action('init', 'add_catalog_post_type');
+}
+
+if ($hp_setting['post_type']['setmenu']) {
+	new Hairspress\App\Posttype_Setmenu();
+}
+
+if ($hp_setting['post_type']['channel']) {
+	add_action('init', 'add_channel_post_type');
+}

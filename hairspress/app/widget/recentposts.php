@@ -56,7 +56,10 @@ class Widget_Recentposts extends \WP_Widget_Recent_Posts
 		), $instance ) );
 
 		if ( ! $r->have_posts() ) {
-				return;
+			echo $args['before_widget'];
+			echo '<p class="error">Post-type: "' . $this->post_type . '" is not supported.</p>';
+			echo $args['after_widget'];
+			return;
 		}
 
 		echo $args['before_widget'];

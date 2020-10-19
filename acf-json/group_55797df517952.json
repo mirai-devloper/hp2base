@@ -15,7 +15,7 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
+            "placement": "left",
             "endpoint": 0
         },
         {
@@ -27,7 +27,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 50,
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -51,7 +51,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 50,
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -59,9 +59,7 @@
             "placeholder": "例）HairsPress",
             "prepend": "",
             "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
+            "maxlength": ""
         },
         {
             "key": "field_55c0295f79bfc",
@@ -72,7 +70,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 50,
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -80,9 +78,7 @@
             "placeholder": "例）ヘアーズプレス",
             "prepend": "",
             "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
+            "maxlength": ""
         },
         {
             "key": "field_557ba43fa4e92",
@@ -112,25 +108,23 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 25,
+                "width": "25",
                 "class": "",
                 "id": ""
             },
             "choices": {
                 "none": "なし",
-                "reservia": "リザービア",
+                "reservia": "旧リザービア",
+                "reservia_new": "新リザービア",
                 "other": "その他"
             },
-            "default_value": {
-                "none": "none"
-            },
+            "default_value": "none",
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
+            "return_format": "value",
             "ajax": 0,
-            "placeholder": "",
-            "disabled": 0,
-            "readonly": 0
+            "placeholder": ""
         },
         {
             "key": "field_55979cecc6e19",
@@ -171,10 +165,17 @@
                         "operator": "==",
                         "value": "reservia"
                     }
+                ],
+                [
+                    {
+                        "field": "field_55979b63c6e18",
+                        "operator": "==",
+                        "value": "reservia_new"
+                    }
                 ]
             ],
             "wrapper": {
-                "width": 75,
+                "width": "75",
                 "class": "",
                 "id": ""
             },
@@ -184,9 +185,7 @@
             "append": "",
             "min": 1,
             "max": 10000,
-            "step": 1,
-            "readonly": 0,
-            "disabled": 0
+            "step": 1
         },
         {
             "key": "field_557a77b96e1d8",
@@ -225,7 +224,7 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
+            "placement": "left",
             "endpoint": 0
         },
         {
@@ -237,7 +236,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 50,
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -245,9 +244,7 @@
             "placeholder": "082-000-0000",
             "prepend": "",
             "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
+            "maxlength": ""
         },
         {
             "key": "field_55798fca3d7bb",
@@ -258,7 +255,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 50,
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -266,9 +263,7 @@
             "placeholder": "0120-000-000",
             "prepend": "",
             "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
+            "maxlength": ""
         },
         {
             "key": "field_592246fc2c5e9",
@@ -454,7 +449,7 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
+            "placement": "left",
             "endpoint": 0
         },
         {
@@ -533,7 +528,7 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
+            "placement": "left",
             "endpoint": 0
         },
         {
@@ -617,22 +612,6 @@
             "placeholder": "http:\/\/"
         },
         {
-            "key": "field_557ba7720000b",
-            "label": "Google+",
-            "name": "hp_salon_social_googleplus",
-            "type": "url",
-            "instructions": "Google+のURLを入力ください。",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "http:\/\/"
-        },
-        {
             "key": "field_55b60f777e457",
             "label": "Pinterest",
             "name": "hp_salon_social_pinterest",
@@ -660,8 +639,8 @@
     ],
     "menu_order": 0,
     "position": "normal",
-    "style": "default",
-    "label_placement": "left",
+    "style": "seamless",
+    "label_placement": "top",
     "instruction_placement": "field",
     "hide_on_screen": [
         "permalink",
@@ -679,7 +658,7 @@
         "tags",
         "send-trackbacks"
     ],
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1560940836
+    "modified": 1603099927
 }

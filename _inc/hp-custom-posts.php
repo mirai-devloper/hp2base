@@ -238,11 +238,7 @@ function add_staff_post_type() {
 }
 
 // ヘアカタログ
-if( function_exists('get_field') ) {
-	if( get_field('hp_reservia_catalog_check', 'option') ) {
-		add_action('init', 'add_catalog_post_type');
-	}
-}
+
 function add_catalog_post_type() {
 	$params = array(
 		'labels' => array(
@@ -281,12 +277,6 @@ function add_catalog_post_type() {
 }
 
 // チャンネル
-if( function_exists('get_field') ) {
-	if( get_field('hp_theme_channel_swich', 'option') ) {
-		add_action('init', 'add_channel_post_type');
-	}
-}
-
 function add_channel_post_type() {
 	$params = array(
 		'labels' => array(

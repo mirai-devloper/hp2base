@@ -1,96 +1,107 @@
-<footer id="footer">
-	<?php if(HP_Social::option_url('prefix', 'social', 'option')) : ?>
-	<div id="footerSocialButton" class="footer-social-button-wrap">
-		<div class="container">
-			<div class="row">
-				<?= HP_Social::view('prefix', 'social', 'option', array('class' => 'social-icon list-inline')); ?>
+<?php
+	global $wphp;
 
+	$footer_social = false;
+
+	if (
+		$wphp->hp_salon_social_facebook
+		or $wphp->hp_salon_social_instagram
+		or $wphp->hp_salon_social_twitter
+		or $wphp->hp_salon_social_line
+		or $wphp->hp_salon_social_youtube
+		or $wphp->hp_salon_social_pinterest
+	) {
+		$footer_social = true;
+	}
+?>
+<footer id="footer">
+	<?php if($footer_social) : ?>
+		<div id="footerSocialButton" class="footer-social-button-wrap">
+			<div class="container">
+				<?php get_template_part('template-parts/site-social'); ?>
 				<div id="pagetop" class="pagetop-wrap">
 					<a href="#drawer" class="pagetop btn btn-radius btn-shark"><i class="fa fa-angle-up"></i></a>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- /#footerSocialButton -->
+		<!-- /#footerSocialButton -->
 	<?php endif; ?>
 
 	<div id="footerContact" class="c-wrap footer-contact-wrap">
 		<div class="container">
-			<div class="row">
-				<dl class="footer-contact">
-					<dt>ご予約・お問い合わせ</dt>
-					<?php if ($address = HP_Acf::get('hp_salon_address', 'option')) : ?>
-						<dd>
-							<?= esc_html($address); ?>
-							<?php if (HP_Googlemap::mapdata()) : ?>
-								&nbsp;[<?= HP_Googlemap::link(['text' => 'Google map']); ?>]
-							<?php endif; ?>
-						</dd>
-					<?php endif; ?>
+			<dl class="footer-contact">
+				<dt>ご予約・お問い合わせ</dt>
+				<?php if ($address = $wphp->hp_salon_address) : ?>
+					<dd>
+						<?= esc_html($address); ?>
+						<?php if ($mapdata = $wphp->hp_salon_google_map) : ?>
+							&nbsp;[<?= google_map_link(['text' => 'Google map']); ?>]
+						<?php endif; ?>
+					</dd>
+				<?php endif; ?>
 
-					<?php if ($opentime = HP_Acf::get('hairs_opens_text', 'option')) : ?>
-						<dd><?= $opentime; ?></dd>
-					<?php endif; ?>
+				<?php if ($opentime = $wphp->hairs_opens_text) : ?>
+					<dd><?= $opentime; ?></dd>
+				<?php endif; ?>
 
-					<?php if ($holiday = HP_Acf::get('hp_salon_holiday', 'option')) : ?>
-						<dd>定休日　<?= $holiday; ?></dd>
-					<?php endif; ?>
-				</dl>
+				<?php if ($holiday = $wphp->hp_salon_holiday) : ?>
+					<dd>定休日　<?= $holiday; ?></dd>
+				<?php endif; ?>
+			</dl>
 
-				<?php
-					$salon_tel = HP_Acf::get('hp_salon_telephone', 'option');
-					if ($freedial = HP_Acf::get('hp_salon_freedial', 'option'))
-						$salon_tel = $freedial;
+			<?php
+				$salon_tel = $wphp->hp_salon_telephone;
+				if ($freedial = $wphp->hp_salon_telephone) {
+					$salon_tel = $freedial;
+				}
 
-					$reserve_url = HP_Acf::reserve_url();
-				?>
-				<?php if ($salon_tel or $reserve_url) : ?>
+				$reserve_url = reserve_url();
+			?>
+			<?php if ($salon_tel or $reserve_url) : ?>
 				<div class="footer-link">
 					<?php if ($salon_tel) : ?>
-					<a href="tel:<?= esc_attr($salon_tel); ?>" class="btn btn-default btn-xl tel-link">
-						<i class="fa fa-phone"></i><span><?= esc_html($salon_tel); ?></span>
-					</a>
+						<a href="tel:<?= $salon_tel; ?>" class="btn btn-default btn-xl tel-link">
+							<i class="fa fa-phone"></i><span><?= $salon_tel; ?></span>
+						</a>
 					<?php endif; ?>
 
 					<?php if ($reserve_url) : ?>
-						<a href="<?= esc_url($reserve_url); ?>" class="btn btn-default btn-xl"><i class="fa fa-desktop"></i><span>かんたんネット予約</span></a>
+						<a href="<?= esc_url($reserve_url); ?>" class="btn btn-default btn-xl" target="_blank">
+							<i class="fa fa-desktop"></i><span>かんたんネット予約</span>
+						</a>
 					<?php endif; ?>
 				</div>
-					<?php if (HP_Acf::get('hp_salon_freedial_region', 'option') and HP_Acf::get('hp_salon_telephone', 'option')) : ?>
-						<?php $tel = HP_Acf::get('hp_salon_telephone', 'option'); ?>
-					<div class="freedial-region-footer"><i class="fa fa-phone"></i>県外からおかけの方は、<a href="tel:<?= esc_attr($tel); ?>" class="tel-link"><?= esc_html($tel); ?></a>へおかけください。</div>
-					<?php endif; ?>
+				<?php if ($wphp->hp_salon_freedial_region and $wphp->hp_salon_telephone) : ?>
+					<div class="freedial-region-footer">
+						<i class="fa fa-phone"></i>県外からおかけの方は、<a href="tel:<?= esc_attr($wphp->hp_salon_telephone); ?>" class="tel-link"><?= esc_html($wphp->hp_salon_telephone); ?></a>へおかけください。
+					</div>
 				<?php endif; ?>
-			</div>
+			<?php endif; ?>
 		</div>
 	</div>
 	<!-- /#footerContact -->
 
 	<div id="footerNavi" class="footer-navi-wrap">
 		<div class="container-fullid">
-			<div class="row">
-				<div class="col-md-9">
-					<?php if( hp_nav_menu(array('theme_location' => 'primary-menu', 'echo' => 0)) ) : ?>
-					<nav>
-						<?php
-							$nav_args = array(
-								'theme_location' => 'primary-menu',
-								'ul_class' => 'list-inline foot-navi'
-							);
-							hp_nav_menu($nav_args);
-						?>
-					</nav>
-					<?php endif; ?>
+			<div class="footer-navi__row">
+				<div class="footer-navi__main">
+					<?php
+						$nav_args = array(
+							'theme_location' => 'primary-menu',
+							'ul_class' => 'list-inline foot-navi'
+						);
+						hp_nav_menu($nav_args);
+					?>
 				</div>
 
-				<div class="col-md-3 footer-logo">
+				<div class="footer-navi__logo footer-logo">
 					<?php if(get_logo_id()) : ?>
-					<a href="<?= esc_url(home_url()); ?>"><?php the_logo(); ?></a>
+						<a href="<?= home_url('/'); ?>"><?php the_logo(); ?></a>
 					<?php endif; ?>
 				</div>
 			</div>
 
-			<p class="copyright"><small>&copy; <?= HP_Options::year(); ?> <?= HP_Acf::copyright(); ?> All Rights Reserved.</small></p>
+			<p class="copyright"><small>&copy; <?= copyright_year(); ?> <?= copyright(); ?> All Rights Reserved.</small></p>
 		</div>
 	</div>
 </footer>
@@ -138,23 +149,23 @@
 					<li><a href="<?= get_permalink($pages); ?>#accessmap"><i class="fa fa-map-marker"></i><span>アクセス</span></a></li>
 				</ul>
 				<?php endif; ?>
-				<?= HP_Social::view('prefix', 'social', 'option', array('class' => 'social-icon drawer-social')); ?>
+				<?php get_template_part('template-parts/site-social'); ?>
 			</nav>
 		</div>
 	</div>
 </div>
 
 <?php
-	$salon_tel = get_field('hp_salon_telephone', 'option');
+	$salon_tel = $wphp->hp_salon_telephone;
 	$freedial_false_tel = $salon_tel;
-	if ($freedial = get_field('hp_salon_freedial', 'option'))
+	if ($freedial = $wphp->hp_salon_freedial and $freedial)
 	{
 		$salon_tel = $freedial;
 	}
 
-	$reserve_url = HP_Acf::reserve_url();
+	$reserve_url = reserve_url();
 
-	$freedial_region = get_field('hp_salon_freedial_region', 'option');
+	$freedial_region = $wphp->hp_salon_freedial_region;
 ?>
 <?php if ($salon_tel or $reserve_url) : ?>
 <div id="spFixedContact" class="sp-fixed-contact">
@@ -179,7 +190,7 @@
 
 		<?php if ($reserve_url) : ?>
 		<div class="item">
-			<a href="<?= esc_url($reserve_url); ?>" class="reserve">
+			<a href="<?= esc_url($reserve_url); ?>" class="reserve" target="_blank">
 				<i class="fa fa-mobile"></i><span class="txt">ネットで予約</span>
 			</a>
 		</div>

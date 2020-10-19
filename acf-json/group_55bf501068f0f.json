@@ -223,7 +223,7 @@
     ],
     "menu_order": 2,
     "position": "acf_after_title",
-    "style": "default",
+    "style": "seamless",
     "label_placement": "top",
     "instruction_placement": "field",
     "hide_on_screen": [
@@ -242,7 +242,7 @@
         "tags",
         "send-trackbacks"
     ],
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1583393256
+    "modified": 1603102762
 }

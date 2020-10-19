@@ -55,9 +55,9 @@
         ]
     ],
     "menu_order": 0,
-    "position": "normal",
+    "position": "acf_after_title",
     "style": "seamless",
-    "label_placement": "left",
+    "label_placement": "top",
     "instruction_placement": "field",
     "hide_on_screen": [
         "permalink",
@@ -75,7 +75,7 @@
         "tags",
         "send-trackbacks"
     ],
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1560940758
+    "modified": 1603101715
 }

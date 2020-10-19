@@ -1,5 +1,14 @@
-<?php get_header(); ?>
+<?php
+	$post_type = get_post_type();
 
-<?= View::forge('blog/detail'); ?>
+	get_header();
 
-<?php get_footer(); ?>
+	if ($post_type) {
+		get_template_part('template-parts/contents/content', $post_type);
+	} else {
+		get_template_part('template-parts/contents/content', 'post');
+	}
+
+
+	get_footer();
+

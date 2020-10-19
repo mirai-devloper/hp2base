@@ -22,6 +22,7 @@
 								if ($hp_theme) {
 									$theme_name = str_replace('hp2', '', $hp_theme);
 								}
+								var_dump($hp_theme);
 							?>
 							<a href="<?= esc_url($instagram); ?>" target="_blank"><?= Asset::img("common/bnr_instagram_{$theme_name}.jpg"); ?></a>
 						</div>

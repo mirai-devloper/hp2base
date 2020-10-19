@@ -3,19 +3,18 @@
  * Googleアナリティクスなどのパーツ
  */
 
-new HP_Google;
-
-class HP_Google extends HP_Acf
+class HP_Google
 {
 	public function __construct()
 	{
-
+		// dummy
 	}
 
 	// Google Search Console
 	public static function console()
 	{
-		if ($console = parent::get('hp_search_console', 'option'))
+		global $wphp;
+		if ($console = $wphp->hp_search_console and $console)
 		{
 			$allow_html = [
 				'meta' => [
@@ -30,8 +29,9 @@ class HP_Google extends HP_Acf
 	// トラッキングコード
 	public static function tracking_code()
 	{
+		global $wphp;
 		if (
-			$tracking_code = parent::get('hp_google_analytics', 'option')
+			$tracking_code = $wphp->hp_google_analytics
 			and ! is_user_logged_in()
 		)
 			if (preg_match('/^[a-z|A-Z]+[-]+[0-9]+[-]+[0-9]{1,}$/', $tracking_code))

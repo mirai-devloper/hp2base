@@ -1,3 +1,6 @@
+<?php
+	global $wphp;
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <?php if ( is_single() or is_singular()) : ?>
@@ -12,22 +15,24 @@
 	<?php
 	// <meta name="apple-itunes-app" content="app-id=724108890,app-argument=reservia://param=1">
 	?>
-	<?= HP_Google::console(); ?>
+	<?= google_search_console(); ?>
 	<?php wp_head(); ?>
+
+	<?php if ($tc = ga_tracking_code() and $tc) : ?>
+	<script>var tracking_id = '<?= $tc; ?>';</script>
+	<!-- Google Tag Manager -->
+	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KLD699"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-KLD699');</script>
+	<!-- End Google Tag Manager -->
+	<?php endif; ?>
 </head>
-<body <?php body_class(Demo::body_class()); ?>>
-<?php if ($tc = HP_Google::tracking_code()) : ?>
-<script>var tracking_id = '<?= $tc; ?>';</script>
-<!-- Google Tag Manager -->
-<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KLD699"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KLD699');</script>
-<!-- End Google Tag Manager -->
-<?php endif; ?>
+<body <?php body_class(\Demo::body_class()); ?>>
+
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v6.0&appId=1505451772876041&autoLogAppEvents=1"></script>
 
@@ -54,18 +59,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					?></h1>
 				</div>
 				<div class="header-top__nav">
-					<?= HP_Social::view('prefix', 'social', 'option', array('class' => 'social-icon')); ?>
+					<?php get_template_part('template-parts/site-social'); ?>
 					<?php
-						if ($access = get_page_by_path('access'))
+						if ($access = get_page_by_path('access')) {
 							$pages = $access->ID;
-
-						else if ($salon = get_page_by_path('salon'))
+						} elseif ($salon = get_page_by_path('salon')) {
 							$pages = $salon->ID;
+						}
 					?>
 					<?php if (isset($pages)) : ?>
 					<ul class="subnavi">
-						<li><a href="<?= get_permalink($pages); ?>#opentime"><i class="fa fa-clock-o"></i><span>営業時間</span></a></li>
-						<li><a href="<?= get_permalink($pages); ?>#accessmap"><i class="fa fa-map-marker"></i><span>アクセス</span></a></li>
+						<li>
+							<a href="<?= get_permalink($pages); ?>#opentime"><i class="fa fa-clock-o"></i><span>営業時間</span></a>
+						</li>
+						<li>
+							<a href="<?= get_permalink($pages); ?>#accessmap"><i class="fa fa-map-marker"></i><span>アクセス</span></a>
+						</li>
 					</ul>
 					<?php endif; ?>
 				</div>
@@ -78,16 +87,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<div class="header-middle__row">
 				<div class="header-middle__logo">
 					<div class="site-logo">
-						<a href="<?= esc_url(home_url()); ?>"><?php get_logo_id() ? the_logo() : bloginfo('title'); ?></a>
+						<a href="<?= home_url('/'); ?>"><?php get_logo_id() ? the_logo() : bloginfo('title'); ?></a>
 					</div>
 				</div>
 
 				<?php
-					$salon_tel = HP_Acf::get('hp_salon_telephone', 'option');
-					if ($freedial = HP_Acf::get('hp_salon_freedial', 'option'))
+					$salon_tel = $wphp->hp_salon_telephone;
+					if ($freedial = $wphp->hp_salon_freedial) {
 						$salon_tel = $freedial;
+					}
 
-					$reserve_url = HP_Acf::reserve_url();
+					$reserve_url = reserve_url();
 				?>
 				<?php if ($salon_tel or $reserve_url) : ?>
 				<div class="header-middle__button">
@@ -102,12 +112,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<?php endif; ?>
 							<?php if ($reserve_url) : ?>
 							<li>
-								<a href="<?= esc_url($reserve_url); ?>" class="btn btn-default btn-xl"><i class="fa fa-desktop"></i><span>かんたんネット予約</span></a>
+								<a href="<?= esc_url($reserve_url); ?>" class="btn btn-default btn-xl" target="_blank"><i class="fa fa-desktop"></i><span>かんたんネット予約</span></a>
 							</li>
 							<?php endif; ?>
 						</ul>
-						<?php if (HP_Acf::get('hp_salon_freedial_region', 'option') and HP_Acf::get('hp_salon_telephone', 'option')) : ?>
-							<div class="freedial-region"><i class="fa fa-phone"></i>県外からおかけの方は、<a href="tel:<?= HP_Acf::get('hp_salon_telephone', 'option'); ?>" class="tel-link"><?= HP_Acf::get('hp_salon_telephone', 'option'); ?></a>へおかけください。</div>
+						<?php if ($wphp->hp_salon_freedial_region and $wphp->hp_salon_telephone) : ?>
+							<div class="freedial-region"><i class="fa fa-phone"></i>県外からおかけの方は、<a href="tel:<?= $wphp->hp_salon_telephone; ?>" class="tel-link"><?= $wphp->hp_salon_telephone; ?></a>へおかけください。</div>
 						<?php endif; ?>
 					</div>
 				</div>
@@ -141,29 +151,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <?php endif; ?>
 
 <?php if($salon_tel or $reserve_url) : ?>
-<div id="spContact" class="contact-sp">
-	<div class="container-fullid">
-		<div class="row">
-			<ul class="contact">
-				<?php if($salon_tel) : ?>
-				<li class="tel">
-					<a href="tel:<?= esc_attr($salon_tel); ?>"><i class="fa fa-phone"></i><span>電話で予約</span></a>
-				</li>
-				<?php endif; ?>
-				<?php if($reserve_url) : ?>
-				<li class="web-reserve">
-					<a href="<?= esc_url($reserve_url); ?>"><i class="fa fa-mobile"></i><span>ネットで予約</span></a>
-				</li>
-				<?php endif; ?>
-			</ul>
+	<div id="spContact" class="contact-sp">
+		<div class="container-fullid">
+			<div class="row">
+				<ul class="contact">
+					<?php if($salon_tel) : ?>
+					<li class="tel">
+						<a href="tel:<?= esc_attr($salon_tel); ?>"><i class="fa fa-phone"></i><span>電話で予約</span></a>
+					</li>
+					<?php endif; ?>
+					<?php if($reserve_url) : ?>
+					<li class="web-reserve">
+						<a href="<?= esc_url($reserve_url); ?>" target="_blank"><i class="fa fa-mobile"></i><span>ネットで予約</span></a>
+					</li>
+					<?php endif; ?>
+				</ul>
+			</div>
 		</div>
 	</div>
-</div>
-<?php if (HP_Acf::get('hp_salon_freedial_region', 'option') and HP_Acf::get('hp_salon_telephone', 'option')) : ?>
-	<?php $tel = HP_Acf::get('hp_salon_telephone', 'option'); ?>
-<div class="freedial-region-sp"><i class="fa fa-phone"></i>県外からおかけの方は、<a href="tel:<?= esc_attr($tel); ?>" class="tel-link"><?= esc_html($tel); ?></a>へおかけください。</div>
-<?php endif; ?>
-<!-- /#spContact -->
+	<?php if ($wphp->hp_salon_freedial_region and $wphp->hp_salon_telephone) : ?>
+		<div class="freedial-region-sp"><i class="fa fa-phone"></i>県外からおかけの方は、<a href="tel:<?= esc_attr($wphp->hp_salon_telephone); ?>" class="tel-link"><?= esc_html($wphp->hp_salon_telephone); ?></a>へおかけください。</div>
+	<?php endif; ?>
+	<!-- /#spContact -->
 <?php endif; ?>
 
 <?php if( ! is_front_page() ) : ?>

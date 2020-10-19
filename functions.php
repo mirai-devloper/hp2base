@@ -40,71 +40,8 @@ $hp2baseUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 $hp2baseUpdateChecker->setAuthentication('1407214a37299d2a0947f9c37dc8abce56a563c4');
 $hp2baseUpdateChecker->getVcsApi()->enableReleaseAssets();
 
-// 設定権限がないユーザーにはACFを非表示にする
-add_filter('acf/settings/show_admin', function($show) {
-	if (current_user_can('manage_options')) {
-		return true;
-	}
-
-	return $show;
-});
-
-add_filter('acf/settings/save_json', function($path) {
-	$path = get_theme_file_path('acf-json');
-	return $path;
-});
-
-add_filter('acf/settings/load_json', function($paths) {
-	unset($paths[0]);
-	$paths[] = get_theme_file_path('acf-json');
-
-	return $paths;
-});
-
-add_filter('acf/fields/google_map/api', function($api) {
-	// $api['key'] = 'AIzaSyC2PVeXoLpOd7_52W1NuOsPMSE_UqUpT6A';
-	$api['key'] = 'AIzaSyASFdc_0QU2yCvIjXgW8zCj8i2nIG6yk_U';
-
-	return $api;
-});
-
-
-
-function hairspress_delete_transient($post_id, $post) {
-	$post_type = get_post_type($post_id);
-	switch ($post_type) {
-		case 'post':
-			delete_transient('hairspress_front_blog');
-			break;
-		case 'news':
-			delete_transient('hairspress_front_news');
-			break;
-		case 'catalog':
-			delete_transient('hairspress_front_catalog');
-			// delete_transient('hairspress_staff_catalog');
-			// delete_transient('hairspress_catalog_other');
-			break;
-		case 'staff':
-			// delete_transient('hairspress_staff_other');
-			// delete_transient('hairspress_catalog_staff');
-			break;
-		default:
-			# code...
-			break;
-	}
-}
-add_action('save_post', 'hairspress_delete_transient', 10, 2);
-
-add_action('acf/save_post', function() {
-	$screen = get_current_screen();
-	if (strpos($screen->id, 'theme-slider-settings') !== false) {
-		$hpSlider = get_field('hpSlider', 'option');
-		$getSlider = get_transient('hairspress_front_hpSlider');
-		if ($getSlider !== $hpSlider) {
-			delete_transient('hairspress_front_hpSlider');
-		}
-	}
-}, 20);
+include_once('inc/acf.php');
+include_once('inc/transient.php');
 
 add_action('do_faviconico', function() {
 	if ($icon = get_site_icon_url(512, get_theme_file_uri('favicon.png'))) {
@@ -130,22 +67,22 @@ get_template_part('_include/mio', 'helper');
 // Vendorモジュール
 // Mio_helper::load('acf/acf-field-group.php');
 
-Mio_helper::load('classes/assets.php');
-Mio_helper::load('classes/config.php');
+// Mio_helper::load('classes/assets.php');
+// Mio_helper::load('classes/config.php');
 
 // 自作モジュールの読み込み
-Mio_helper::load('module/form.php');
-Mio_helper::load('module/wareki.php');
+// Mio_helper::load('module/form.php');
+// Mio_helper::load('module/wareki.php');
 
 /*** WPのアクション呼び出し ***/
-Mio_helper::load('wp/admin-setup.php');
-Mio_helper::load('wp/admin-login.php');
-Mio_helper::load('wp/wp-title.php');
+// Mio_helper::load('wp/admin-setup.php');
+// Mio_helper::load('wp/admin-login.php');
+// Mio_helper::load('wp/wp-title.php');
 
 /*** セットアップ ***/
 // Mio_helper::load('wp-login.php');
-Mio_helper::load('wp-setup.php');
-Mio_helper::load('wp-custom.php');
+// Mio_helper::load('wp-setup.php');
+// Mio_helper::load('wp-custom.php');
 
 // Mio_helper::load('classes/walker-comment.php');
 
@@ -154,7 +91,7 @@ Mio_helper::load('hairspress/acf.php');
 Mio_helper::load('hairspress/acf-page.php');
 Mio_helper::load('hairspress/admin.php');
 Mio_helper::load('hairspress/dashboard.php');
-Mio_helper::load('hairspress/options.php');
+// Mio_helper::load('hairspress/options.php');
 Mio_helper::load('hairspress/query.php');
 // Mio_helper::load('hairspress/page-setup.php');
 Mio_helper::load('hairspress/social.php');
@@ -227,18 +164,6 @@ function isFacebook() {
 		'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)',
 	));
 }
-
-
-
-function hp_news_view($check = 'up') {
-	$topics_setting = get_option('options_topics_name', 'option');
-
-	if ($topics_setting === $check) {
-		echo \View::forge('front/news');
-	}
-}
-
-
 
 // アイキャッチ画像のタグ出力設定
 function mio_get_thumbnail( $thumb_name = 'medium', $thumb_style = null ) {
