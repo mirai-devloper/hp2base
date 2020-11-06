@@ -10,6 +10,8 @@
 		$post_type = 'channel';
 	} elseif ($taxonomy == 'manage') {
 		$post_type = 'staff';
+	} elseif ($taxonomy == 'menu-contents_type' || $taxonomy == 'menu-contents_category') {
+		$post_type = 'menu-contents';
 	} else {
 		$post_type = 'post';
 	}

@@ -223,10 +223,14 @@
       font-size: 92%;
       color: #666; }
 
+html {
+  font-size: 62.5%; }
+
 #tinymce {
   max-width: 768px;
   padding: 10px;
   font-family: "游ゴシック", YuGothic, "游ゴシック体", "Yu Gothic", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", Robot, "Droid Sans", sans-serif;
+  font-size: 1.6rem;
   color: #454545; }
 
 .editor-area {

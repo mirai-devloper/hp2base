@@ -53,8 +53,8 @@
                         },
                         {
                             "key": "field_5f7d948ae9952",
-                            "label": "セットメニュー",
-                            "name": "setmenu",
+                            "label": "メニューコンテンツ",
+                            "name": "menu-contents",
                             "type": "true_false",
                             "instructions": "",
                             "required": 0,
@@ -190,5 +190,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1602067841
+    "modified": 1604560558
 }

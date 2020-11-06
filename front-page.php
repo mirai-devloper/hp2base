@@ -3,22 +3,11 @@
 ?>
 <?php get_header(); ?>
 
-<?php if ($concept = $wphp->hp_salon_concept and !empty($concept)) : ?>
-<div id="concept">
-	<div class="container">
-		<div class="concept">
-			<div class="logo">
-				<?php the_logo(); ?>
-			</div>
+<?php
+	$concept = $wphp->hp_salon_concept;
+	do_action('hairspress_concept', $concept);
+?>
 
-			<div class="text">
-				<?= $concept; ?>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- /#concept -->
-<?php endif; ?>
 
 <?php
 	if ($wphp->options_topics_name === 'up') {

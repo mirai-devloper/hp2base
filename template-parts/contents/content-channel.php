@@ -48,7 +48,6 @@
 								$imaged = '<img src="http://i.ytimg.com/vi/'.$id.'/hqdefault.jpg" alt="">';
 
 								// $idに値があればクラスを付与。なければ空を返す。
-								// $class = !is_null($id) ? 'youtube fancybox.iframe' : '';
 								$class = '';
 							}
 						}
@@ -80,23 +79,3 @@
 		</div>
 	</div>
 </div>
-
-<?php if (isset($fancybox)) : ?>
-<script>
-(function($) {
-	console.log(Helper)
-	var sp_w = isMobile() ? '100%' : '80%';
-	var sp_h = isMobile() ? '35.25%' : '80%';
-	var sp_border = isMobile() ? 3 : 6;
-	$('.youtube').fancybox({
-		maxWidth: 1280,
-		maxHeight: 720,
-		padding: sp_border,
-		fitToView: false,
-		width: sp_w,
-		height: sp_h,
-		autoSize: false
-	})
-})(jQuery);
-</script>
-<?php endif; ?>

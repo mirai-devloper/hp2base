@@ -81,12 +81,15 @@ class WP_Hairspress
 	}
 }
 
-global $wphp, $wp_hairspress;
-$wp_hairspress = new WP_Hairspress();
-// $wphp = $wp_hairspress->init();
+global $wphp;
 $wphp = get_transient('wp_hairspress_global_transient');
 
 if ($wphp === false) {
-	set_transient('wp_hairspress_global_transient', $wp_hairspress->init(), 300);
+	$wp_hairspress = new WP_Hairspress();
+	set_transient('wp_hairspress_global_transient', $wp_hairspress->init(), 180);
 }
 
+add_action('updated_option', function() {
+	$wp_hairspress = new WP_Hairspress();
+	set_transient('wp_hairspress_global_transient', $wp_hairspress->init(), 3600);
+});

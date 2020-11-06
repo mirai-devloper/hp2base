@@ -146,31 +146,28 @@
 </header>
 
 <!-- MainVisual -->
-<?php if( is_front_page() ) : ?>
-	<?php hp_get_slider(); ?>
-<?php endif; ?>
+<?php do_action('hairspress_slider'); ?>
+
 
 <?php if($salon_tel or $reserve_url) : ?>
 	<div id="spContact" class="contact-sp">
-		<div class="container-fullid">
-			<div class="row">
-				<ul class="contact">
-					<?php if($salon_tel) : ?>
-					<li class="tel">
-						<a href="tel:<?= esc_attr($salon_tel); ?>"><i class="fa fa-phone"></i><span>電話で予約</span></a>
-					</li>
-					<?php endif; ?>
-					<?php if($reserve_url) : ?>
-					<li class="web-reserve">
-						<a href="<?= esc_url($reserve_url); ?>" target="_blank"><i class="fa fa-mobile"></i><span>ネットで予約</span></a>
-					</li>
-					<?php endif; ?>
-				</ul>
-			</div>
-		</div>
+		<ul class="contact">
+			<?php if($salon_tel) : ?>
+				<li class="tel">
+					<?= html_tag('a', array('href' => 'tel:'.esc_attr($salon_tel)), '<i class="fa fa-phone"></i><span>電話で予約</span>'); ?>
+				</li>
+			<?php endif; ?>
+			<?php if($reserve_url) : ?>
+				<li class="web-reserve">
+					<?= html_tag('a', array('href' => esc_attr($reserve_url), 'target' => '_blank'), '<i class="fa fa-mobile"></i><span>ネットで予約</span>'); ?>
+				</li>
+			<?php endif; ?>
+		</ul>
 	</div>
 	<?php if ($wphp->hp_salon_freedial_region and $wphp->hp_salon_telephone) : ?>
-		<div class="freedial-region-sp"><i class="fa fa-phone"></i>県外からおかけの方は、<a href="tel:<?= esc_attr($wphp->hp_salon_telephone); ?>" class="tel-link"><?= esc_html($wphp->hp_salon_telephone); ?></a>へおかけください。</div>
+		<div class="freedial-region-sp">
+			<i class="fa fa-phone"></i>県外からおかけの方は、<?= html_tag('a', array('href' => 'tel:'.esc_attr($wphp->hp_salon_telephone)), esc_html($wphp->hp_salon_telephone)); ?>へおかけください。
+		</div>
 	<?php endif; ?>
 	<!-- /#spContact -->
 <?php endif; ?>
@@ -182,7 +179,7 @@
 		<div class="row">
 			<div class="bread-container">
 				<!-- ※モバイルに合わせてカルーセルにしてます -->
-				<?php breadcrumbs(['class' => 'bread-list list-inline swiper-wrapper']); ?>
+				<?php breadcrumbs(array('class' => 'bread-list list-inline swiper-wrapper')); ?>
 			</div>
 		</div>
 	</div>

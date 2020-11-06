@@ -1,23 +1,23 @@
 <?php
 	global $wphp;
 
-	$sliders = get_transient('hairspress_front_hpSlider');
-	if ($sliders === false) {
-		$hpSlider = $wphp->hpSlider;
-		if ($hpSlider and isset($hpSlider['images'])) {
-			$sliders = $hpSlider['images'];
-			set_transient('hairspress_front_hpSlider', $sliders, 300);
-		}
-	}
+	$sliders = $wphp->hpSlider;
+	// if ($sliders === false) {
+	// 	$hpSlider = $wphp->hpSlider;
+	// 	if ($hpSlider and isset($hpSlider['images'])) {
+	// 		$sliders = $hpSlider['images'];
+	// 		set_transient('hairspress_front_hpSlider', $sliders, 300);
+	// 	}
+	// }
 
 ?>
-<?php if ( ! empty($sliders)) : ?>
+<?php if ($sliders and isset($sliders['images'])) : ?>
 <div id="mainVisual">
 	<div class="container-hps">
 		<div class="slider__wrapper">
 			<div id="hpSlider" class="slider__content">
 				<div class="pogoSlider pogoSlider-inner">
-					<?php foreach ($sliders as $slider) : ?>
+					<?php foreach ($sliders['images'] as $slider) : ?>
 						<?php
 							if (isset($slider['id'])) {
 								$slider_id = $slider['id'];

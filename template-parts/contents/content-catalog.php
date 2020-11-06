@@ -1,3 +1,4 @@
+
 <!-- ここから - コンテンツ -->
 <article>
 <div id="catalog" class="c-wrap">
@@ -5,14 +6,17 @@
 		<div class="catalog-single">
 		<?php if( have_posts() ) : ?>
 			<?php while( have_posts() ) : the_post(); ?>
+				<?php
+					$catalog = get_catalog();
+				?>
 				<!-- スタイル写真 -->
 				<div class="catalog-single__image">
 					<div class="catalog-picture">
 						<!-- 写真のボディ -->
 						<div class="catalog-picture-body">
 							<div class="pic-wrap <?= has_post_thumbnail() ? 'not-length' : ''; ?>">
-								<?php if ($images = HP_Acf::get('catalog_photo_style')) : ?>
-									<?php foreach ($images as $k1 => $v1) : ?>
+								<?php if ($catalog->catalog_photo_style) : ?>
+									<?php foreach ($catalog->catalog_photo_style as $k1 => $v1) : ?>
 										<div data-catalog-body="<?= 'catalogImage_'.$k1; ?>" class="pic <?= ($k1 === 0) ? 'active' : ''; ?>" style="background-image:url(<?= wp_get_attachment_image_url($v1['ID'], 'catalog-single'); ?>)">
 										</div>
 									<?php endforeach; ?>
@@ -28,10 +32,10 @@
 							</div>
 						</div>
 						<!-- ここまで - スタイル写真 -->
-						<?php if ($images = HP_Acf::get('catalog_photo_style')) : ?>
+						<?php if ($catalog->catalog_photo_style) : ?>
 							<div class="catalog-picture-thumbnails">
 								<div class="catalog-picture-list">
-									<?php foreach ($images as $k2 => $v2) : ?>
+									<?php foreach ($catalog->catalog_photo_style as $k2 => $v2) : ?>
 										<a href="#" data-catalog-target="<?= 'catalogImage_'.$k2; ?>" class="catalog-picture-list-item <?= ($k2 == 0) ? 'active' : ''; ?>">
 											<?= wp_get_attachment_image($v2['ID'], 'thumbnail'); ?>
 										</a>
@@ -48,13 +52,13 @@
 					<header class="catalog-header">
 						<!-- タイトル -->
 						<h1 class="title"><?php the_title(); ?></h1>
-						<?php if ($comment_field = HP_Acf::get('cappeal')) : ?>
+						<?php if ($catalog->cappeal) : ?>
 						<div class="comment-wrapper">
 							<div class="staff-pic">
 								<?php hp_stylist_photo(); ?>
 								<?php wp_reset_postdata(); ?>
 							</div>
-							<p class="comment"><?= wp_kses_post($comment_field); ?></p>
+							<p class="comment"><?= wp_kses_post($catalog->cappeal); ?></p>
 						</div>
 						<?php endif; ?>
 					</header>
@@ -64,10 +68,12 @@
 					<!-- コンテンツエリア -->
 					<section class="catalog-body">
 						<table class="catalog-table">
-						<?php if ($length = HP_Acf::get('hp_catalog_length', get_the_ID())) : ?>
+						<?php if ($catalog->hp_catalog_length) : ?>
 							<?php
-								foreach ($length as $leng)
+								$len = array();
+								foreach ($catalog->hp_catalog_length as $leng) {
 									$len[] = $leng->name;
+								}
 								$leng_text = implode('、', $len);
 							?>
 							<tr>
@@ -87,7 +93,7 @@
 							);
 							foreach ($catalog_field as $k => $v) :
 						?>
-							<?php if ($field = HP_Acf::get($k)) : ?>
+							<?php if ($field = $catalog->$k) : ?>
 							<tr>
 								<th><?= $v; ?></th>
 								<td><?= esc_html($field); ?></td>
@@ -118,14 +124,14 @@
 
 						<div class="catalog-price">
 						<?php
-							if ($money = HP_Acf::get('hp_catalog_money')) :
-								$price = number_format(mb_ereg_replace('[^0-9]', '', mb_convert_kana($money, 'n')));
+							if ($catalog->hp_catalog_money) :
+								$price = number_format(mb_ereg_replace('[^0-9]', '', mb_convert_kana($catalog->hp_catalog_money, 'n')));
 						?>
 							<p class="price">
 								<span class="txt">Price</span>
 								<span class="slash">/</span>
 								<span class="yen">&yen;</span>
-								<span class="numeric"><?= $price ?><?= (HP_Acf::get('ckara')) ? '<span class="kara">~</span>' : ''; ?></span>
+								<span class="numeric"><?= $price ?><?= (get_field('ckara')) ? '<span class="kara">~</span>' : ''; ?></span>
 							</p>
 						<?php else : ?>
 							<p class="price" style="color: #f00; font-family: sans-serif; font-size: 12px;">システム：料金項目を再設定してください。</p>
@@ -135,7 +141,7 @@
 							<?php
 								/*<!-- Web予約ボタン -->*/
 								// ヘアカタログの予約チェック
-								$reserve_catalog = HP_Acf::get('reserve_catalog');
+								$reserve_catalog = get_field('reserve_catalog');
 								$reserve_check = $reserve_catalog !== 'none' ? $reserve_catalog : null;
 
 								// 現在のページのタームを取得
@@ -156,7 +162,7 @@
 
 								if ($reserve_check === 'staff') {
 									if ($reserve_query->have_posts()) : $reserve_query->the_post();
-										if ($staff_url = HP_Acf::get('reserve_staff')) {
+										if ($staff_url = get_field('reserve_staff')) {
 											echo reserve_button(esc_url($staff_url));
 										} elseif ($shop_url) {
 											echo reserve_button(esc_url($shop_url));
@@ -212,14 +218,13 @@
 
 				<!-- カルーセル開始 -->
 				<div class="other-catalog catalog-swiper">
-
-						<ul class="swiper-wrapper">
+					<ul class="swiper-wrapper">
 						<?php while( $style_query->have_posts() ) : $style_query->the_post(); ?>
-						<li class="swiper-slide">
-							<a href="<?php the_permalink(); ?>">
-								<?php mio_get_thumbnail('catalog-staff'); ?>
-							</a>
-						</li>
+							<li class="swiper-slide">
+								<a href="<?php the_permalink(); ?>">
+									<?php mio_get_thumbnail('catalog-staff'); ?>
+								</a>
+							</li>
 						<?php endwhile; ?>
 					</ul>
 

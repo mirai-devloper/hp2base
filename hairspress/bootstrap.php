@@ -33,19 +33,36 @@ function setup_autoloader()
 	));
 }
 
+require __DIR__.DS.'functions/custom-posts.php';
 require __DIR__.DS.'functions/global.php';
 require __DIR__.DS.'functions/common.php';
+require __DIR__.DS.'functions/slider.php';
+require __DIR__.DS.'functions/pagination.php';
+require __DIR__.DS.'functions/pager.php';
+require __DIR__.DS.'functions/nav_menu.php';
+require __DIR__.DS.'functions/category.php';
+require __DIR__.DS.'functions/widget.php';
+require __DIR__.DS.'functions/breadcrumb.php';
+require __DIR__.DS.'functions/front.php';
 require __DIR__.DS.'functions/google.php';
 require __DIR__.DS.'functions/staff.php';
-require __DIR__.DS.'functions/setmenu.php';
+require __DIR__.DS.'functions/catalog.php';
+require __DIR__.DS.'functions/menucontents.php';
 
 
 $hairspress_initialize = new Hairspress\App\Wordpress_Initialize();
 $hairspress_login = Hairspress\App\Wordpress_Login::init();
 $hairspress_title = new Hairspress\App\Wordpress_Title();
 
+$hairspress_acf_admin = new Hairspress\App\Acf_Admin();
+
 $hairspress_admin = new Hairspress\App\Wordpress_Admin();
 $hairspress_admin->init();
+
+$hairspress_user = new Hairspress\App\Wordpress_User();
+$hairspress_user->init();
+
+$hairspress_admin_dashboard = new Hairspress\App\Wordpress_Dashboard();
 
 $hairspress_tinymce = new Hairspress\App\Wordpress_Tinymce();
 $hairspress_tinymce->init();
@@ -53,7 +70,12 @@ $hairspress_tinymce->init();
 $hairspress_widget = new Hairspress\App\Wordpress_Widget();
 $hairspress_widget->init();
 
+$hairspress_design = new Hairspress\App\Options_Design();
+$hairspress_topics = new Hairspress\App\Options_Topics();
+
 $hairspress_theme = new Hairspress\App\Wordpress_Theme();
+
+$hairspress_query = new Hairspress\App\Wordpress_Query();
 
 $hairspress_post_password = new Hairspress\App\Wordpress_Post_Password();
 
@@ -61,8 +83,8 @@ $hp_setting = get_field('hp_setting', 'option');
 if (!isset($hp_setting['post_type']['catalog'])) {
 	$hp_setting['post_type']['catalog'] = true;
 }
-if (!isset($hp_setting['post_type']['setmenu'])) {
-	$hp_setting['post_type']['setmenu'] = false;
+if (!isset($hp_setting['post_type']['menu-contents'])) {
+	$hp_setting['post_type']['menu-contents'] = false;
 }
 if (!isset($hp_setting['post_type']['channel'])) {
 	$hp_setting['post_type']['channel'] = true;
@@ -73,8 +95,8 @@ if ($hp_setting['post_type']['catalog']) {
 	add_action('init', 'add_catalog_post_type');
 }
 
-if ($hp_setting['post_type']['setmenu']) {
-	new Hairspress\App\Posttype_Setmenu();
+if ($hp_setting['post_type']['menu-contents']) {
+	new Hairspress\App\Posttype_Menucontents();
 }
 
 if ($hp_setting['post_type']['channel']) {

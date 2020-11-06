@@ -40,20 +40,3 @@
 	</div>
 </div>
 <!-- /#blog -->
-
-<script>
-(function($) {
-	$(document).ready(function() {
-		$('.contents-body a').fancybox({
-			padding: 6,
-			helpers: {
-				overlay: {
-					css: {
-						'background' : 'rgba(0, 0, 0, 0.7)'
-					}
-				}
-			}
-		});
-	});
-})(jQuery);
-</script>

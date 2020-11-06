@@ -62,7 +62,7 @@
           $imaged = !is_null($id) ? '<img src="http://i.ytimg.com/vi/'.$id.'/hqdefault.jpg" alt="">' : '';
 
           // $idに値があればクラスを付与。なければ空を返す。
-					$class = !is_null($id) ? 'youtube fancybox.iframe' : '';
+					$class = '';
       ?>
       <div class="item">
         <a href="<?= esc_url_raw($linked); ?>" class="<?= $class; ?>" <?= ($linked === '#') ? '' : 'data-lity'; ?>>

@@ -1,6 +1,6 @@
 <?php
 add_filter('wp_print_footer_scripts', function() {
-	get_template_part('template/js-catalog-search');
+	get_template_part('template-parts/catalog-search-js');
 }, 12);
 ?>
 <!-- ここから - コンテンツ -->

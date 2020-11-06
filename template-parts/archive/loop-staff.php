@@ -26,12 +26,12 @@
 										</div>
 										<div class="meta-box">
 											<h2 class="staff-name"><i class="fa fa-angle-right"></i><?php the_title_attribute(); ?></h2>
-											<p class="manage"><?= get_staff_manage(); ?></p>
+											<p class="manage"><?= hp_stylist_manage(); ?></p>
 										</div>
 									</a>
 
-									<?php if ( ! (HP_Acf::get('reserve_btn_hidden'))) : ?>
-										<?php if ($staff_reserve = HP_Acf::get('reserve_staff')) : ?>
+									<?php if (!get_field('reserve_btn_hidden')) : ?>
+										<?php if ($staff_reserve = get_field('reserve_staff')) : ?>
 											<div class="reserve">
 												<?= reserve_button(esc_url($staff_reserve), 'ネット予約はこちら', array('class' => 'btn btn-default btn-mid')); ?>
 											</div>

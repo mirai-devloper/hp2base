@@ -1,4 +1,42 @@
 <?php
+
+include_once(ABSPATH.'wp-admin/includes/plugin.php');
+if (!is_plugin_active('advanced-custom-fields-pro/acf.php')) {
+	define('HP_ACF_PATH', get_theme_file_path('includes/acf/'));
+	define('HP_ACF_URL', get_theme_file_uri('includes/acf/'));
+
+	include_once(HP_ACF_PATH.'acf.php');
+
+	add_filter('acf/settings/url', function($url) {
+		return HP_ACF_URL;
+	});
+
+	add_filter('acf/settings/show_admin', function($show_admin) {
+		return false;
+	});
+}
+
+add_filter('acf/settings/save_json', function($path) {
+	$path = get_theme_file_path('acf-json');
+	return $path;
+});
+
+add_filter('acf/settings/load_json', function($paths) {
+	unset($paths[0]);
+	$paths[] = get_theme_file_path('acf-json');
+
+	return $paths;
+});
+
+add_filter('acf/fields/google_map/api', function($api) {
+	// $api['key'] = 'AIzaSyC2PVeXoLpOd7_52W1NuOsPMSE_UqUpT6A';
+	$api['key'] = 'AIzaSyASFdc_0QU2yCvIjXgW8zCj8i2nIG6yk_U';
+
+	return $api;
+});
+
+
+
 $content_width = 720;
 
 add_filter('admin_body_class', function($classes) {
@@ -40,8 +78,8 @@ $hp2baseUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 $hp2baseUpdateChecker->setAuthentication('1407214a37299d2a0947f9c37dc8abce56a563c4');
 $hp2baseUpdateChecker->getVcsApi()->enableReleaseAssets();
 
-include_once('inc/acf.php');
-include_once('inc/transient.php');
+
+
 
 add_action('do_faviconico', function() {
 	if ($icon = get_site_icon_url(512, get_theme_file_uri('favicon.png'))) {
@@ -58,57 +96,6 @@ add_filter('ssp_output_description', function ($ssp_description) {
 	}
 	return $ssp_description;
 });
-
-// Mio_Helper
-define("INCLUDEPATH", TEMPLATEPATH."/_include");
-get_template_part('_include/mio', 'helper');
-
-
-// Vendorモジュール
-// Mio_helper::load('acf/acf-field-group.php');
-
-// Mio_helper::load('classes/assets.php');
-// Mio_helper::load('classes/config.php');
-
-// 自作モジュールの読み込み
-// Mio_helper::load('module/form.php');
-// Mio_helper::load('module/wareki.php');
-
-/*** WPのアクション呼び出し ***/
-// Mio_helper::load('wp/admin-setup.php');
-// Mio_helper::load('wp/admin-login.php');
-// Mio_helper::load('wp/wp-title.php');
-
-/*** セットアップ ***/
-// Mio_helper::load('wp-login.php');
-// Mio_helper::load('wp-setup.php');
-// Mio_helper::load('wp-custom.php');
-
-// Mio_helper::load('classes/walker-comment.php');
-
-/*** HairsPress ***/
-Mio_helper::load('hairspress/acf.php');
-Mio_helper::load('hairspress/acf-page.php');
-Mio_helper::load('hairspress/admin.php');
-Mio_helper::load('hairspress/dashboard.php');
-// Mio_helper::load('hairspress/options.php');
-Mio_helper::load('hairspress/query.php');
-// Mio_helper::load('hairspress/page-setup.php');
-Mio_helper::load('hairspress/social.php');
-
-/*** Options ***/
-Mio_Helper::load('options/google.php');
-Mio_Helper::load('options/googlemap.php');
-
-/*** WordPress用関数群の呼び出し ***/
-Mio_helper::load('functions/pagination.php');
-// Mio_helper::load('functions/demo-mode.php');
-
-require(TEMPLATEPATH.'/_inc/ogp.php');
-
-
-
-// var_dump(HP_Social::view('prefix', 'social', 'option'));
 
 // V3のデータベース更新するためのSQL（仮）
 function hp_replace_field() {
@@ -566,43 +553,7 @@ function head_ogp($args = array())
 	);
 }
 
-// HairsPressで作成した関数群
-require_once (TEMPLATEPATH . '/_inc/hairspress-functions.php');
 
-// HairsPress Options
-require_once (TEMPLATEPATH . '/_inc/hp-options-theme.php');
-
-
-// Mio-Theme MetaField
-require_once (TEMPLATEPATH . '/_inc/hp-custom-meta-seo.php');
-
-//カスタム投稿タイプ
-require_once (TEMPLATEPATH . '/_inc/hp-custom-posts.php');
-
-//Topics Option
-require_once (TEMPLATEPATH . '/_inc/hp-options-topics.php');
-
-//Instagram Option
-// require_once (TEMPLATEPATH . '/_inc/hp-options-instagram.php');
-
-//パンくずリスト
-require_once (TEMPLATEPATH . '/_inc/hp-function-breadcrumbs.php');
-
-//ヘアカタログで使用するの関数群
-require_once (TEMPLATEPATH . '/_inc/hp-function-catalog.php');
-
-// HairsPress Instagram
-// require_once (TEMPLATEPATH . '/_inc/hp-function-instagram.php');
-
-// HairsPress Slider
-require_once (TEMPLATEPATH . '/_inc/hp-function-slider.php');
-
-// AdvancedCustomField オプションページ生成
-// require_once (TEMPLATEPATH . '/_inc/acf-setup-add-options-page.php');
-
-
-// WEB予約のリンクまたはURLをだす関数
-require_once (TEMPLATEPATH . '/_option/opt-shop-setting.php');
 
 function search_result_url_change() {
 	if (is_search() and ! empty($_GET['s'])) {

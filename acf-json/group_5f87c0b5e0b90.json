@@ -1,11 +1,11 @@
 {
     "key": "group_5f87c0b5e0b90",
-    "title": "セットメニュー",
+    "title": "メニューコンテンツ",
     "fields": [
         {
             "key": "field_5f87c0e84c000",
             "label": "詳細",
-            "name": "setmenu",
+            "name": "menu_contents",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -32,6 +32,107 @@
                     },
                     "placement": "left",
                     "endpoint": 0
+                },
+                {
+                    "key": "field_5f9ff38bac208",
+                    "label": "タイプ",
+                    "name": "type",
+                    "type": "taxonomy",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "menu-contents_type",
+                    "field_type": "radio",
+                    "allow_null": 0,
+                    "add_term": 1,
+                    "save_terms": 1,
+                    "load_terms": 1,
+                    "return_format": "id",
+                    "multiple": 0
+                },
+                {
+                    "key": "field_5f9ff481086d9",
+                    "label": "カテゴリー",
+                    "name": "category",
+                    "type": "taxonomy",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "menu-contents_category",
+                    "field_type": "checkbox",
+                    "add_term": 1,
+                    "save_terms": 1,
+                    "load_terms": 1,
+                    "return_format": "id",
+                    "multiple": 0,
+                    "allow_null": 0
+                },
+                {
+                    "key": "field_5f9bf5963eb39",
+                    "label": "お悩み",
+                    "name": "nayami",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "new_lines": "br"
+                },
+                {
+                    "key": "field_5f9bf5c83eb3a",
+                    "label": "効果",
+                    "name": "kouka",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "new_lines": "br"
+                },
+                {
+                    "key": "field_5fa3a2ec13265",
+                    "label": "コメント",
+                    "name": "comment",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 5,
+                    "new_lines": "br"
                 },
                 {
                     "key": "field_5f87c1e48bc73",
@@ -197,7 +298,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "setmenu"
+                "value": "menu-contents"
             }
         ]
     ],
@@ -213,5 +314,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1602754428
+    "modified": 1604559655
 }

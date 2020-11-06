@@ -9,7 +9,7 @@
 			'ignore_sticky_posts' => true
 		);
 		$blog = new WP_Query($blog_args);
-		set_transient('hairspress_front_blog', $blog, 300);
+		set_transient('hairspress_front_blog', $blog, 180);
 	}
 ?>
 <?php if($blog->have_posts()) : ?>
