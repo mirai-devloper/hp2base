@@ -30,7 +30,7 @@
 
 // EXTERNAL MODULE: ./node_modules/lity/dist/lity.js
 
-// EXTERNAL MODULE: ./node_modules/swiper/dist/js/swiper.esm.bundle.js + 2 modules
+// EXTERNAL MODULE: ./node_modules/swiper/dist/js/swiper.esm.bundle.js + 3 modules
 
 // Execute the module function
 
