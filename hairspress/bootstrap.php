@@ -67,8 +67,10 @@ $hairspress_admin_dashboard = new Hairspress\App\Wordpress_Dashboard();
 $hairspress_tinymce = new Hairspress\App\Wordpress_Tinymce();
 $hairspress_tinymce->init();
 
-$hairspress_widget = new Hairspress\App\Wordpress_Widget();
-$hairspress_widget->init();
+add_action('widgets_init', function() {
+	$hairspress_widget = new Hairspress\App\Wordpress_Widget();
+	$hairspress_widget->init();
+});
 
 $hairspress_design = new Hairspress\App\Options_Design();
 $hairspress_topics = new Hairspress\App\Options_Topics();
@@ -79,6 +81,11 @@ $hairspress_query = new Hairspress\App\Wordpress_Query();
 
 $hairspress_post_password = new Hairspress\App\Wordpress_Post_Password();
 
+// お知らせ
+new Hairspress\App\Posttype_Topics();
+
+
+// 投稿タイプ制限
 $hp_setting = get_field('hp_setting', 'option');
 if (!isset($hp_setting['post_type']['catalog'])) {
 	$hp_setting['post_type']['catalog'] = true;

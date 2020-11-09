@@ -17,7 +17,7 @@ function my_getarchives_where( $where, $r ) {
 	}
 	return $where;
 }
-add_filter('getarchives_where', 'my_getarchives_where', 10, 2);
+// add_filter('getarchives_where', 'my_getarchives_where', 10, 2);
 
 function my_get_archives_link( $link_html ) {
 	global $my_archives_post_type;
@@ -32,7 +32,7 @@ function my_get_archives_link( $link_html ) {
 	// }
 	return $link_html;
 }
-add_filter('get_archives_link', 'my_get_archives_link');
+// add_filter('get_archives_link', 'my_get_archives_link');
 
 function mio_get_archives_list( $post_type = '', $show_count = 1) {
 	$args = array(

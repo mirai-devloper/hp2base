@@ -7,15 +7,17 @@
 		?>
 		<li>
 			<a href="<?php the_permalink( get_the_ID() ); ?>" class="widget_recent_entries__link">
-				<div class="widget_recent_entries__thumbnail">
-					<div class="thumb">
-						<?php if (has_post_thumbnail(get_the_ID())) : ?>
-							<?php the_post_thumbnail('thumbnail'); ?>
-						<?php else : ?>
-							<span class="not-thumb"></span>
-						<?php endif; ?>
+				<?php if ($thumbnail) : ?>
+					<div class="widget_recent_entries__thumbnail">
+						<div class="thumb">
+							<?php if (has_post_thumbnail(get_the_ID())) : ?>
+								<?php the_post_thumbnail('thumbnail'); ?>
+							<?php else : ?>
+								<span class="not-thumb"></span>
+							<?php endif; ?>
+						</div>
 					</div>
-				</div>
+				<?php endif; ?>
 				<div class="widget_recent_entries__content">
 					<div class="title"><?= $title ; ?></div>
 					<?php if ($show_date) : ?>

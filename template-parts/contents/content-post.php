@@ -4,17 +4,12 @@
 		<!-- <h2 class="c-title-page"><span class="en">Blog</span><span class="jp">ブログ</span></h2> -->
 	<div class="entry-row <?= has_blocks(get_post(get_the_ID())) ? 'has-blocks' : ''; ?>">
 		<div class="post-wrapper">
-			<?php
-				if( !is_user_logged_in() and !isBot() ) {
-					set_post_views( get_the_ID() );
-				}
-			?>
-			<?php if( have_posts() ) : ?>
-				<?php while( have_posts() ) : the_post(); ?>
+			<?php if (have_posts()) : ?>
+				<?php while (have_posts()) : the_post(); ?>
 					<article class="post-single">
 						<div class=""><!-- post-content -->
 							<header class="entry-header"><!-- post-header  -->
-								<h1 class="title"><?php the_title_attribute(); ?></h1>
+								<h1 class="title"><?php the_title(); ?></h1>
 								<div class="entry-header__row">
 									<!-- <div class="cat_tag"> -->
 									<div class="category">
@@ -58,17 +53,5 @@
 			<?php get_sidebar(); ?>
 		</div>
 	</div>
-
-		<!-- <div class="row">
-			<div class="col-xs-12 col-md-9">
-			</div>
-
-			<?php if ( ! isFacebook()) : ?>
-			<div class="col-xs-12 col-md-3">
-
-			</div>
-			<?php endif; ?>
-		</div> -->
-	<!-- </div> -->
 </main>
 <!-- /#blog -->

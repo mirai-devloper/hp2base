@@ -6,7 +6,7 @@
 add_filter( 'post_type_link', 'hp_post_type_link', 1, 2 );
 function hp_post_type_link( $link, $post ){
 	if ( 'topics' === $post->post_type ) {
-		return home_url( '/topics/details/' . $post->ID );
+		// return home_url( '/topics/details/' . $post->ID );
 
 	} else if( 'staff' === $post->post_type ) {
 		return home_url( '/staff/details/' . $post->ID );
@@ -49,15 +49,15 @@ function hp_rewrite_rules_array( $rules ) {
 // リライトルールの追加
 add_action('init', 'hp_custom_rewrite_rules');
 function hp_custom_rewrite_rules() {
-	// お知らせ
-	add_rewrite_rule( 'topics/details/([0-9]+)/?$', 'index.php?post_type=topics&p=$matches[1]', 'top' );
-	add_rewrite_rule( 'topics/details/([0-9]+)(/[0-9]+)?/?$', 'index.php?post_type=topics&p=$matches[1]&page=$matches[2]', 'top' );
-	add_rewrite_rule( 'topics/date/([0-9]{4})/?$', 'index.php?post_type=topics&year=$matches[1]', 'top' );
-	add_rewrite_rule( 'topics/date/([0-9]{4})/page/?([0-9]{1,})/?$', 'index.php?post_type=topics&year=$matches[1]&paged=$matches[2]', 'top' );
-	add_rewrite_rule( 'topics/date/([0-9]{4})/([0-9]{1,2})/?$', 'index.php?post_type=topics&year=$matches[1]&monthnum=$matches[2]', 'top' );
-	add_rewrite_rule( 'topics/date/([0-9]{4})/([0-9]{1,2})/page/?([0-9]{1,})/?$', 'index.php?post_type=topics&year=$matches[1]&monthnum=$matches[2]&paged=$matches[3]', 'top' );
-	add_rewrite_rule( 'topics/date/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/?$', 'index.php?post_type=topics&year=$matches[1]&monthnum=$matches[2]&day=$matches[3]', 'top' );
-	add_rewrite_rule( 'topics/date/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/page/?([0-9]{1,})/?$', 'index.php?post_type=topics&year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&paged=$matches[4]', 'top' );
+	// // お知らせ
+	// add_rewrite_rule( 'topics/details/([0-9]+)/?$', 'index.php?post_type=topics&p=$matches[1]', 'top' );
+	// add_rewrite_rule( 'topics/details/([0-9]+)(/[0-9]+)?/?$', 'index.php?post_type=topics&p=$matches[1]&page=$matches[2]', 'top' );
+	// add_rewrite_rule( 'topics/date/([0-9]{4})/?$', 'index.php?post_type=topics&year=$matches[1]', 'top' );
+	// add_rewrite_rule( 'topics/date/([0-9]{4})/page/?([0-9]{1,})/?$', 'index.php?post_type=topics&year=$matches[1]&paged=$matches[2]', 'top' );
+	// add_rewrite_rule( 'topics/date/([0-9]{4})/([0-9]{1,2})/?$', 'index.php?post_type=topics&year=$matches[1]&monthnum=$matches[2]', 'top' );
+	// add_rewrite_rule( 'topics/date/([0-9]{4})/([0-9]{1,2})/page/?([0-9]{1,})/?$', 'index.php?post_type=topics&year=$matches[1]&monthnum=$matches[2]&paged=$matches[3]', 'top' );
+	// add_rewrite_rule( 'topics/date/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/?$', 'index.php?post_type=topics&year=$matches[1]&monthnum=$matches[2]&day=$matches[3]', 'top' );
+	// add_rewrite_rule( 'topics/date/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/page/?([0-9]{1,})/?$', 'index.php?post_type=topics&year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&paged=$matches[4]', 'top' );
 
 	// メニュー
 	// add_rewrite_rule( 'menu/([0-9]+)/?$', 'index.php?post_type=menu&p=$matches[1]', 'top' );
@@ -125,7 +125,7 @@ function hp_custom_rewrite_rules() {
 
 
 function hp_custom_posttype_register() {
-	add_topics_post_type();
+	// add_topics_post_type();
 	add_staff_post_type();
 	add_catalog_post_type();
 	add_channel_post_type();
@@ -138,7 +138,7 @@ register_activation_hook(__FILE__, 'hp_custom_posttype_register' );
 
 
 // お知らせ
-add_action('init', 'add_topics_post_type');
+// add_action('init', 'add_topics_post_type');
 function add_topics_post_type() {
 	$params = array(
 		'labels' => array(
@@ -168,6 +168,7 @@ function add_topics_post_type() {
 		// 'taxonomies' => array('news_cat'),
 		'capability_type' => 'post',
 		'hierarchical' => true,
+		'show_in_rest' => true,
 		'rewrite' => array(
 			'slug' => 'topics',
 			'with_front' => false
@@ -385,6 +386,7 @@ function add_freepage_post_type() {
 		// 'taxonomies' => array('news_cat'),
 		'capability_type' => 'page',
 		'capability'  => 'edit_posts',
+		'show_in_rest' => true,
 		// 'hierarchical' => true,
 		'rewrite' => array(
 			'slug' => 'freepage',
@@ -537,6 +539,11 @@ function create_channel_taxonomies() {
 			'rewrite' => array(
 				'slug' => 'channel/category',
 				'with_front' => false
+			),
+			'default_term' => array(
+				'name' => '未分類',
+				'slug' => '未分類',
+				'description' => '',
 			)
 		)
 	);

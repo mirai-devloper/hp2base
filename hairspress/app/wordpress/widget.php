@@ -19,6 +19,9 @@ class Wordpress_Widget {
 		unregister_widget('WP_Widget_Archives');
 		register_widget('Hairspress\\App\\Widget_Archives');
 
+		// 人気の記事ウィジェットの登録
+		register_widget('Hairspress\\App\\Widget_Popularposts');
+
 		unregister_widget('WP_Widget_Recent_Comments');
 		unregister_widget('WP_Widget_Meta');
 		unregister_widget('WP_Widget_RSS');

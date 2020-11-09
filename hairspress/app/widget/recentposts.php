@@ -47,6 +47,8 @@ class Widget_Recentposts extends \WP_Widget_Recent_Posts
 		}
 		$show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
 
+		$thumbnail = isset($instance['thumbnail']) ? $instance['thumbnail'] : false;
+
 		$r = new \WP_Query( apply_filters( 'widget_posts_args', array(
 				'posts_per_page'      => $number,
 				'no_found_rows'       => true,
@@ -69,7 +71,8 @@ class Widget_Recentposts extends \WP_Widget_Recent_Posts
 
 		$params = array(
 			'posts' => $r,
-			'show_date' => $show_date
+			'show_date' => $show_date,
+			'thumbnail' => $thumbnail,
 		);
 
 		echo View::forge('widget/recentposts', $params);
@@ -85,6 +88,7 @@ class Widget_Recentposts extends \WP_Widget_Recent_Posts
 	{
 		$instance = parent::update($new_instance, $old_instance);
 		$instance['post_type'] = $new_instance['post_type'];
+		$instance['thumbnail'] = isset($new_instance['thumbnail']) ? (bool) $new_instance['thumbnail'] : false;
 
 		return $instance;
 	}
@@ -105,9 +109,18 @@ class Widget_Recentposts extends \WP_Widget_Recent_Posts
 		);
 
 		$params = array(
-			'field'      => $fields,
-			'post_types' => $post_types,
-			'instance'   => $post_type
+			'post_type' => array(
+				'field'      => $fields,
+				'post_types' => $post_types,
+				'instance'   => $post_type
+			),
+			'thumbnail' => array(
+				'field' => array(
+					'id' => $this->get_field_id('thumbnail'),
+					'name' => $this->get_field_name('thumbnail'),
+				),
+				'instance' => (isset($instance['thumbnail']) ? (bool) $instance['thumbnail'] : false),
+			),
 		);
 
 		echo View::forge('widget/admin/recentposts', $params);

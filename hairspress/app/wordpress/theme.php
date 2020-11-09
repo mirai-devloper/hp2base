@@ -101,6 +101,18 @@ class Wordpress_Theme
 				'after_title'   => '</span></h3>',
 			)
 		);
+
+		register_sidebar(
+			array(
+				'name'          => 'お知らせのサイドバー',
+				'id'            => 'topics-sidebar',
+				'description'   => 'お知らせのサイドバーウィジェットエリアです。',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="widgettitle heading-mark"><span class="f-um">',
+				'after_title'   => '</span></h3>',
+			)
+		);
 	}
 
 	/**

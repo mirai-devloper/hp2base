@@ -15,7 +15,7 @@ class Wordpress_Initialize {
 		add_action('wp_dashboard_setup', array($this, 'remove_dashboard_widgets'));
 		add_filter('manage_posts_columns', array($this, 'remove_post_columns'));
 		add_filter('manage_pages_columns', array($this, 'remove_page_columns'));
-		add_action('widgets_init', array($this, 'unregister_widgets'));
+		// add_action('widgets_init', array($this, 'unregister_widgets'));
 
 		add_filter('admin_footer_text', array($this, 'admin_footer_text'));
 

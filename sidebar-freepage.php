@@ -1,12 +1,11 @@
-<?php $gtdu = get_template_directory_uri(); ?>
 <div id="sidebar" class="sidebar">
   <?php
-  $freespace_check = function_exists('get_field') ? get_field('free_space_hidden', 'option') : false;
-  if( $freespace_check ) :
-?>
-<div id="sidebarFreespace" class="widget-freespace">
+		$freespace_check = get_field('free_space_hidden', 'option');
+		if( $freespace_check ) :
+	?>
+		<div id="sidebarFreespace" class="widget-freespace">
       <?php
-        $freespace = function_exists('get_field') ? get_field('free_space', 'option') : null;
+        $freespace = get_field('free_space', 'option');
         if( !empty($freespace) ) {
           foreach( (array) $freespace as $item ) {
             // 画像取得
@@ -17,7 +16,7 @@
             } else {
               $image = '<span class="not-thumb"></span>';
             }
-            
+
             // リンク取得
             $link = '';
             if( $item['url_customer'] ) {
