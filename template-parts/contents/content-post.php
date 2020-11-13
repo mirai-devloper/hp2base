@@ -1,8 +1,12 @@
+<?php
+	$has_blocks = has_blocks(get_post(get_the_ID())) ? 'has-blocks' : '';
+	$full_width = (isset($args['full-width']) and $args['full-width']) ? 'full' : '';
+?>
 <!-- ここから - コンテンツ -->
 <main id="blog" class="c-wrap">
 	<!-- <div class="container"> -->
 		<!-- <h2 class="c-title-page"><span class="en">Blog</span><span class="jp">ブログ</span></h2> -->
-	<div class="entry-row <?= has_blocks(get_post(get_the_ID())) ? 'has-blocks' : ''; ?>">
+	<div class="entry-row <?= $has_blocks; ?> <?= $full_width; ?>">
 		<div class="post-wrapper">
 			<?php if (have_posts()) : ?>
 				<?php while (have_posts()) : the_post(); ?>
@@ -37,9 +41,19 @@
 							</section>
 
 							<footer class="entry-footer">
-								<?php get_template_part('social', 'button'); ?>
+								<?php get_template_part('template-parts/social', 'button'); ?>
 							</footer>
 						</div>
+
+						<?php
+							if ( ( is_single() || is_page() ) && ( comments_open() || get_comments_number() ) && ! post_password_required() ) {
+								?>
+								<div class="comments-wrapper section-inner">
+									<?php comments_template(); ?>
+								</div><!-- .comments-wrapper -->
+								<?php
+							}
+						?>
 					</article>
 				<?php endwhile; ?>
 				<?php hp_single_pager(); ?>

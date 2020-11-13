@@ -5,7 +5,7 @@ class Wordpress_Initialize {
 	public function __construct()
 	{
 
-		$this->do_feed();
+		// $this->do_feed();
 
 		add_action('admin_init', array($this, 'wp_head'));
 		add_action('admin_menu', array($this, 'remove_menu'), 999);
@@ -15,7 +15,6 @@ class Wordpress_Initialize {
 		add_action('wp_dashboard_setup', array($this, 'remove_dashboard_widgets'));
 		add_filter('manage_posts_columns', array($this, 'remove_post_columns'));
 		add_filter('manage_pages_columns', array($this, 'remove_page_columns'));
-		// add_action('widgets_init', array($this, 'unregister_widgets'));
 
 		add_filter('admin_footer_text', array($this, 'admin_footer_text'));
 
@@ -24,6 +23,11 @@ class Wordpress_Initialize {
 		add_filter('nav_menu_css_class', array($this, 'remove_nav_class'), 100, 1);
 		add_filter('nav_menu_item_id', array($this, 'remove_nav_class'), 100, 1);
 		add_filter('page_css_class', array($this, 'remove_nav_class'), 100, 1);
+
+		add_filter('custom_menu_order', '__return_true');
+		add_filter('menu_order', array($this, 'custom_menu_order'));
+
+		add_action('admin_menu', array($this, 'add_separator'));
 	}
 
 	public function wp_head()
@@ -31,8 +35,8 @@ class Wordpress_Initialize {
 		// 初期出力のタグを削除
 		remove_action('wp_head', 'wp_generator');
 		remove_action('wp_head', 'rsd_link');
-		remove_action('wp_head', 'feed_links', 2);
-		remove_action('wp_head', 'feed_links_extra', 3);
+		// remove_action('wp_head', 'feed_links', 2);
+		// remove_action('wp_head', 'feed_links_extra', 3);
 		remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 		remove_action('wp_head', 'wlwmanifest_link');
 
@@ -40,24 +44,49 @@ class Wordpress_Initialize {
 		remove_action( 'welcome_panel', 'wp_welcome_panel' );
 	}
 
-	/**
-	 * ウィジェットの削除
-	 */
-	public function unregister_widgets()
-	{
-		unregister_widget('WP_Widget_RSS'); // RSS
-		// unregister_widget('WP_Widget_Archives'); // アーカイブ
-		// unregister_widget('WP_Widget_Nav_Menu'); // カスタムメニュー
-		// unregister_widget('WP_Widget_Categories'); // カテゴリー
-		unregister_widget('WP_Widget_Calendar'); // カレンダー
-		// unregister_widget('WP_Widget_Tag_Cloud'); // タグクラウド
-		// unregister_widget('WP_Widget_Text'); // テキスト
-		unregister_widget('WP_Widget_Meta'); // メタ情報
-		// unregister_widget('WP_Widget_Pages'); // 固定ページ
-		unregister_widget('WP_Widget_Recent_Comments'); // 最近のコメント
-		unregister_widget('WP_Widget_Recent_Posts'); // 最近の投稿
-		unregister_widget('WP_Widget_Search'); // 検索
+	public function add_separator() {
+		global $menu;
+		$menu[] = array(null, 'read', 'separator3', null, 'wp-menu-separator');
+		$menu[] = array(null, 'read', 'separator4', null, 'wp-menu-separator');
+		$menu[] = array(null, 'read', 'separator5', null, 'wp-menu-separator');
 	}
+
+	public function custom_menu_order($menu_order) {
+		if (!$menu_order) {
+			return true;
+		}
+
+		return array(
+			'index.php',
+			'hp-manual-admin',
+			'separator1',
+			'edit.php',
+			'edit.php?post_type=topics',
+			'edit.php?post_type=staff',
+			'edit.php?post_type=catalog',
+			'edit.php?post_type=menu',
+			'edit.php?post_type=menu-contents',
+			'edit.php?post_type=channel',
+			'edit.php?post_type=freepage',
+			'separator2',
+			'upload.php',
+			'edit-comments.php',
+			'separator3',
+			'theme-slider-settings',
+			'theme-salon-freespace',
+			'hairspress-toppage-setting',
+			'theme-salon-settings',
+			'separator4',
+			'themes.php',
+			'plugins.php',
+			'users.php',
+			'tools.php',
+			'options-general.php',
+			'edit.php?post_type=page',
+			'separator-last',
+		);
+	}
+
 
 	/**
 	 * 管理画面のメニュー表示変更
@@ -72,7 +101,7 @@ class Wordpress_Initialize {
 		// remove_menu_page('upload.php'); // メディア
 		// remove_menu_page('link-manager.php'); // リンク
 		// remove_menu_page('edit.php?post_type=page'); // 固定ページ
-		remove_menu_page('edit-comments.php'); // コメント
+		// remove_menu_page('edit-comments.php'); // コメント
 		// remove_menu_page('customize.php?return=/wp-admin/themes.php'); // カスタマイズ
 
 		// remove_menu_page('themes.php'); // 概観
@@ -146,10 +175,11 @@ class Wordpress_Initialize {
 		$dashboards['dashboard'] = array(
 			'normal' => array(
 				'dashboard_right_now', // 現在の状況
-				'dashboard_activity', // アクティビティ
+				// 'dashboard_activity', // アクティビティ
 				'dashboard_recent_comments', // 最近のコメント
 				'dashboard_incoming_links', // 被リンク
 				'dashboard_plugins', // プラグイン
+				'dashboard_site_health', // サイトヘルス
 			),
 			'side' => array(
 				'dashboard_quick_press', // クイック投稿
@@ -171,8 +201,8 @@ class Wordpress_Initialize {
 			'normal' => array(
 				'postcustom', // カスタムフィールド
 				// 'postexcerpt', // 抜粋
-				'commentstatusdiv', // コメント設定
-				'trackbacksdiv', // トラックバック設定
+				// 'commentstatusdiv', // コメント設定
+				// 'trackbacksdiv', // トラックバック設定
 				// 'revisionsdiv', // リビジョン表示
 				'formatdiv', // フォーマット設定
 				// 'slugdiv', // スラッグ設定
@@ -195,7 +225,7 @@ class Wordpress_Initialize {
 		// unset($columns['author']); // 作成者
 		// unset($columns['categories']); // カテゴリー
 		// unset($columns['tags']); // タグ、カスタムフィールド
-		unset($columns['comments']); // コメント
+		// unset($columns['comments']); // コメント
 		// unset($columns['date']); // 日付
 		return $columns;
 	}

@@ -70,7 +70,7 @@ class Wordpress_Dashboard {
 
 	public function manual_widget() {
 		$settings = array(
-			'url' => 'http://hairspress.com/wp/wp-content/uploads',
+			'url' => 'https://hairspress.com/wp/wp-content/uploads',
 			'list' => array(
 				array('ダッシュボード', '/2018/01/02a805b5ec8da06feb478d519d885e50.pdf'),
 				array('ブログ・お知らせ投稿', '/2018/01/a6e4724254fe319e9846c600c0bb05cc.pdf'),
@@ -79,10 +79,10 @@ class Wordpress_Dashboard {
 				array('アイキャッチ画像', '/2018/01/bbf338c4363902bdc3155e9103d896bc.pdf'),
 				array('メニュー', '/2018/01/9536f9ed8adc5ecb6c9fb6387a3c3b3c.pdf'),
 				array('チャンネル', '/2018/01/477cd4919e5e30b66d0d2273c45fb460.pdf'),
-				array('フリーページ', '/2018/01/cf2aaf25282df99f00be4d49207239f9.pdf'),
-				array('スライダー設定', '/2018/01/a9fd99c4f03a815d4aeb005c25caba63.pdf'),
-				array('サロン情報', '/2018/01/262af9ecfd721a00ab70d1df653d6a1b.pdf'),
-				array('メニューの設定', '/2018/01/612d200e608db59bb2cd0862e7e885b6.pdf'),
+				array('サブページ', '/2018/01/cf2aaf25282df99f00be4d49207239f9.pdf'),
+				// array('スライダー設定', '/2018/01/a9fd99c4f03a815d4aeb005c25caba63.pdf'),
+				array('サロン設定', '/2018/01/262af9ecfd721a00ab70d1df653d6a1b.pdf'),
+				array('サイトナビの設定', '/2018/01/612d200e608db59bb2cd0862e7e885b6.pdf'),
 			),
 		);
 
@@ -96,33 +96,34 @@ class Wordpress_Dashboard {
 			);
 		}
 
-		?>
-			<div class="inside">
-				<div id="dashboard_manual">
-					<h2>マニュアル</h2>
-					<p>マニュアルをPDFファイルでご覧に頂けます。</p>
-					<p>現在開いているページ（ウィンドウ）とは別で、新しく小さいウィンドウが開きます。（パソコンのみ）</p>
-					<hr>
-					<h3>管理画面マニュアル</h3>
-					<ul id="hpManualPdf" class="hpManual">
-						<li><?= implode('</li><li>', $url); ?></li>
-					</ul>
-					<hr>
-					<h3>Googleアナリティクスのレポートについて</h3>
-					<ul id="hpManualPdf2" class="hpManual">
-						<!-- <li><a href="http://hairspress.com/wp/wp-content/uploads/2018/05/93159e8270dab2fd834e88cbbf9e3590.pdf" class="openManualWindow">GoogleAnalyticsレポートについて</a></li> -->
-					</ul>
-				</div>
+	?>
+		<div class="inside">
+			<div id="dashboard_manual">
+				<h2>マニュアル</h2>
+				<p>マニュアルをPDFファイルでご覧に頂けます。</p>
+				<p>現在開いているページ（ウィンドウ）とは別で、新しく小さいウィンドウが開きます。（パソコンのみ）</p>
+				<hr>
+				<h3>管理画面マニュアル</h3>
+				<ul id="hpManualPdf" class="hpManual">
+					<li><?= implode('</li><li>', $url); ?></li>
+				</ul>
+				<hr>
+				<h3>Googleアナリティクスのレポートについて</h3>
+				<ul id="hpManualPdf2" class="hpManual">
+					<li>現在調整中です。</li>
+					<!-- <li><a href="http://hairspress.com/wp/wp-content/uploads/2018/05/93159e8270dab2fd834e88cbbf9e3590.pdf" class="openManualWindow">GoogleAnalyticsレポートについて</a></li> -->
+				</ul>
 			</div>
-			<script type="text/javascript">
-			(function($) {
-				$(document).on('click', '.openManualWindow', function(e) {
-					e.preventDefault();
-					window.open(this.href, 'hpManual', 'width=1024,height=700,menubar=no,toolbar=no,scrollbars=yes');
-					return false;
-				});
-			})(jQuery);
-			</script>
-		<?php
+		</div>
+		<script type="text/javascript">
+		(function($) {
+			$(document).on('click', '.openManualWindow', function(e) {
+				e.preventDefault();
+				window.open(this.href, 'hpManual', 'width=1024,height=700,menubar=no,toolbar=no,scrollbars=yes');
+				return false;
+			});
+		})(jQuery);
+		</script>
+	<?php
 	}
 }

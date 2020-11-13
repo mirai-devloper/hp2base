@@ -1,0 +1,439 @@
+{
+    "key": "group_5fab4e0ce39fa",
+    "title": "トップページ設定",
+    "fields": [
+        {
+            "key": "field_5fab4e6f85bc1",
+            "label": "スライダー画像の設定",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_55fa2ce387046",
+            "label": "補足",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<h4>推奨の画像サイズについて<\/h4>\r\n<p><span style=\"color: #e22;\">横幅：1280px　　高さ：596px<\/span><\/p>\r\n\r\n上記サイズ内に写真を合わせることで、綺麗に収まります。",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5e9824b20003c",
+            "label": "スライドショーの画像設定",
+            "name": "hpSlider",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5e9827970003d",
+                    "label": "画像の追加",
+                    "name": "images",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 0,
+                    "max": 0,
+                    "layout": "block",
+                    "button_label": "画像を追加",
+                    "sub_fields": [
+                        {
+                            "key": "field_5e9827e40003e",
+                            "label": "画像ファイル",
+                            "name": "image",
+                            "type": "image_aspect_ratio_crop",
+                            "instructions": "最小サイズ：幅1280px X 高596px",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "crop_type": "pixel_size",
+                            "aspect_ratio_width": 1280,
+                            "aspect_ratio_height": 596,
+                            "return_format": "id",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "min_width": 0,
+                            "min_height": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_5fab4f2f14d9a",
+            "label": "スライダー動作の設定",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_557a961377620",
+            "label": "アニメーション",
+            "name": "hp_slider_mode",
+            "type": "select",
+            "instructions": "スライダーの動きを設定します。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "slide": "スライド",
+                "fade": "フェード",
+                "verticalSlide": "ブラーフェード",
+                "slideLeft": "左へスライド",
+                "slideRight": "右へスライド",
+                "slideRevealLeft": "Slide Reveal Left",
+                "slideRevealRight": "Slide Reveal Right",
+                "slideOverLeft": "Slide Over Left",
+                "slideOverRight": "Slide Over Right",
+                "expandReveal": "Expand Reveal",
+                "shrinkReveal": "Shrink Reveal",
+                "verticalSplitReveal": "Vertical Split Reveal",
+                "horizontalSplitReveal": "Horizontal Split Reveal",
+                "zipReveal": "Zip Reveal",
+                "barReveal": "Bars Reveal",
+                "fold": "見開き",
+                "foldLeft": "左へ見開き",
+                "foldRight": "右へ見開き"
+            },
+            "default_value": "fade",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0,
+            "return_format": "value"
+        },
+        {
+            "key": "field_557a97672daf1",
+            "label": "速度",
+            "name": "hp_slider_speed",
+            "type": "number",
+            "instructions": "アニメーションの速度を設定します。\r\n「1000」で「1秒」となります。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3500,
+            "placeholder": 1700,
+            "prepend": "",
+            "append": "",
+            "min": 500,
+            "max": 10000,
+            "step": 100
+        },
+        {
+            "key": "field_557a98133d676",
+            "label": "停止時間",
+            "name": "hp_slider_pause",
+            "type": "number",
+            "instructions": "切り替わり時に一時停止する時間の長さです。\r\n「1000」で「1秒」となります。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 8000,
+            "placeholder": 5000,
+            "prepend": "",
+            "append": "",
+            "min": 500,
+            "max": 20000,
+            "step": 100
+        },
+        {
+            "key": "field_5fab4f9301d82",
+            "label": "バナースペースの設定",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_55fc1cd06daeb",
+            "label": "バナースペースとは？",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "バナースペースとは、トップページにバナーを付けてリンクすることのできる設定です。\r\n最大で6個までバナーを設定することができます。\r\n\r\n例としては、「キャンペーン告知をしたい！」「もっとこのページを見てほしい！」などなど、使い方はあると思いますので、是非活用してみてください。",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5f71ab06e77e4",
+            "label": "バナースペースを利用する",
+            "name": "free_space_hidden",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "利用する",
+            "ui_off_text": "利用しない"
+        },
+        {
+            "key": "field_559501fba95c2",
+            "label": "バナースペース",
+            "name": "free_space",
+            "type": "flexible_content",
+            "instructions": "トップページにバナーなどが設置できるバナースペースを設定できます。<br>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": "freepage"
+            },
+            "layouts": {
+                "55950253e9d89": {
+                    "key": "55950253e9d89",
+                    "name": "フリースペース",
+                    "label": "バナースペース",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_559503f8115ea",
+                            "label": "画像",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "写真やバナーをアップロードまたは設定できます。",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "preview_size": "front-free-thumb",
+                            "library": "uploadedTo",
+                            "min_width": 320,
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "jpeg,JPEG,jpg,JPG,png,PNG"
+                        },
+                        {
+                            "key": "field_559505f0115eb",
+                            "label": "テキスト",
+                            "name": "link_text",
+                            "type": "text",
+                            "instructions": "バナー下部に表示されるテキストです。必ずご入力ください。\r\n表示・非表示は下にある、トグルボタンにてご変更ください。",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "link_text",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "ヘアカタログ",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": 14
+                        },
+                        {
+                            "key": "field_55d6d95ff8170",
+                            "label": "URLを入力する",
+                            "name": "url_customer",
+                            "type": "true_false",
+                            "instructions": "URLを入力したい場合に、チェックしてください。下にある項目が切り替わります。",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 1,
+                            "ui_on_text": "入力する",
+                            "ui_off_text": "ページを選択"
+                        },
+                        {
+                            "key": "field_55e8227cea3b8",
+                            "label": "リンクの動作",
+                            "name": "link_target",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "新規ウィンドウ(タブ)で開く",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_55d6d9ccf8171",
+                            "label": "ページ選択",
+                            "name": "url_selector",
+                            "type": "page_link",
+                            "instructions": "リンクしたいページを選択してください。",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_55d6d95ff8170",
+                                        "operator": "!=",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "freepage",
+                                "page"
+                            ],
+                            "taxonomy": "",
+                            "allow_null": 0,
+                            "allow_archives": 1,
+                            "multiple": 0
+                        },
+                        {
+                            "key": "field_55950276a95c3",
+                            "label": "URL",
+                            "name": "url",
+                            "type": "url",
+                            "instructions": "URLを記入ください。",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_55d6d95ff8170",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "http:\/\/"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "button_label": "バナーの追加",
+            "min": "",
+            "max": 6
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "hairspress-toppage-setting"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1605064820
+}

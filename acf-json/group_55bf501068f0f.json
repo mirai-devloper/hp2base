@@ -18,6 +18,25 @@
             "layout": "block",
             "sub_fields": [
                 {
+                    "key": "field_55bf65cbb7d9f",
+                    "label": "フリガナなど",
+                    "name": "kananame",
+                    "type": "text",
+                    "instructions": "メニュー名のフリガナなど。メニュータイトルより小さめのテキストで表示されます。",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
                     "key": "field_5c63deff9e880",
                     "label": "メニュー",
                     "name": "",
@@ -244,5 +263,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1603102762
+    "modified": 1605061453
 }

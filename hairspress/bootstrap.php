@@ -42,6 +42,7 @@ require __DIR__.DS.'functions/pager.php';
 require __DIR__.DS.'functions/nav_menu.php';
 require __DIR__.DS.'functions/category.php';
 require __DIR__.DS.'functions/widget.php';
+require __DIR__.DS.'functions/comment.php';
 require __DIR__.DS.'functions/breadcrumb.php';
 require __DIR__.DS.'functions/front.php';
 require __DIR__.DS.'functions/google.php';
@@ -63,6 +64,8 @@ $hairspress_user = new Hairspress\App\Wordpress_User();
 $hairspress_user->init();
 
 $hairspress_admin_dashboard = new Hairspress\App\Wordpress_Dashboard();
+
+$hairspress_tour = new Hairspress\App\Wordpress_Tour();
 
 $hairspress_tinymce = new Hairspress\App\Wordpress_Tinymce();
 $hairspress_tinymce->init();

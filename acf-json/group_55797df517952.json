@@ -1,6 +1,6 @@
 {
     "key": "group_55797df517952",
-    "title": "サロン情報を設定",
+    "title": "サロン設定",
     "fields": [
         {
             "key": "field_55798aad54438",
@@ -660,5 +660,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1603099927
+    "modified": 1605062199
 }

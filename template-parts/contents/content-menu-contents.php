@@ -64,7 +64,7 @@
 				<!-- コンテンツエリア -->
 				<section class="catalog-body">
 					<table class="catalog-table">
-						<?php if ($type = menucontents_type()) : ?>
+						<?php if ($type = menucontents_type_single()) : ?>
 							<tr>
 								<th>タイプ</th>
 								<td><?= $type; ?></td>

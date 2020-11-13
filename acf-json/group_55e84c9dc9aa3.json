@@ -1,6 +1,6 @@
 {
     "key": "group_55e84c9dc9aa3",
-    "title": "テーマ設定",
+    "title": "HairsPress設定",
     "fields": [
         {
             "key": "field_5f7d99d60924f",
@@ -94,72 +94,11 @@
             ]
         },
         {
-            "key": "field_559a896cbd1ee",
-            "label": "ヘアカタログの利用サービス",
-            "name": "hp_reservia_catalog_check",
-            "type": "select",
-            "instructions": "※現在設定は使われておりません。",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "hairspress": "HairsPressを使用する",
-                "reservia": "Reserviaを使用する"
-            },
-            "default_value": "hairspress",
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 1,
-            "ajax": 0,
-            "return_format": "value",
-            "placeholder": ""
-        },
-        {
-            "key": "field_55e84e07726aa",
-            "label": "契約開始日",
-            "name": "hp_service_start",
-            "type": "date_picker",
-            "instructions": "契約開始日を設定します。",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "display_format": "Y年m月d日",
-            "return_format": "Y-m-d",
-            "first_day": 0
-        },
-        {
-            "key": "field_55fc138012155",
-            "label": "リザービア番号を表示する",
-            "name": "hp_reservia_number_check",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "リザービア番号を表示する",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_557a78f06e1db",
-            "label": "メールアドレス",
-            "name": "hp_salon_email",
-            "type": "email",
-            "instructions": "お申込み時にご記入頂いたメールアドレスを入力ください。",
+            "key": "field_55e3e56802608",
+            "label": "Google Analytics",
+            "name": "hp_google_analytics",
+            "type": "text",
+            "instructions": "Google Analyticsから発行されたトラッキングIDをここに貼り付けます。",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -168,9 +107,33 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "sample@example.com",
+            "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55e3e21f02607",
+            "label": "Search Console",
+            "name": "hp_search_console",
+            "type": "text",
+            "instructions": "Search Consoleで発行される「HTMLタグ」を追加して所有者の確認ができます。表示されたMETAタグをここに貼り付けて下さい。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "<meta name=\"google-site-verification\" content=\"発行された英数字の羅列が入っています\" \/>",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
         }
     ],
     "location": [
@@ -190,5 +153,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1604560558
+    "modified": 1605060895
 }

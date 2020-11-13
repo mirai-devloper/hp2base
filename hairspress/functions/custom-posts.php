@@ -360,8 +360,8 @@ add_action('init', 'add_freepage_post_type');
 function add_freepage_post_type() {
 	$params = array(
 		'labels' => array(
-			'name' => 'フリーページ',
-			'singular_name' => 'フリーページ',
+			'name' => 'サブページ',
+			'singular_name' => 'サブページ',
 			'add_new' => '新規追加',
 			'add_new_item' => '新規ページを追加',
 			'edit_item' => 'ページの編集',

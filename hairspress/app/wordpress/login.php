@@ -24,7 +24,7 @@ class Wordpress_Login
 
 	public function admin_menus() {
 		global $menu, $submenu;
-		remove_menu_page('edit-comments.php');
+		// remove_menu_page('edit-comments.php');
 
 		if ($this->can()) {
 			remove_menu_page('tools.php');
@@ -56,7 +56,7 @@ class Wordpress_Login
 		$wp_admin_bar->remove_menu('feedback');
 		$wp_admin_bar->remove_menu('themes');
 		$wp_admin_bar->remove_menu('customize');
-		$wp_admin_bar->remove_menu('comments');
+		// $wp_admin_bar->remove_menu('comments');
 
 		if ($this->can()) {
 			$wp_admin_bar->remove_menu('search');

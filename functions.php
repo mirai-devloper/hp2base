@@ -593,3 +593,6 @@ add_filter('hp_nav_menu_title', function($title, $item) {
 }, 10, 2);
 
 
+add_action('welcome_panel', function() {
+	echo View::forge('welcome');
+});

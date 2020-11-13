@@ -13,9 +13,7 @@
             <time class="datetime" datetime="<?php the_time('c'); ?>"><?php the_time('Y.m.d'); ?></time>
             <div class="topics-header">
               <h3 class="title"><a href="<?php the_permalink(); ?>"><?php the_title_attribute(); ?></a></h3>
-              <p class="content"><?php 
-              $content = strip_shortcodes(get_the_content());
-              echo mio_get_excerpt(strip_tags($content), 160, '...'); ?></p>
+              <div class="content"><?php the_excerpt(); ?></div>
               <a href="<?php the_permalink(); ?>" class="btn btn-default btn-sl"><i class="fa fa-angle-right"></i><span>続きを読む</span></a>
             </div>
           </div>

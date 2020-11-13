@@ -19,50 +19,51 @@ class Acf_Admin {
 
 	public function acf_add_options_page() {
 		$pages['main'] = [
+			'toppage' => array(
+				'page_title' => 'トップページ設定',
+				'menu_title' => 'トップページ設定',
+				'menu_slug' => 'hairspress-toppage-setting',
+				'position' => 47,
+				'capability' => 'edit_posts',
+				'icon_url' => 'dashicons-index-card',
+				'redirect' => false,
+			),
 			'salon' => [
-				'page_title' => 'サロン情報',
-				'menu_title' => 'サロン情報',
+				'page_title' => 'サロン設定',
+				'menu_title' => 'サロン設定',
 				'menu_slug'  => 'theme-salon-settings',
 				'position'   => 48,
 				'capability' => 'edit_posts',
 				'icon_url'   => 'dashicons-index-card',
 				'redirect'   => false,
 			],
-			'slider' => [
-				'page_title' => '画像を投稿',
-				'menu_title' => 'スライダー設定',
-				'menu_slug'  => 'theme-slider-settings',
-				'position'   => 46,
-				'capability' => 'edit_posts',
-				'icon_url'   => 'dashicons-images-alt2',
-				'redirect'   => false,
-			],
-			'freespace' => [
-				'page_title'  => 'バナースペースの設定',
-				'menu_title'  => 'バナースペース設定',
-				'menu_slug'   => 'theme-salon-freespace',
-				// 'parent_slug' => $pages['main']['salon']['menu_slug'],
-				'position'   => 47,
-				'capability'  => 'edit_posts',
-				'icon_url' => 'dashicons-admin-links',
-				'redirect' => false,
-			],
+			// 'slider' => [
+			// 	'page_title' => '画像を投稿',
+			// 	'menu_title' => 'スライダー設定',
+			// 	'menu_slug'  => 'theme-slider-settings',
+			// 	'position'   => 46,
+			// 	'capability' => 'edit_posts',
+			// 	'icon_url'   => 'dashicons-images-alt2',
+			// 	'redirect'   => false,
+			// ],
+			// 'freespace' => [
+			// 	'page_title'  => 'バナースペースの設定',
+			// 	'menu_title'  => 'バナースペース設定',
+			// 	'menu_slug'   => 'theme-salon-freespace',
+			// 	// 'parent_slug' => $pages['main']['salon']['menu_slug'],
+			// 	'position'   => 49,
+			// 	'capability'  => 'edit_posts',
+			// 	'icon_url' => 'dashicons-admin-links',
+			// 	'redirect' => false,
+			// ],
 		];
 
 		$pages['sub'] = [
-
-			'google' => [
-				'page_title'  => 'Google設定',
-				'menu_title'  => 'Google設定',
-				'menu_slug'   => 'options-google-code',
-				'parent_slug' => 'options-general.php',
-				'capability'  => 'manage_options',
-			],
 			'setting' => [
-				'page_title'  => '管理設定',
-				'menu_title'  => '管理者専用',
+				'page_title'  => 'HairsPress設定',
+				'menu_title'  => 'HairsPress設定',
 				'menu_slug'   => 'options-hairspress-setting',
-				'parent_slug' => 'options-general.php',
+				'parent_slug' => 'themes.php',
 				'capability'  => (is_multisite() ? 'manage_network' : 'manage_options'),
 			],
 		];

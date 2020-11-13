@@ -20,7 +20,7 @@
 									</div>
 									<div class="post-content">
 										<div class="post-header">
-											<h3 class="title"><?php the_title_attribute(); ?></h3>
+											<h3 class="title"><?php the_title(); ?></h3>
 											<div class="meta">
 												<time class="datetime" datetime="<?php the_time('c'); ?>"><?php the_time('Y.m.d'); ?></time>
 
@@ -28,7 +28,7 @@
 											</div>
 										</div>
 										<?php //get_template_part('social', 'count'); ?>
-										<p class="content"><?= strip_tags(strip_shortcodes(get_the_content())); ?></p>
+										<div class="content"><?php the_excerpt(); ?></div>
 										<div class="more">
 											<div class="btn btn-default btn-sl">
 												<span>つづきを読む</span><i class="fa fa-angle-right"></i>

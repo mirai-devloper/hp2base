@@ -15,12 +15,41 @@ function menucontents_thumbnail($thumb_name = 'medium', $thumb_style = null ) {
 	return $result;
 }
 
-function menucontents_type() {
+function menucontents_type_array() {
 	$field = get_field('menu_contents_type');
+	if ($field and is_array($field)) {
+		$term_names = array();
+		foreach ($field as $r) {
+			$term = get_term($r, 'menu-contents_type');
+			$term_names[] = $term->name;
+		}
+		return $term_names;
+	}
+}
 
-	if ($field) {
-		$term = get_term($field, 'menu-contents_type');
-		return "<span>{$term->name}</span>";
+function menucontents_type() {
+	if ($field = menucontents_type_array()) {
+		$output = '';
+		foreach ($field as $v) {
+			$output .= sprintf(
+				'<span>%1$s</span>',
+				$v
+			);
+		}
+		return $output;
+	}
+}
+
+function menucontents_type_single() {
+	if ($field = menucontents_type_array()) {
+		$output = '';
+		foreach ($field as $v) {
+			if (!empty($output)) {
+				$output .= ', ';
+			}
+			$output .= $v;
+		}
+		return $output;
 	}
 }
 
