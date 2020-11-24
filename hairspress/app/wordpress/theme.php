@@ -104,6 +104,18 @@ class Wordpress_Theme
 
 		register_sidebar(
 			array(
+				'name'          => 'ブログの本文下部',
+				'id'            => 'blog-content-bottom',
+				'description'   => 'ブログ本文の最後に共通のウィジェットを配置できます。',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="widgettitle">',
+				'after_title'   => '</h3>',
+			)
+		);
+
+		register_sidebar(
+			array(
 				'name'          => 'お知らせのサイドバー',
 				'id'            => 'topics-sidebar',
 				'description'   => 'お知らせのサイドバーウィジェットエリアです。',
@@ -152,12 +164,12 @@ class Wordpress_Theme
 			'gfont-robot',
 			'//fonts.googleapis.com/css?family=Roboto+Condensed'
 		);
-		wp_enqueue_style(
-			'font-awesome-style',
-			'//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
-			array(),
-			'4.7.0'
-		);
+		// wp_enqueue_style(
+		// 	'font-awesome-style',
+		// 	'//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+		// 	array(),
+		// 	'4.7.0'
+		// );
 
 		wp_enqueue_style(
 			'font-mirai',

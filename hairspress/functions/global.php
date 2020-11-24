@@ -41,6 +41,8 @@ class WP_Hairspress
 		'hp_salon_social_youtube',
 		'hp_salon_social_googleplus',
 		'hp_salon_social_pinterest',
+		'hairspress_instagram_banner_use',
+		'hairspress_instagram_banner_image',
 	);
 
 	private $option_names = array(
@@ -83,13 +85,16 @@ class WP_Hairspress
 
 global $wphp;
 $wphp = get_transient('wp_hairspress_global_transient');
-
+// echo '<pre>';
+// var_dump($wphp);
+// echo '</pre>';
 if ($wphp === false) {
-	$wp_hairspress = new WP_Hairspress();
-	set_transient('wp_hairspress_global_transient', $wp_hairspress->init(), 180);
+	$wphp = new WP_Hairspress();
+	set_transient('wp_hairspress_global_transient', $wphp->init(), 86400);
 }
 
 add_action('updated_option', function() {
-	$wp_hairspress = new WP_Hairspress();
-	set_transient('wp_hairspress_global_transient', $wp_hairspress->init(), 3600);
+	global $wphp;
+	$wphp = new WP_Hairspress();
+	set_transient('wp_hairspress_global_transient', $wphp->init(), 86400);
 });

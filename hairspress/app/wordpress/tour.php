@@ -120,36 +120,36 @@ class Wordpress_Tour {
 		$function = array();
 		$button2 = array();
 		$opt_arr = array();
-		if ( !$adminpages[$page] ) return ;
-
-		foreach ( $adminpages[$page] as $key => $option) {
-			//Location the pointer points
-			if (!empty($adminpages[$page][$key]['id'])) {
-				$id[$key] = $adminpages[$page][$key]['id'];
-			} else {
-				$id[$key] = $screen->id;
-			}
-			//Options array for pointer used to send to JS
-			if ('' != $page && in_array($page, array_keys($adminpages[$page]))) {
-
-				$align = ( is_rtl() ) ? 'right' : 'left';
-				$opt_arr[$key] = array(
-					'content' => $adminpages[$page][$key]['content'],
-					'position' => array(
-						'edge' => (!empty($adminpages[$page][$key]['position']['edge'])) ? $adminpages[$page][$key]['position']['edge'] : 'left',
-						'align' => (!empty($adminpages[$page][$key]['position']['align'])) ? $adminpages[$page][$key]['position']['align'] : $align
-					),
-					'pointerWidth' => 500
-				);
-				if (isset($adminpages[$page][$key]['button2'])) {
-					$button2[$key] = (!empty($adminpages[$page][$key]['button2'])) ? $adminpages[$page][$key]['button2'] : '';
+		if (isset($adminpages[$page]) and $adminpages[$page] ) {
+			foreach ( $adminpages[$page] as $key => $option) {
+				//Location the pointer points
+				if (!empty($adminpages[$page][$key]['id'])) {
+					$id[$key] = $adminpages[$page][$key]['id'];
+				} else {
+					$id[$key] = $screen->id;
 				}
-				if (isset($adminpages[$page][$key]['function'])) {
-					$function[$key] = $adminpages[$page][$key]['function'];
+				//Options array for pointer used to send to JS
+				if ('' != $page && in_array($page, array_keys($adminpages[$page]))) {
+
+					$align = ( is_rtl() ) ? 'right' : 'left';
+					$opt_arr[$key] = array(
+						'content' => $adminpages[$page][$key]['content'],
+						'position' => array(
+							'edge' => (!empty($adminpages[$page][$key]['position']['edge'])) ? $adminpages[$page][$key]['position']['edge'] : 'left',
+							'align' => (!empty($adminpages[$page][$key]['position']['align'])) ? $adminpages[$page][$key]['position']['align'] : $align
+						),
+						'pointerWidth' => 500
+					);
+					if (isset($adminpages[$page][$key]['button2'])) {
+						$button2[$key] = (!empty($adminpages[$page][$key]['button2'])) ? $adminpages[$page][$key]['button2'] : '';
+					}
+					if (isset($adminpages[$page][$key]['function'])) {
+						$function[$key] = $adminpages[$page][$key]['function'];
+					}
 				}
 			}
+			$this->print_scripts( $id , $opt_arr, __( "非表示" , 'textdomain'), $button2, $function);
 		}
-		$this->print_scripts( $id , $opt_arr, __( "非表示" , 'textdomain'), $button2, $function);
 	}
 
 

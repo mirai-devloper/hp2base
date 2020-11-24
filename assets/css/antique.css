@@ -377,14 +377,15 @@ a {
   background-repeat: repeat;
   background-position: center;
   background-image: url("../images/_antique/common/bg_brown.png"); }
-  #footer a {
-    color: #f1eae6; }
   #footer .footer-link .btn-default {
     color: #7a6656;
     background-color: #d7cac0;
     background-repeat: repeat;
     background-position: center;
     background-image: url("../images/_antique/common/bg_01.png"); }
+
+.footer-navi-wrap a {
+  color: #f1eae6; }
 
 .footer-navi-wrap .foot-navi > li a:hover {
   border-bottom: 1px dotted #f1eae6; }
@@ -407,6 +408,8 @@ a {
 .footer-contact-wrap {
   background-color: transparent;
   border-bottom: 1px solid #f1eae6; }
+  .footer-contact-wrap a {
+    color: #f1eae6; }
 
 .copyright {
   color: #f1eae6; }

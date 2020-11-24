@@ -38,6 +38,15 @@
 									);
 									wp_link_pages( $pages_args );
 								?>
+								<?php if (is_active_sidebar('blog-content-bottom')) : ?>
+									<div id="entryContentWidgetBottom" class="entry-content-widget-bottom">
+										<?php dynamic_sidebar('blog-content-bottom'); ?>
+									</div>
+								<?php else : ?>
+									<?php if (is_user_logged_in()) : ?>
+										<p class="text-center" style="border: 1px dotted #666;padding: 1em;color:#888;"><strong>ログイン中のユーザーに表示しています。</strong><br>ここに共通となるウィジェットが設定できるようになりました。<br><a href="<?= admin_url('widgets.php'); ?>" class="btn btn-primary">ウィジェットを編集する</a></p>
+									<?php endif; ?>
+								<?php endif; ?>
 							</section>
 
 							<footer class="entry-footer">

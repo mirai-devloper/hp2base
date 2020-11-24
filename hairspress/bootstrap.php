@@ -33,8 +33,8 @@ function setup_autoloader()
 	));
 }
 
-require __DIR__.DS.'functions/custom-posts.php';
 require __DIR__.DS.'functions/global.php';
+require __DIR__.DS.'functions/custom-posts.php';
 require __DIR__.DS.'functions/common.php';
 require __DIR__.DS.'functions/slider.php';
 require __DIR__.DS.'functions/pagination.php';

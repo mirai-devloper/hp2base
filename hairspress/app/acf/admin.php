@@ -5,7 +5,8 @@ class Acf_Admin {
 	public function __construct()
 	{
 		$this->acf_add_options_page();
-		add_action('admin_enqueue_scripts', array($this, 'enqueue_script'), 10);
+		// add_action('admin_enqueue_scripts', array($this, 'enqueue_script'), 10);
+		add_filter('acf/fields/flexible_content/layout_title/name=free_space', array($this, 'banner_space_flexible_layout_title'), 10, 4);
 	}
 
 	public function enqueue_script() {
@@ -77,5 +78,19 @@ class Acf_Admin {
 		foreach ($pages['sub'] as $k2 => $v2) {
 			acf_add_options_sub_page($v2);
 		}
+	}
+
+	public function banner_space_flexible_layout_title($title, $field, $layout, $i) {
+		$title = '';
+
+		if ($image = get_sub_field('image')) {
+			$title .= '<div class="thumbanil" style="display:inline-block;vertical-align:bottom;"><img src="'.wp_get_attachment_image_url( $image, 'thumbanil' ).'" width="60" alt=""></div>';
+		}
+
+		if ($text = get_sub_field('link_text')) {
+			$title .= '<b>'.esc_html($text).'</b>';
+		}
+
+		return $title;
 	}
 }

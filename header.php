@@ -1,5 +1,5 @@
 <?php
-	global $wphp;
+	global $wphp, $hp_nav_menu;
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -16,6 +16,8 @@
 	// <meta name="apple-itunes-app" content="app-id=724108890,app-argument=reservia://param=1">
 	?>
 	<?= google_search_console(); ?>
+
+	<script src="https://kit.fontawesome.com/47c26e3652.js" crossorigin="anonymous"></script>
 	<?php wp_head(); ?>
 
 	<?php if ($tc = ga_tracking_code() and $tc) : ?>
@@ -133,10 +135,13 @@
 				<nav>
 					<?php
 						$nav_args = array(
-							'theme_location' => 'primary-menu',
-							'ul_class' => 'gnavi list-table'
+							// 'theme_location' => 'primary-menu',
+							'ul_class' => array(
+								'class' => 'gnavi list-table',
+							),
 						);
-						hp_nav_menu($nav_args);
+						// hp_nav_menu($nav_args);
+						echo $hp_nav_menu->menu_list($nav_args);
 					?>
 				</nav>
 			</div>

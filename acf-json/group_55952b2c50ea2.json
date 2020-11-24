@@ -32,7 +32,7 @@
                 "id": "hpStaff"
             },
             "taxonomy": "com_category",
-            "field_type": "radio",
+            "field_type": "select",
             "allow_null": 0,
             "add_term": 1,
             "save_terms": 1,
@@ -365,5 +365,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1605061071
+    "modified": 1605666618
 }

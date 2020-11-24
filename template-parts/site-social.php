@@ -14,7 +14,7 @@
 	foreach ($site_social as $k => $v) {
 		if ($lists === false) $lists = '';
 		if ($v) {
-			$lists .= '<li><a href="'.esc_url($v).'" target="_blank"><span>'.$k.'</span></a></li>';
+			$lists .= '<li><a href="'.esc_url($v).'" target="_blank" class="fab"><span>'.$k.'</span></a></li>';
 		}
 	}
 ?>

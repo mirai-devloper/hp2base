@@ -36,7 +36,7 @@
 						<header class="staff-header">
 							<!-- タイトル -->
 							<h1 class="title">
-								<span class="name"><?php the_title(); ?></span>
+								<span class="name"><?= get_staff_name(); ?></span>
 								<?php if ($staff->furigana) : ?>
 									<span class="kana"><?= $staff->furigana; ?></span>
 								<?php endif; ?>

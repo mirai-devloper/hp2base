@@ -7,14 +7,48 @@ class Wordpress_Dashboard {
 		add_shortcode('reserve_btn', array($this, 'reserve_button_shortcode'));
 		add_action('wp_dashboard_setup', array($this, 'widget'));
 		add_action('admin_menu', array($this, 'admin_menu_page'));
+		add_action('admin_head', array($this, 'help'));
 	}
 
 	public function widget() {
-		wp_add_dashboard_widget('hp_dashboard_manual_pdf', 'マニュアルPDF', array($this, 'manual_widget'));
+		wp_add_dashboard_widget(
+			'hp_dashboard_manual_pdf',
+			'マニュアルPDF',
+			array($this, 'manual_widget')
+		);
+		// wp_add_dashboard_widget(
+		// 	'hairspress_dashboard_information',
+		// 	'アップデート履歴',
+		// 	array($this, 'information')
+		// );
 
 		if (reserve_url()) {
-			wp_add_dashboard_widget('hp_dashboard_reserve_btn', 'ネット予約ボタン', array($this, 'reserve_button'));
+			wp_add_dashboard_widget(
+				'hp_dashboard_reserve_btn',
+				'ネット予約ボタン',
+				array($this, 'reserve_button')
+			);
 		}
+
+		// global $wp_meta_boxes;
+		// $normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
+
+		// $widget_backup = array(
+		// 	'hairspress_dashboard_information' => $normal_dashboard['hairspress_dashboard_information'],
+		// 	'hp_dashboard_manual_pdf' => $normal_dashboard['hp_dashboard_manual_pdf'],
+		// 	'hp_dashboard_reserve_btn' => $normal_dashboard['hp_dashboard_reserve_btn'],
+		// );
+		// unset($normal_dashboard['hairspress_dashboard_information']);
+		// unset($normal_dashboard['hp_dashboard_manual_pdf']);
+		// unset($normal_dashboard['hp_dashboard_reserve_btn']);
+
+		// $sorted_dashboard = array_merge($widget_backup, $normal_dashboard);
+		// $wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
+	}
+
+	public function information() {
+		?>
+		<?php
 	}
 
 	public function reserve_button() {
@@ -125,5 +159,47 @@ class Wordpress_Dashboard {
 		})(jQuery);
 		</script>
 	<?php
+	}
+
+	public function help() {
+		$screen = get_current_screen();
+
+		// echo '<pre style="margin-left:240px;">';
+		// var_dump($screen->id);
+		// echo '</pre>';
+		switch ($screen->id) {
+			case 'dashboard':
+				$this->help_dashboard($screen);
+				break;
+
+			default:
+				# code...
+				break;
+		}
+	}
+
+	public function help_dashboard($screen) {
+		$screen->remove_help_tabs();
+		$screen->add_help_tab(
+			array(
+				'id'      => 'overview',
+				'title'   => __( 'Overview' ),
+				'content' => '<p>HairsPressへようこそ！<br>HairsPressでは、サロン様のホームページの環境をご提供しています。<br>スタッフページやヘアカタログなどの機能を使い、ホームページを運営していきましょう！<br>また、ブログやお知らせの投稿ができますので、お客様に向けて情報発信を行うことができます。<br>HairsPressのご利用でお困りになりましたら、右側にあるLINEサポートから株式会社MIRAIを友だち追加して、ご連絡ください。</p>',
+			)
+		);
+
+		$screen->add_help_tab(
+			array(
+				'id'      => 'firststep',
+				'title'   => 'はじめに',
+				'content' => '<p>初期費用がセルスタートのお客様向けの説明になります。<br>最初に<a href="'.admin_url('admin.php?page=theme-salon-settings').'">サロン設定</a>からサロン情報の入力をします。<br>サロン設定が終わりましたら、<a href="'.admin_url('admin.php?page=hairspress-toppage-setting').'">トップページ設定</a>から、ビジュアルのスライダーやバナースペース、Instagramのバナー画像を設定します。<br>ここまで設定が済むと、トップページが完成します。</p>',
+			)
+		);
+
+		$screen->set_help_sidebar(
+			'<p><strong>' . __( 'For more information:' ) . '</strong></p>' .
+			'<p><a href="https://lin.ee/kn3wDOX" target="_blank">LINEサポート</a></p>' .
+			'<p><a href="https://mi-rai.co.jp/" target="_blank">MIRAI Inc.</a></p>'
+		);
 	}
 }

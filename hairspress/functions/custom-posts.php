@@ -132,7 +132,7 @@ function hp_custom_posttype_register() {
 	add_menu_post_type();
 	add_freepage_post_type();
 
-	flush_rewrite_rules();
+	// flush_rewrite_rules();
 }
 register_activation_hook(__FILE__, 'hp_custom_posttype_register' );
 
@@ -499,15 +499,40 @@ function custom_length_rewrite_tag() {
 	add_rewrite_tag( '%length%', '([^&]+)', 'length=');
 }
 
-add_action('init', 'create_catalog_length_term');
-function create_catalog_length_term() {
-	wp_insert_term('ショート', 'catalog_length', array('slug' => 'short'));
-	wp_insert_term('ボブ', 'catalog_length', array('slug' => 'bob'));
-	wp_insert_term('ミディアム', 'catalog_length', array('slug' => 'medium'));
-	wp_insert_term('ロング', 'catalog_length', array('slug' => 'long'));
-	wp_insert_term('ヘアアレンジ', 'catalog_length', array('slug' => 'arrange'));
-	wp_insert_term('メンズ', 'catalog_length', array('slug' => 'mens'));
+// add_action('init', 'create_catalog_length_term');
+// function create_catalog_length_term() {
+// 	wp_insert_term('ショート', 'catalog_length', array('slug' => 'short'));
+// 	wp_insert_term('ボブ', 'catalog_length', array('slug' => 'bob'));
+// 	wp_insert_term('ミディアム', 'catalog_length', array('slug' => 'medium'));
+// 	wp_insert_term('ロング', 'catalog_length', array('slug' => 'long'));
+// 	wp_insert_term('ヘアアレンジ', 'catalog_length', array('slug' => 'arrange'));
+// 	wp_insert_term('メンズ', 'catalog_length', array('slug' => 'mens'));
+// }
+
+function create_defaultcategory() {
+	$taxonomy_type = 'catalog_length';
+	$taxonomy_sets = array(
+			'ショート'  => array('slug' => 'short'),
+			'ボブ'  => array('slug' => 'bob'),
+			'ミディアム'  => array('slug' => 'medium'),
+			'ロング'  => array('slug' => 'long'),
+			'ヘアアレンジ'  => array('slug' => 'arrange'),
+			'メンズ'  => array('slug' => 'mens'),
+	);
+	foreach ($taxonomy_sets as $key => $taxonomy_set ) {
+			$terms = get_term_by("name", $key, $taxonomy_type);
+			if(isset($taxonomy_set['parent']) and $taxonomy_set['parent']){
+					$pid = get_term_by('slug', $taxonomy_set['parent'], $taxonomy_type);//parentのid取得
+					$taxonomy_set['parent'] = $pid->term_id;
+			}
+			if(!$terms){    //存在しなければ新規登録
+							wp_insert_term($key, $taxonomy_type, $taxonomy_set);
+			}else{
+							wp_update_term($terms->term_id, $taxonomy_type, $taxonomy_set);
+			}
+	}
 }
+add_action('admin_init', 'create_defaultcategory'); //after_switch_themeでテーマの変更時に適用
 
 add_action('create_com_category', 'hp_create_category_staff');
 function hp_create_category_staff($cat_id) {
@@ -597,6 +622,7 @@ function add_custom_catalog_columns($columns) {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => 'タイトル',
+		// 'staff' => '担当者（新）',
 		'taxonomy-com_category' => '担当者',
 		'taxonomy-catalog_tag' => 'タグ',
 		'date' => '日時',
@@ -644,7 +670,7 @@ function add_thumbs_img_column($column_name) {
 add_action('manage_channel_posts_custom_column', 'add_channel_thumbs_column');
 function add_channel_thumbs_column($column_name) {
 	global $post;
-	$yt_url = function_exists('get_field') ? get_field('hp_youtube_id', $post->ID) : null;
+	$yt_url = get_field('hp_youtube_id', $post->ID);
 	if( $column_name == 'channel_thumbs' ) {
 		if( has_post_thumbnail() ) {
 			echo get_the_post_thumbnail($post->ID, 'admin-thumb');
@@ -674,10 +700,118 @@ add_action('manage_staff_posts_custom_column', 'add_post_id_column');
 // add_action('manage_catalog_posts_custom_column', 'add_post_id_column');
 function add_post_id_column($column_name) {
 	global $post;
-	if( $column_name == 'postID' ) {
-		echo '<span>'.$post->ID.'</span>';
+	switch ($column_name) {
+		case 'postID':
+			echo '<span>'.$post->ID.'</span>';
+			break;
+		case 'staff':
+			$catalog_staff_id = get_field('catalog_hair_staff', $post->ID);
+			if ($catalog_staff_id) {
+				$get_post = get_post($catalog_staff_id);
+				echo sprintf(
+					'<a href="%1$s">%2$s</a>',
+					admin_url('edit.php?post_type=catalog&catalog_hair_staff='.$get_post->ID),
+					get_the_title($get_post)
+				);
+				// echo get_the_title($get_post);
+			} else {
+				_e('None');
+			}
+			break;
+		default:
+			# code...
+			break;
 	}
 }
+
+add_filter('query_vars', function($vars) {
+	$vars[] = 'catalog_hair_staff';
+
+	return $vars;
+});
+add_action('pre_get_posts', function($query) {
+	$post_type = get_query_var('post_type');
+	if (is_admin() and $query->is_main_query())
+	{
+		$meta_query = array();
+		$tax_query = array();
+
+		if ($post_type === 'catalog')
+		{
+			if ($catalog_hair_staff = get_query_var('catalog_hair_staff') and !empty($catalog_hair_staff))
+			$meta_query[] = array(
+				'key' => 'catalog_hair_staff',
+				'value' => $catalog_hair_staff,
+				'compare' => '='
+			);
+			if ( ! empty($meta_query)) {
+				$query->set('meta_query', $meta_query);
+			}
+			if ( ! empty($tax_query)) {
+				$query->set('tax_query', $tax_query);
+			}
+		}
+	}
+});
+
+// Catalog 担当者部分を新しい項目にアップデートする
+add_action('admin_init', function() {
+	$update_catalog_staff = get_option('update_catalog_hair_staff', 0);
+
+	if ($update_catalog_staff === 0) {
+		$catalog = new WP_Query(
+			array(
+				'post_type' => 'catalog',
+				'posts_per_page' => -1,
+				'post_status' => 'any',
+				'post_parent' => null
+				// 'ignore_sticky_posts' => true,
+			)
+		);
+		$i = 0;
+		if ($catalog->have_posts()) {
+			while ($catalog->have_posts()) {
+				$catalog->the_post();
+				$catalog_id = get_the_ID();
+				$i++;
+				$terms = get_the_terms($catalog_id, 'com_category');
+				if ($terms) {
+					$staff = new WP_Query(
+						array(
+							'post_type' => 'staff',
+							'posts_per_page' => 1,
+							'post_status' => 'any',
+							'post_parent' => null,
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'com_category',
+									'field' => 'id',
+									'terms' => $terms[0]->term_id
+								)
+							)
+						)
+					);
+					$staff_id = null;
+					if ($staff->have_posts()) {
+						while ($staff->have_posts()) {
+							$staff->the_post();
+							// echo '<pre style="margin-left: 240px">';
+							// var_dump(get_the_title());
+							// echo '</pre>';
+							$staff_id = get_the_ID();
+						}
+						wp_reset_postdata();
+						if ($staff_id) {
+							update_field('catalog_hair_staff', $staff_id, $catalog_id);
+							update_option('update_catalog_hair_staff', 1);
+						}
+					}
+				}
+			}
+			wp_reset_postdata();
+		}
+	}
+});
 
 // アイキャッチ部分のスタイル設定
 add_action('admin_print_styles', 'custom_admin_thumbs_css');

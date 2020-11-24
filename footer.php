@@ -1,5 +1,5 @@
 <?php
-	global $wphp;
+	global $wphp, $hp_nav_menu;
 
 	$footer_social = false;
 
@@ -87,10 +87,13 @@
 				<div class="footer-navi__main">
 					<?php
 						$nav_args = array(
-							'theme_location' => 'primary-menu',
-							'ul_class' => 'list-inline foot-navi'
+							// 'theme_location' => 'primary-menu',
+							'ul_class' => array(
+								'class' => 'list-inline foot-navi',
+							),
 						);
-						hp_nav_menu($nav_args);
+						// hp_nav_menu($nav_args);
+						echo $hp_nav_menu->menu_list($nav_args);
 					?>
 				</div>
 
@@ -130,24 +133,30 @@
 			<nav>
 				<?php
 					$nav_args = array(
-						'theme_location' => 'primary-menu',
-						'ul_class' => 'drawer-gnavi'
+						// 'theme_location' => 'primary-menu',
+						'ul_class' => array(
+							'class' => 'drawer-gnavi',
+						),
 					);
-					hp_nav_menu($nav_args);
+					echo $hp_nav_menu->menu_list($nav_args);
 				?>
 
 				<?php
-					if ($access = get_page_by_path('access'))
-						$pages = $access->ID;
-
-					else if ($salon = get_page_by_path('salon'))
-						$pages = $salon->ID;
+					if ($access = get_page_by_path('access')) {
+						$pages = $access;
+					} else if ($salon = get_page_by_path('salon')) {
+						$pages = $salon;
+					}
 				?>
-				<?php if (isset($pages)) : ?>
-				<ul class="drawer-subnavi">
-					<li><a href="<?= get_permalink($pages); ?>#opentime"><i class="fa fa-clock-o"></i><span>営業時間</span></a></li>
-					<li><a href="<?= get_permalink($pages); ?>#accessmap"><i class="fa fa-map-marker"></i><span>アクセス</span></a></li>
-				</ul>
+				<?php if (isset($pages) and $pages) : ?>
+					<ul class="drawer-subnavi">
+						<li>
+							<a href="<?= get_permalink($pages); ?>#opentime"><i class="fa fa-clock-o"></i><span>営業時間</span></a>
+						</li>
+						<li>
+							<a href="<?= get_permalink($pages); ?>#accessmap"><i class="fa fa-map-marker"></i><span>アクセス</span></a>
+						</li>
+					</ul>
 				<?php endif; ?>
 				<?php get_template_part('template-parts/site-social'); ?>
 			</nav>
@@ -202,7 +211,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/object-fit-images/3.2.4/ofi.min.js"></script>
 <script>objectFitImages();</script>
-<?php Demo::init(); // デモモード ?>
+<?php \Demo::init(); // デモモード ?>
 <?php wp_footer(); ?>
 </body>
 </html>

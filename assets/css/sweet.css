@@ -438,7 +438,8 @@ a {
     background-size: 100%; }
   .gnavi > li > a {
     color: #f1c4b1; }
-    .gnavi > li > a > .ja {
+    .gnavi > li > a > .ja,
+    .gnavi > li > a > .ja.not-en {
       color: #f1c4b1; }
     .gnavi > li > a > .en {
       margin-bottom: 8px;

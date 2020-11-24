@@ -115,7 +115,7 @@ function reserve_url() {
 			}
 			break;
 		default:
-			// default
+			$result = false;
 			break;
 	}
 

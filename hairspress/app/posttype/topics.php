@@ -154,7 +154,7 @@ class Posttype_Topics
 
 			if ($post_type === 'topics')
 			{
-				$query->set('posts_per_page', 1);
+				$query->set('posts_per_page', 10);
 				if ( ! empty($meta_query)) {
 					$query->set('meta_query', $meta_query);
 				}

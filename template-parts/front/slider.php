@@ -2,14 +2,6 @@
 	global $wphp;
 
 	$sliders = $wphp->hpSlider;
-	// if ($sliders === false) {
-	// 	$hpSlider = $wphp->hpSlider;
-	// 	if ($hpSlider and isset($hpSlider['images'])) {
-	// 		$sliders = $hpSlider['images'];
-	// 		set_transient('hairspress_front_hpSlider', $sliders, 300);
-	// 	}
-	// }
-
 ?>
 <?php if ($sliders and isset($sliders['images'])) : ?>
 <div id="mainVisual">

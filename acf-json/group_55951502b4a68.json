@@ -1,6 +1,6 @@
 {
     "key": "group_55951502b4a68",
-    "title": "スタッフ詳細項目",
+    "title": "スタッフ詳細",
     "fields": [
         {
             "key": "field_55954589c1592",
@@ -17,6 +17,25 @@
             },
             "placement": "left",
             "endpoint": 0
+        },
+        {
+            "key": "field_5fb254daa4a4d",
+            "label": "お名前",
+            "name": "staff_name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_55951510eb90c",
@@ -44,7 +63,7 @@
             "label": "ヘアカタログと紐付け",
             "name": "staff_haircatalog_link",
             "type": "taxonomy",
-            "instructions": "ヘアカタログのページにリンクを表示するのに使用します。\r\nスタッフと担当者の項目は必ず同じものにチェックしてください。",
+            "instructions": "この項目は古いバージョンのため未使用です。今後のアップデートで項目は削除されます。",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -463,5 +482,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1603101579
+    "modified": 1605601446
 }

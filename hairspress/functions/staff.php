@@ -5,6 +5,7 @@ class WP_Staff
 	public $template;
 
 	private $field_names = array(
+		'staff_name',
 		'furigana',
 		'staff_haircatalog_link',
 		'manage',
@@ -59,6 +60,15 @@ function get_staff() {
 	$wp_staff = new WP_Staff();
 
 	return $wp_staff->init();
+}
+
+function get_staff_name() {
+	$staff_name = get_field('staff_name');
+	if ($staff_name) {
+		return $staff_name;
+	}
+
+	return get_the_title();
 }
 
 

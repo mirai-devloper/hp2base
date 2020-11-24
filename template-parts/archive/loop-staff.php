@@ -25,7 +25,7 @@
 											<?php endif; ?>
 										</div>
 										<div class="meta-box">
-											<h2 class="staff-name"><i class="fa fa-angle-right"></i><?php the_title_attribute(); ?></h2>
+											<h2 class="staff-name"><i class="fa fa-angle-right"></i><?= get_staff_name(); ?></h2>
 											<p class="manage"><?= hp_stylist_manage(); ?></p>
 										</div>
 									</a>

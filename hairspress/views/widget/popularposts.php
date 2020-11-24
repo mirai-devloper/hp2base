@@ -9,11 +9,7 @@
 				<a href="<?php the_permalink( get_the_ID() ); ?>" class="widget_recent_entries__link">
 					<div class="widget_recent_entries__thumbnail">
 						<div class="thumb">
-							<?php if (has_post_thumbnail(get_the_ID())) : ?>
-								<?php the_post_thumbnail('thumbnail'); ?>
-							<?php else : ?>
-								<span class="not-thumb"></span>
-							<?php endif; ?>
+							<?php mio_get_thumbnail('square'); ?>
 						</div>
 					</div>
 					<div class="widget_recent_entries__content">

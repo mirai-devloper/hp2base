@@ -416,6 +416,68 @@
             "button_label": "バナーの追加",
             "min": "",
             "max": 6
+        },
+        {
+            "key": "field_5fb33ec060b81",
+            "label": "Instagramのバナー画像",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5fb33ee860b82",
+            "label": "アップロードしたバナー画像を利用する",
+            "name": "hairspress_instagram_banner_use",
+            "type": "true_false",
+            "instructions": "利用しないに設定されている場合は、HairsPressの標準バナーを表示します。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "利用する",
+            "ui_off_text": "利用しない"
+        },
+        {
+            "key": "field_5fb3403860b83",
+            "label": "バナー画像",
+            "name": "hairspress_instagram_banner_image",
+            "type": "image_aspect_ratio_crop",
+            "instructions": "横幅500px、高さ192pxのサイズで画像を作成してください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "crop_type": "aspect_ratio",
+            "aspect_ratio_width": 500,
+            "aspect_ratio_height": 192,
+            "return_format": "id",
+            "preview_size": "full",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg,jpeg,png"
         }
     ],
     "location": [
@@ -435,5 +497,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1605064820
+    "modified": 1605584098
 }
