@@ -22,13 +22,13 @@ class Wordpress_Dashboard {
 		// 	array($this, 'information')
 		// );
 
-		if (reserve_url()) {
-			wp_add_dashboard_widget(
-				'hp_dashboard_reserve_btn',
-				'ネット予約ボタン',
-				array($this, 'reserve_button')
-			);
-		}
+		// if (reserve_url()) {
+		// 	wp_add_dashboard_widget(
+		// 		'hp_dashboard_reserve_btn',
+		// 		'ネット予約ボタン',
+		// 		array($this, 'reserve_button')
+		// 	);
+		// }
 
 		// global $wp_meta_boxes;
 		// $normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];

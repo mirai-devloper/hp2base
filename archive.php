@@ -17,7 +17,9 @@
 	}
 
 	get_header();
-
+echo '<pre>';
+var_dump(get_queried_object());
+echo '</pre>';
 	if ($post_type) {
 		get_template_part('template-parts/archive/loop', $post_type);
 	} else {

@@ -25,8 +25,21 @@ if (!isset($hp_setting['post_type']['channel'])) {
 			<h3>投稿する</h3>
 			<a class="button button-primary button-hero load-customize hide-if-no-customize" href="<?= admin_url( 'post-new.php' ); ?>">ブログを投稿</a>
 			<a class="button button-primary button-hero load-customize hide-if-no-customize" href="<?= admin_url( 'post-new.php?post_type=topics' ); ?>">お知らせを投稿</a>
+			<?php if (reserve_url()) : ?>
+				<p>&nbsp;</p>
+				<h4>ブログ用のネット予約ボタン</h4>
+				<div style="display:flex">
+					<div>
+						<input type="text" id="reserve_btn" value="[reserve_btn]" onclick="select()">
+						<p><?= do_shortcode('[reserve_btn]'); ?></p>
+					</div>
+					<div style="margin-left:8px;">
+						左のコードをコピーして、ブログなどに貼り付けることで利用可能です。<br>左記のようにリンク付きで画像が表示されます。
+					</div>
+				</div>
+			<?php endif; ?>
 			<p>&nbsp;</p>
-			<h4>アップデート履歴</h4>
+			<h4>アップデート情報</h4>
 			<ul id="hpUpdateList">
 				<li class="text-center"><img src="<?= admin_url('images/loading.gif') ?>" alt=""></li>
 			</ul>

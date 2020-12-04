@@ -54,6 +54,9 @@ class Wordpress_Theme
 		add_image_size('hairspress-slider', 1600, 9999, true);
 		add_image_size('ogp', 1200, 630, true);
 
+		$starter_content_args = require(get_theme_file_path('hairspress/functions/starter-content.php'));
+		add_theme_support('starter-content', $starter_content_args);
+
 		add_theme_support('responsive-embeds');
 
 		add_editor_style(array('assets/css/editor-style.css'));

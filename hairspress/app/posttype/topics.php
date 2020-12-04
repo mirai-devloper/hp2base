@@ -62,7 +62,8 @@ class Posttype_Topics
 
 		$wp_rewrite->add_rewrite_tag('%topics%', '(topics)', 'post_type=');
 		$wp_rewrite->add_permastruct('topics', '/%topics%/%post_id%/', false);
-		$wp_rewrite->add_permastruct('topics', '/%topics%/date/%year%/%monthnum%/', false);
+		$wp_rewrite->add_permastruct('topics_date', '/%topics%/date/%year%/%monthnum%/', false);
+
 	}
 
 	public function permalink($post_link, $id = 0, $leavename)
@@ -99,7 +100,7 @@ class Posttype_Topics
 		$current_post_type = get_query_var('post_type');
 
 		if ($current_post_type === 'topics') {
-			$monthlink = $wp_rewrite->get_extra_permastruct($current_post_type);
+			$monthlink = $wp_rewrite->get_extra_permastruct($current_post_type.'_date');
 			$monthlink = str_replace('%topics%', $current_post_type, $monthlink);
 			$monthlink = str_replace('%year%', $year, $monthlink);
 			$monthlink = str_replace('%monthnum%', $month, $monthlink);
