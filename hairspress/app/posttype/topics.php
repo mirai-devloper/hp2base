@@ -9,6 +9,7 @@ class Posttype_Topics
 		add_filter('post_type_link', array($this, 'permalink'), 10, 3);
 		add_filter('post_link', array($this, 'permalink'), 10, 3);
 		add_filter('month_link', array($this, 'month_link'), 10, 3);
+		add_filter('year_link', array($this, 'year_link'), 10, 2);
 		add_action( 'manage_topics_posts_columns' , array($this, 'columns'));
 		add_action( 'manage_topics_posts_custom_column' , array($this, 'column'), 10, 2);
 		// add_filter('query_vars', array($this, 'query_vars'));
@@ -62,7 +63,8 @@ class Posttype_Topics
 
 		$wp_rewrite->add_rewrite_tag('%topics%', '(topics)', 'post_type=');
 		$wp_rewrite->add_permastruct('topics', '/%topics%/%post_id%/', false);
-		$wp_rewrite->add_permastruct('topics_date', '/%topics%/date/%year%/%monthnum%/', false);
+		$wp_rewrite->add_permastruct('topics_year', '/%topics%/date/%year%/', false);
+		$wp_rewrite->add_permastruct('topics_month', '/%topics%/date/%year%/%monthnum%/', false);
 
 	}
 
@@ -100,7 +102,7 @@ class Posttype_Topics
 		$current_post_type = get_query_var('post_type');
 
 		if ($current_post_type === 'topics') {
-			$monthlink = $wp_rewrite->get_extra_permastruct($current_post_type.'_date');
+			$monthlink = $wp_rewrite->get_extra_permastruct($current_post_type.'_month');
 			$monthlink = str_replace('%topics%', $current_post_type, $monthlink);
 			$monthlink = str_replace('%year%', $year, $monthlink);
 			$monthlink = str_replace('%monthnum%', $month, $monthlink);
@@ -108,6 +110,24 @@ class Posttype_Topics
 		}
 
 		return $monthlink;
+	}
+
+	public function year_link($yearlink, $year) {
+		global $wp_rewrite;
+		if (!$year) {
+			$year = current_time('Y');
+		}
+
+		$current_post_type = get_query_var('post_type');
+
+		if ($current_post_type === 'topics') {
+			$yearlink = $wp_rewrite->get_extra_permastruct($current_post_type.'_year');
+			$yearlink = str_replace('%topics%', $current_post_type, $yearlink);
+			$yearlink = str_replace('%year%', $year, $yearlink);
+			$yearlink = home_url(user_trailingslashit($yearlink));
+		}
+
+		return $yearlink;
 	}
 
 	public function columns($columns)
