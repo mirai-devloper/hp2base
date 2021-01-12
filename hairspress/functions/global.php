@@ -43,6 +43,7 @@ class WP_Hairspress
 		'hp_salon_social_pinterest',
 		'hairspress_instagram_banner_use',
 		'hairspress_instagram_banner_image',
+		'menu_options',
 	);
 
 	private $option_names = array(

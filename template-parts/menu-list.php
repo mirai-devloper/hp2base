@@ -1,6 +1,22 @@
 <?php
+	global $wphp;
 	$menu_list = get_field('hp_menu_list');
 	$remarks = get_field('hp_menu_other_text');
+
+	$menu_options = $wphp->menu_options;
+	$tax_display = '';
+
+	if (isset($menu_options['tax_display']) and !empty($menu_options['tax_display'])) {
+		if ((int) $menu_options['tax_display'] === 1) {
+			$tax_display = '（税込）';
+		} elseif ((int) $menu_options['tax_display'] === 2) {
+			$tax_display = '（税抜）';
+		}
+		$tax_display = sprintf(
+			'<small class="menu-tax-display">%s</small>',
+			$tax_display
+		);
+	}
 ?>
 <?php if ($menu_list and ! empty($menu_list)) : ?>
 <div id="hp-menupage-<?php the_ID(); ?>" class="col-xs-12">
@@ -36,6 +52,7 @@
 								<span class="money"><?= money($menu['menu_price_end']); ?></span>
 							<?php endif; ?>
 						<?php endif; ?>
+						<?= $tax_display; ?>
 					<?php endif; ?>
 				</div>
 			</div>

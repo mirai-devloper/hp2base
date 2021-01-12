@@ -67,6 +67,13 @@ class Acf_Admin {
 				'parent_slug' => 'themes.php',
 				'capability'  => (is_multisite() ? 'manage_network' : 'manage_options'),
 			],
+			'menu_option' => [
+				'page_title'  => 'メニューオプション設定',
+				'menu_title'  => 'メニューオプション設定',
+				'menu_slug'   => 'menu-options',
+				'parent_slug' => 'edit.php?post_type=menu',
+				'capability'  => 'edit_posts',
+			],
 		];
 
 		// メインページ
