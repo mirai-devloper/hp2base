@@ -8,9 +8,9 @@
 
 	if (isset($menu_options['tax_display']) and !empty($menu_options['tax_display'])) {
 		if ((int) $menu_options['tax_display'] === 1) {
-			$tax_display = '（税込）';
+			$tax_display = '税込';
 		} elseif ((int) $menu_options['tax_display'] === 2) {
-			$tax_display = '（税抜）';
+			$tax_display = '税抜';
 		}
 		$tax_display = sprintf(
 			'<small class="menu-tax-display">%s</small>',
