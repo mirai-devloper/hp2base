@@ -86,14 +86,19 @@ class WP_Hairspress
 
 global $wphp;
 $wphp = get_transient('wp_hairspress_global_transient');
-// echo '<pre>';
-// var_dump($wphp);
-// echo '</pre>';
-if ($wphp === false) {
-	$wphp = new WP_Hairspress();
-	set_transient('wp_hairspress_global_transient', $wphp->init(), 86400);
-}
 
+add_action('after_setup_theme', function() {
+	global $wphp;
+	// $wphp = get_transient('wp_hairspress_global_transient');
+	if (!$wphp) {
+		$wphp = new WP_Hairspress();
+		set_transient('wp_hairspress_global_transient', $wphp->init(), 86400);
+	}
+});
+
+add_action('update_option', function() {
+	delete_transient('wp_hairspress_global_transient');
+});
 add_action('updated_option', function() {
 	global $wphp;
 	$wphp = new WP_Hairspress();
