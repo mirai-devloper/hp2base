@@ -69,14 +69,31 @@ class_alias('Hairspress\\Core\\Autoloader', 'Autoloader');
 
 require_once(HP_DOCROOT.'hairspress/bootstrap.php');
 
-require 'plugin-update-checker/plugin-update-checker.php';
-$hp2baseUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://github.com/nullpon16tera/hp2base',
-	__FILE__,
-	'hp2base'
-);
-$hp2baseUpdateChecker->setAuthentication('611015e23f397221d581283e5149cf1990624dd2');
-$hp2baseUpdateChecker->getVcsApi()->enableReleaseAssets();
+function getHp2BaseToken() {
+  $response = false;
+  if (false === ($response = get_transient('hp2base_token'))) {
+    try {
+      $response = file_get_contents('https://hairspress.com/hp2base.txt');
+      set_transient('hp2base_token', $response, 24 * HOUR_IN_SECONDS);
+    } catch (\Throwable $th) {
+      throw $th;
+    }
+  }
+  return $response;
+}
+
+if (is_admin()) {
+  if ($token = getHp2BaseToken() and $token) {
+    require 'plugin-update-checker/plugin-update-checker.php';
+    $hp2baseUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+      'https://github.com/nullpon16tera/hp2base',
+      __FILE__,
+      'hp2base'
+    );
+    $hp2baseUpdateChecker->setAuthentication($token);
+    $hp2baseUpdateChecker->getVcsApi()->enableReleaseAssets();
+  }
+}
 
 
 
