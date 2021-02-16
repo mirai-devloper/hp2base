@@ -71,20 +71,23 @@ require_once(HP_DOCROOT.'hairspress/bootstrap.php');
 
 function getHp2BaseToken() {
   $response = get_transient('hp2base_token');
-  if (false === $response) {
-    try {
-      $response = file_get_contents('https://hairspress.com/hp2base.txt');
-      set_transient('hp2base_token', $response, 24 * HOUR_IN_SECONDS);
-    } catch (\Throwable $th) {
-      throw $th;
-    }
+  if (false === $response or empty($response)) {
+    $context = stream_context_create(
+      array(
+        'ssl' => array(
+          'verify_peer' => false,
+          'verify_peer_name' => false,
+        )
+      )
+    );
+    $response = file_get_contents('https://hairspress.com/hp2base.txt', false, $context);
+    set_transient('hp2base_token', $response, 24 * HOUR_IN_SECONDS);
   }
   return $response;
 }
-
 if (is_admin() or wp_doing_ajax()) {
+  require 'plugin-update-checker/plugin-update-checker.php';
   if ($token = getHp2BaseToken() and $token) {
-    require 'plugin-update-checker/plugin-update-checker.php';
     $hp2baseUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
       'https://github.com/nullpon16tera/hp2base',
       __FILE__,
