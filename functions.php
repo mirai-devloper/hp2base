@@ -82,7 +82,7 @@ function getHp2BaseToken() {
   return $response;
 }
 
-if (is_admin()) {
+if (is_admin() or wp_doing_ajax()) {
   if ($token = getHp2BaseToken() and $token) {
     require 'plugin-update-checker/plugin-update-checker.php';
     $hp2baseUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
