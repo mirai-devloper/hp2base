@@ -70,8 +70,8 @@ class_alias('Hairspress\\Core\\Autoloader', 'Autoloader');
 require_once(HP_DOCROOT.'hairspress/bootstrap.php');
 
 function getHp2BaseToken() {
-  $response = false;
-  if (false === ($response = get_transient('hp2base_token'))) {
+  $response = get_transient('hp2base_token');
+  if (false === $response) {
     try {
       $response = file_get_contents('https://hairspress.com/hp2base.txt');
       set_transient('hp2base_token', $response, 24 * HOUR_IN_SECONDS);
