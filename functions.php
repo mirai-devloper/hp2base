@@ -75,7 +75,7 @@ $hp2baseUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	__FILE__,
 	'hp2base'
 );
-$hp2baseUpdateChecker->setAuthentication('b4e28e9f8caa7bafc013aa724361e5ba3be8edd1');
+$hp2baseUpdateChecker->setAuthentication('611015e23f397221d581283e5149cf1990624dd2');
 $hp2baseUpdateChecker->getVcsApi()->enableReleaseAssets();
 
 
