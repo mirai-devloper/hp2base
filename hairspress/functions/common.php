@@ -106,7 +106,7 @@ function reserve_url() {
 			if (!empty($reservia) and ctype_digit($reservia)) {
 				// https://reservia.jp/reserve/login/5687
 				// $result = "https://reservia.jp/shop/reserve/{$reservia}";
-				$result = "https://reservia.jp/reserve/login/{$reservia}";
+				$result = "https://reservia.jp/shop/reserve/{$reservia}";
 			}
 			break;
 		case 'other':
