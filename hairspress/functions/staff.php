@@ -91,7 +91,7 @@ function get_staff_social(Array $field) {
 		foreach ($field as $url) {
 			if ($url) {
 				$str[] = sprintf(
-					'<a href="%1$s" target="_blank"><span></span></a>',
+					'<a href="%1$s" target="_blank" class="fab"><span></span></a>',
 					esc_url($url)
 				);
 			}
