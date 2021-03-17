@@ -614,6 +614,6 @@ add_filter('hp_nav_menu_title', function($title, $item) {
 
 
 add_action('welcome_panel', function() {
-	echo View::forge('welcome');
+	echo Hairspress\Core\View::forge('welcome');
 });
 

@@ -54,6 +54,7 @@
 							</footer>
 						</div>
 
+            <?php if (isset($comment_debug)) : ?>
 						<?php
 							if ( ( is_single() || is_page() ) && ( comments_open() || get_comments_number() ) && ! post_password_required() ) {
 								?>
@@ -63,6 +64,7 @@
 								<?php
 							}
 						?>
+            <?php endif; ?>
 					</article>
 				<?php endwhile; ?>
 				<?php hp_single_pager(); ?>
