@@ -131,7 +131,7 @@ class Wordpress_Initialize {
 			// 'site-name', // サイト名
 			// 'view-site', // サイト名 -> サイトを表示
 			'updates', // 更新
-			'comments', // コメント
+			// 'comments', // コメント
 			// 'new-content', // 新規
 			// 'new-post', // 新規 -> 投稿
 			'new-media', // 新規 -> メディア
