@@ -26,7 +26,7 @@
 										</div>
 										<div class="meta-box">
 											<h2 class="staff-name"><i class="fa fa-angle-right"></i><?= get_staff_name(); ?></h2>
-                      <?php if ($manage = get_staff_manage($staff->manage)) : ?>
+                      <?php if ($manage = get_staff_manage(get_field('manage'))) : ?>
                         <p class="manage">
                           <span><?= $manage; ?></span>
                         </p>
