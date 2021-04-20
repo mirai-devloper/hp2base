@@ -608,7 +608,7 @@ function manage_custom_staff_columns($columns) {
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => 'タイトル',
-		'taxonomy-com_category' => '担当者',
+		// 'taxonomy-com_category' => '担当者',
 		'taxonomy-manage' => '役職',
 		'date' => '日時',
 		'mio_thumbs' => 'アイキャッチ'
