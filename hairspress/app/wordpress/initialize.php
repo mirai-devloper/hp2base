@@ -101,7 +101,7 @@ class Wordpress_Initialize {
 		// remove_menu_page('upload.php'); // メディア
 		// remove_menu_page('link-manager.php'); // リンク
 		// remove_menu_page('edit.php?post_type=page'); // 固定ページ
-		// remove_menu_page('edit-comments.php'); // コメント
+		remove_menu_page('edit-comments.php'); // コメント
 		// remove_menu_page('customize.php?return=/wp-admin/themes.php'); // カスタマイズ
 
 		// remove_menu_page('themes.php'); // 概観
@@ -131,7 +131,7 @@ class Wordpress_Initialize {
 			// 'site-name', // サイト名
 			// 'view-site', // サイト名 -> サイトを表示
 			'updates', // 更新
-			// 'comments', // コメント
+			'comments', // コメント
 			// 'new-content', // 新規
 			// 'new-post', // 新規 -> 投稿
 			'new-media', // 新規 -> メディア

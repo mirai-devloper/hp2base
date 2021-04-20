@@ -26,7 +26,7 @@
 										</div>
 										<div class="meta-box">
 											<h2 class="staff-name"><i class="fa fa-angle-right"></i><?= get_staff_name(); ?></h2>
-											<p class="manage"><?= hp_stylist_manage(); ?></p>
+											<p class="manage"><?= (get_field('manage') ? get_field('manage') : ''); ?></p>
 										</div>
 									</a>
 
