@@ -162,6 +162,7 @@ class Wordpress_Theme
 	 */
 	public function wp_enqueue_scripts()
 	{
+    global $post;
 		// StyleSheet
 		wp_enqueue_style(
 			'gfont-robot',
@@ -229,13 +230,26 @@ class Wordpress_Theme
 			}
 		}
 
-		wp_enqueue_style(
-			'hairspress-block-editor',
-			$this->asset_uri('block-editor.css', 'css'),
-			false,
-			$this->filemtime('block-editor.css', 'css'),
-			'all'
-		);
+    wp_enqueue_style(
+      'hairspress-block-editor',
+      $this->asset_uri('block-editor.css', 'css'),
+      false,
+      $this->filemtime('block-editor.css', 'css'),
+      'all'
+    );
+    if ($post) {
+      $has_blocks = has_blocks(get_post($post->ID));
+
+      if (!empty($post->post_content) and !$has_blocks) {
+        wp_enqueue_style(
+          'hairspress-classic-editor',
+          $this->asset_uri('editor-style.css', 'css'),
+          false,
+          $this->filemtime('editor-style.css', 'css'),
+          'all'
+        );
+      }
+    }
 
 		// JavaScript
 		wp_enqueue_script('jquery');
