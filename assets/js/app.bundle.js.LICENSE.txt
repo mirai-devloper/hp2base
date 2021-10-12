@@ -30,7 +30,9 @@
 
 // EXTERNAL MODULE: ./node_modules/lity/dist/lity.js
 
-// EXTERNAL MODULE: ./node_modules/swiper/dist/js/swiper.esm.bundle.js + 3 modules
+// EXTERNAL MODULE: ./node_modules/swiper/esm/components/navigation/navigation.js
+
+// EXTERNAL MODULE: ./node_modules/swiper/swiper.esm.js + 3 modules
 
 // Execute the module function
 
@@ -102,6 +104,8 @@
 
 // mode & 8|1: behave like require
 
+// mousewheelControl: true,
+
 // object to store loaded and loading chunks
 
 // param check
@@ -115,6 +119,8 @@
 // scrollbarHide: false,
 
 // show info window when marker is clicked
+
+// this.breadcrumb = this.breadcrumb.bind(this);
 
 // undefined = chunk not loaded, null = chunk preloaded/prefetched
 

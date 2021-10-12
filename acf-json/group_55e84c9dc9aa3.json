@@ -134,6 +134,25 @@
             "maxlength": "",
             "readonly": 0,
             "disabled": 0
+        },
+        {
+            "key": "field_6163e62eea6ce",
+            "label": "headタグ内に入れるコード",
+            "name": "head_tag",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 8,
+            "new_lines": ""
         }
     ],
     "location": [
@@ -153,5 +172,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1605060895
+    "modified": 1633937016
 }

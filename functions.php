@@ -53,6 +53,29 @@ add_action('enqueue_block_editor_assets', function() {
 	wp_enqueue_style('hairspress-block-editor', get_theme_file_uri('assets/css/block-editor.css'), false, '1', 'all');
 });
 
+
+add_action('wp_head', function() {
+  global $post;
+
+  if ($head_tag = get_field('head_tag', 'option') and $head_tag) {
+    echo $head_tag;
+  }
+
+  if ($page_head_tag = get_field('page_head_tag', $post->ID) and $page_head_tag) {
+    echo $page_head_tag;
+  }
+
+});
+
+add_filter('the_content', function($content) {
+  global $post;
+  if ($page_content_tag = get_field('page_content_tag', $post->ID) and $page_content_tag) {
+    $content .= $page_content_tag;
+  }
+  return $content;
+});
+
+
 define('ENV_MODE', getenv('ENV_MODE'));
 define('WP_ENV', getenv('WP_ENV'));
 

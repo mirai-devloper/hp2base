@@ -1,0 +1,69 @@
+{
+    "key": "group_6163e6911f549",
+    "title": "タグの設置",
+    "fields": [
+        {
+            "key": "field_6163e6b31cac1",
+            "label": "head内にタグを設置する",
+            "name": "page_head_tag",
+            "type": "textarea",
+            "instructions": "headタグ内に追加でコードを入れたい場合に、ここにタグを入れることで、現在のページに埋め込むことが可能です。\r\nサイト全体に入れたい場合は、サポートまでお問い合わせください。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 8,
+            "new_lines": ""
+        },
+        {
+            "key": "field_6163e7e11cac2",
+            "label": "コンテンツ下にタグを設置する",
+            "name": "page_content_tag",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "freepage"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1633937724
+}
