@@ -80,3 +80,9 @@
 	</div>
 </main>
 <!-- /#blog -->
+
+<?php
+  if( !is_user_logged_in() and !isBot() ) {
+    set_post_views( get_the_ID() );
+  }
+?>
