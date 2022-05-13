@@ -213,7 +213,11 @@
 								<a href="<?php the_permalink(); ?>" class="item">
 									<div class="thumb"><?php mio_get_thumbnail('square'); ?></div>
 									<span class="name"><i class="fa fa-angle-right"></i><?php the_title(); ?></span>
-									<span class="manage"><?php hp_stylist_manage(); ?></span>
+                  <?php if ($manage = get_staff_manage(get_field('manage'))) : ?>
+                    <span class="manage">
+                      <span><?= $manage; ?></span>
+                    </span>
+                  <?php endif; ?>
 								</a>
 							</li>
 						<?php endwhile; ?>
