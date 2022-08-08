@@ -8,6 +8,7 @@ class WP_Hairspress
 		'hp_setting',
 		'hp_search_console',
 		'hp_google_analytics',
+    'hp_ga4_id',
 		'hpSlider',
 		'hp_slider_mode',
 		'hp_slider_speed',
@@ -92,15 +93,18 @@ add_action('after_setup_theme', function() {
 	// $wphp = get_transient('wp_hairspress_global_transient');
 	if (!$wphp) {
 		$wphp = new WP_Hairspress();
-		set_transient('wp_hairspress_global_transient', $wphp->init(), 86400);
+		set_transient('wp_hairspress_global_transient', $wphp->init(), 0);
 	}
 });
 
-add_action('update_option', function() {
-	delete_transient('wp_hairspress_global_transient');
-});
+// add_action('update_option', function() {
+// 	delete_transient('wp_hairspress_global_transient');
+// });
 add_action('updated_option', function() {
 	global $wphp;
+
+  delete_transient('wp_hairspress_global_transient');
+
 	$wphp = new WP_Hairspress();
-	set_transient('wp_hairspress_global_transient', $wphp->init(), 86400);
+	set_transient('wp_hairspress_global_transient', $wphp->init(), 0);
 });

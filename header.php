@@ -20,9 +20,14 @@
 	<script src="https://kit.fontawesome.com/47c26e3652.js" crossorigin="anonymous"></script>
 	<?php wp_head(); ?>
 
+  <?php if ($ga4 = ga_ga4_id() and $ga4) : ?>
+    <script>var ga4_id = '<?= $ga4; ?>';</script>
+  <?php endif; ?>
 	<?php if ($tc = ga_tracking_code() and $tc) : ?>
 	<script>var tracking_id = '<?= $tc; ?>';</script>
-	<!-- Google Tag Manager -->
+	<?php endif; ?>
+  <?php if (ga_tracking_code() or ga_ga4_id()) : ?>
+  <!-- Google Tag Manager -->
 	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KLD699"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -31,7 +36,7 @@
 	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 	})(window,document,'script','dataLayer','GTM-KLD699');</script>
 	<!-- End Google Tag Manager -->
-	<?php endif; ?>
+  <?php endif; ?>
 </head>
 <body <?php body_class(\Demo::body_class()); ?>>
 

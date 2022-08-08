@@ -115,6 +115,25 @@
             "disabled": 0
         },
         {
+            "key": "field_62ecd51fd8732",
+            "label": "GA4 測定ID",
+            "name": "hp_ga4_id",
+            "type": "text",
+            "instructions": "Google Analyticsから発行された測定IDをここに貼り付けます。",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_55e3e21f02607",
             "label": "Search Console",
             "name": "hp_search_console",
@@ -172,5 +191,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1633937016
+    "show_in_rest": 0,
+    "modified": 1659688257
 }
