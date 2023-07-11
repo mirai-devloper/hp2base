@@ -133,8 +133,6 @@
 								<span class="yen">&yen;</span>
 								<span class="numeric"><?= $price ?><?= (get_field('ckara')) ? '<span class="kara">~</span>' : ''; ?></span>
 							</p>
-						<?php else : ?>
-							<p class="price" style="color: #f00; font-family: sans-serif; font-size: 12px;">システム：料金項目を再設定してください。</p>
 						<?php endif; ?>
 
 							<div class="link">
