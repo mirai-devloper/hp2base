@@ -1,4 +1,8 @@
 ::: Log :::
+Ver: 2.4.35
+ - [update] Advanced Custom Fileds PRO
+ - [change] Require PHP 7.4
+
 Ver: 2.3.13
  - [fixed] InternetExplorerのFlexboxの修正
  - [fixed] object-fitの互換性を修正

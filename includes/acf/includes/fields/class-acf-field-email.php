@@ -5,42 +5,46 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 	class acf_field_email extends acf_field {
 
 
-		/**
-		 * This function will setup the field type data
-		 *
-		 * @type    function
-		 * @date    5/03/2014
-		 * @since   5.0.0
-		 *
-		 * @param   n/a
-		 * @return  n/a
-		 */
+		/*
+		*  initialize
+		*
+		*  This function will setup the field type data
+		*
+		*  @type    function
+		*  @date    5/03/2014
+		*  @since   5.0.0
+		*
+		*  @param   n/a
+		*  @return  n/a
+		*/
+
 		function initialize() {
 
 			// vars
-			$this->name          = 'email';
-			$this->label         = __( 'Email', 'acf' );
-			$this->description   = __( 'A text input specifically designed for storing email addresses.', 'acf' );
-			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-email.png';
-			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/email/', 'docs', 'field-type-selection' );
-			$this->defaults      = array(
+			$this->name     = 'email';
+			$this->label    = __( 'Email', 'acf' );
+			$this->defaults = array(
 				'default_value' => '',
 				'placeholder'   => '',
 				'prepend'       => '',
 				'append'        => '',
 			);
+
 		}
 
 
-		/**
-		 * Create the HTML interface for your field
-		 *
-		 * @param   $field - an array holding all the field's data
-		 *
-		 * @type    action
-		 * @since   3.6
-		 * @date    23/01/13
-		 */
+		/*
+		*  render_field()
+		*
+		*  Create the HTML interface for your field
+		*
+		*  @param   $field - an array holding all the field's data
+		*
+		*  @type    action
+		*  @since   3.6
+		*  @date    23/01/13
+		*/
+
 		function render_field( $field ) {
 
 			// vars
@@ -51,14 +55,18 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 
 			// prepend
 			if ( $field['prepend'] !== '' ) {
+
 				$field['class'] .= ' acf-is-prepended';
 				$html           .= '<div class="acf-input-prepend">' . acf_esc_html( $field['prepend'] ) . '</div>';
+
 			}
 
 			// append
 			if ( $field['append'] !== '' ) {
+
 				$field['class'] .= ' acf-is-appended';
 				$html           .= '<div class="acf-input-append">' . acf_esc_html( $field['append'] ) . '</div>';
+
 			}
 
 			// atts (value="123")
@@ -82,21 +90,27 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 			$html .= '<div class="acf-input-wrap">' . acf_get_text_input( $atts ) . '</div>';
 
 			// return
-			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- safe HTML escaped by acf_get_text_input
+			echo $html;
+
 		}
 
 
-		/**
-		 * Create extra options for your field. This is rendered when editing a field.
-		 * The value of $field['name'] can be used (like bellow) to save extra data to the $field
-		 *
-		 * @type    action
-		 * @since   3.6
-		 * @date    23/01/13
-		 *
-		 * @param   $field  - an array holding all the field's data
-		 */
+		/*
+		*  render_field_settings()
+		*
+		*  Create extra options for your field. This is rendered when editing a field.
+		*  The value of $field['name'] can be used (like bellow) to save extra data to the $field
+		*
+		*  @type    action
+		*  @since   3.6
+		*  @date    23/01/13
+		*
+		*  @param   $field  - an array holding all the field's data
+		*/
+
 		function render_field_settings( $field ) {
+
+			// default_value
 			acf_render_field_setting(
 				$field,
 				array(
@@ -106,17 +120,8 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 					'name'         => 'default_value',
 				)
 			);
-		}
 
-		/**
-		 * Renders the field settings used in the "Presentation" tab.
-		 *
-		 * @since 6.0
-		 *
-		 * @param array $field The field settings array.
-		 * @return void
-		 */
-		function render_field_presentation_settings( $field ) {
+			// placeholder
 			acf_render_field_setting(
 				$field,
 				array(
@@ -127,6 +132,7 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 				)
 			);
 
+			// prepend
 			acf_render_field_setting(
 				$field,
 				array(
@@ -137,6 +143,7 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 				)
 			);
 
+			// append
 			acf_render_field_setting(
 				$field,
 				array(
@@ -146,6 +153,7 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 					'name'         => 'append',
 				)
 			);
+
 		}
 
 		/**
@@ -153,11 +161,12 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 		 * FALSE or a string is returned, the input value is invalid and the user is shown a
 		 * notice. If a string is returned, the string is show as the message text.
 		 *
-		 * @param  boolean $valid Whether the value is valid.
-		 * @param  mixed   $value The field value.
-		 * @param  array   $field The field array.
-		 * @param  string  $input The request variable name for the inbound field.
-		 * @return boolean|string
+		 * @param bool   $valid Whether the value is valid.
+		 * @param mixed  $value The field value.
+		 * @param array  $field The field array.
+		 * @param string $input The request variable name for the inbound field.
+		 *
+		 * @return bool|string
 		 */
 		public function validate_value( $valid, $value, $field, $input ) {
 			$flags = defined( 'FILTER_FLAG_EMAIL_UNICODE' ) ? FILTER_FLAG_EMAIL_UNICODE : 0;
@@ -181,9 +190,13 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 
 			return $schema;
 		}
+
 	}
 
 
 	// initialize
 	acf_register_field_type( 'acf_field_email' );
+
 endif; // class_exists check
+
+
