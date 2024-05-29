@@ -112,7 +112,8 @@ if (is_admin() or wp_doing_ajax() or wp_doing_cron()) {
   require 'plugin-update-checker/plugin-update-checker.php';
   if ($token = getHp2BaseToken() and $token) {
     $hp2baseUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-      'https://github.com/nullpon16tera/hp2base',
+      // 'https://github.com/nullpon16tera/hp2base',
+      'https://github.com/mirai-devloper/hp2base',
       __FILE__,
       'hp2base'
     );

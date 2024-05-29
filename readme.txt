@@ -1,4 +1,7 @@
 ::: Log :::
+Ver: 2.4.37
+ - [change] Update Chekcer change url
+
 Ver: 2.4.35
  - [update] Advanced Custom Fileds PRO
  - [change] Require PHP 7.4
