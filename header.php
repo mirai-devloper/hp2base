@@ -18,7 +18,8 @@
 	<?= google_search_console(); ?>
 
 	<!-- <script src="https://kit.fontawesome.com/47c26e3652.js" crossorigin="anonymous"></script> -->
-   <link rel="stylesheet" href="<?= get_theme_file_uri('font-awesome/css/font-awesome.min.css'); ?>">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?= get_theme_file_uri('font-awesome/css/font-awesome.min.css'); ?>">
 	<?php wp_head(); ?>
 
   <?php if ($ga4 = ga_ga4_id() and $ga4) : ?>
