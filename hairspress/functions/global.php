@@ -88,7 +88,7 @@ class WP_Hairspress
 global $wphp;
 $wphp = get_transient('wp_hairspress_global_transient');
 
-add_action('after_setup_theme', function() {
+add_action('init', function() {
 	global $wphp;
 	// $wphp = get_transient('wp_hairspress_global_transient');
 	if (!$wphp) {
