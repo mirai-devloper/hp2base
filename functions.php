@@ -28,9 +28,26 @@ add_filter('acf/settings/load_json', function($paths) {
   return $paths;
 });
 
+function getMapToken() {
+  $response = get_transient('hp2base_maptoken');
+  if (false === $response or empty($response)) {
+    $context = stream_context_create(
+      array(
+        'ssl' => array(
+          'verify_peer' => false,
+          'verify_peer_name' => false,
+        )
+      )
+    );
+    $response = file_get_contents('https://hairspress.com/hp2map.txt', false, $context);
+    set_transient('hp2base_maptoken', $response, 24 * HOUR_IN_SECONDS);
+  }
+  return $response;
+}
 add_filter('acf/fields/google_map/api', function($api) {
-  // $api['key'] = 'AIzaSyC2PVeXoLpOd7_52W1NuOsPMSE_UqUpT6A';
-  $api['key'] = 'AIzaSyASFdc_0QU2yCvIjXgW8zCj8i2nIG6yk_U';
+  if ($token = getMapToken() and $token) {
+    $api['key'] = $token;
+  }
 
   return $api;
 });
