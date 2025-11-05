@@ -78,7 +78,7 @@ add_action('wp_head', function() {
     echo $head_tag;
   }
 
-  if ($page_head_tag = get_field('page_head_tag', $post->ID) and $page_head_tag) {
+  if ($post and ($page_head_tag = get_field('page_head_tag', $post->ID) and $page_head_tag)) {
     echo $page_head_tag;
   }
 
